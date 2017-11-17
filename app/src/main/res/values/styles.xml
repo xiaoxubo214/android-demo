@@ -1,0 +1,41 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- 横线 -->
+    <style name="line_style">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/one_px</item>
+        <item name="android:background">@color/divider_color</item>
+        <item name="android:layout_marginLeft">@dimen/margin_ten</item>
+        <item name="android:layout_marginRight">@dimen/margin_ten</item>
+    </style>
+
+    <style name="full_line_style">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/one_px</item>
+        <item name="android:background">@color/divider_color</item>
+    </style>
+
+    <!-- 竖线 -->
+    <style name="vertical_line_style">
+        <item name="android:layout_width">@dimen/one_px</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">@color/divider_color</item>
+        <item name="android:layout_marginTop">@dimen/margin_ten</item>
+        <item name="android:layout_marginBottom">@dimen/margin_ten</item>
+    </style>
+
+    <style name="vertical_full_line_style">
+        <item name="android:layout_width">@dimen/one_px</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">@color/divider_color</item>
+    </style>
+
+</resources>

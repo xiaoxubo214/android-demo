@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/main_tab_item_height"
+    android:layout_gravity="center"
+    android:gravity="center">
+
+    <LinearLayout
+        android:id="@+id/mTabInfoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/mTabIconImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_five"
+            android:duplicateParentState="true"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/mTabInfoLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:duplicateParentState="true"
+            android:textColor="@color/view_selector_tab"
+            android:textSize="@dimen/sp_16"
+            android:gravity="center"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/mTabLine"
+        android:layout_width="@dimen/margin_eighty"
+        android:layout_height="@dimen/margin_three"
+        android:background="@drawable/def_tab_line_color_selector"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true" />
+
+    <ImageView
+        android:id="@+id/mTabFlagIV"
+        android:layout_width="@dimen/margin_eight"
+        android:layout_height="@dimen/margin_eight"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/margin_twenty"
+        android:layout_marginTop="@dimen/margin_ten"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/mTabCountTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/margin_twenty"
+        android:layout_marginTop="@dimen/margin_five"
+        android:gravity="center"
+        android:maxHeight="@dimen/min_notify_count_width"
+        android:minHeight="@dimen/min_notify_count_width"
+        android:minWidth="@dimen/min_notify_count_width"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</RelativeLayout>

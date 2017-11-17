@@ -1,0 +1,92 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="flag_size_small">10dp</dimen>
+    <dimen name="flag_size_big">16dp</dimen>
+    <dimen name="margin_one">1dp</dimen>
+    <dimen name="margin_two">2dp</dimen>
+    <dimen name="margin_three">3dp</dimen>
+    <dimen name="margin_four">4dp</dimen>
+    <dimen name="margin_five">5dp</dimen>
+    <dimen name="margin_six">6dp</dimen>
+    <dimen name="margin_seven">7dp</dimen>
+    <dimen name="margin_eight">8dp</dimen>
+    <dimen name="margin_nine">9dp</dimen>
+    <dimen name="margin_ten">10dp</dimen>
+    <dimen name="margin_eleven">11dp</dimen>
+    <dimen name="margin_twelve">12dp</dimen>
+    <dimen name="margin_thirteen">13dp</dimen>
+    <dimen name="margin_fifteen">15dp</dimen>
+    <dimen name="margin_sixteen">16dp</dimen>
+    <dimen name="margin_seventeen">17dp</dimen>
+    <dimen name="margin_eighteen">18dp</dimen>
+    <dimen name="margin_twenty">20dp</dimen>
+    <dimen name="margin_twenty_four">24dp</dimen>
+    <dimen name="margin_twenty_seven">27dp</dimen>
+    <dimen name="margin_thirty">30dp</dimen>
+    <dimen name="margin_forty">40dp</dimen>
+    <dimen name="margin_forty_five">45dp</dimen>
+    <dimen name="margin_forty_two">42dp</dimen>
+    <dimen name="margin_fifty">50dp</dimen>
+    <dimen name="margin_sixty">60dp</dimen>
+    <dimen name="margin_seventy">70dp</dimen>
+    <dimen name="margin_eighty">80dp</dimen>
+    <dimen name="margin_ninety">90dp</dimen>
+    <dimen name="margin_one_hundred">100dp</dimen>
+    <dimen name="margin_two_hundred">200dp</dimen>
+    <dimen name="right_draw_width">220dp</dimen>
+    <dimen name="zero_dp">0dp</dimen>
+    <dimen name="one_px">1px</dimen>
+
+    <!-- text size -->
+    <dimen name="sp_4">4sp</dimen>
+    <dimen name="sp_6">6sp</dimen>
+    <dimen name="sp_8">8sp</dimen>
+    <dimen name="sp_9">9sp</dimen>
+    <dimen name="sp_10">10sp</dimen>
+    <dimen name="sp_11">11sp</dimen>
+    <dimen name="sp_12">12sp</dimen>
+    <dimen name="sp_13">13sp</dimen>
+    <dimen name="sp_14">14sp</dimen>
+    <dimen name="sp_15">15sp</dimen>
+    <dimen name="sp_16">16sp</dimen>
+    <dimen name="sp_17">17sp</dimen>
+    <dimen name="sp_18">18sp</dimen>
+    <dimen name="sp_19">19sp</dimen>
+    <dimen name="sp_20">20sp</dimen>
+    <dimen name="sp_21">21sp</dimen>
+    <dimen name="sp_22">22sp</dimen>
+    <dimen name="sp_23">23sp</dimen>
+    <dimen name="sp_24">24sp</dimen>
+    <dimen name="sp_25">25sp</dimen>
+
+    <dimen name="evaluate_Item">26dp</dimen>
+    <dimen name="evaluate_padding">24dp</dimen>
+
+    <!-- bottom main title height-->
+    <dimen name="main_tab_height">48dp</dimen>
+    <dimen name="main_tab_item_height">48dp</dimen>
+    <dimen name="main_title_icon_height">30dp</dimen>
+    <dimen name="min_notify_count_width">15dp</dimen>
+    <dimen name="tab_title_height">40dp</dimen>
+    <dimen name="title_bar_height">48dp</dimen>
+    <dimen name="title_move_left">100dp</dimen>
+    <dimen name="item_height">43dp</dimen>
+    <dimen name="dialog_item_h">58dp</dimen>
+    <dimen name="dp_55">55dp</dimen>
+    <dimen name="dp_36">36dp</dimen>
+    <dimen name="dp_32">32dp</dimen>
+
+    <!--item width-->
+    <dimen name="system_info_item_height">45dp</dimen>
+    <dimen name="status_bar_height">25.0dip</dimen>
+    <dimen name="dialog_height">130dp</dimen>
+    <dimen name="dialog_button_height">52dp</dimen>
+    <dimen name="dialog_content_height">82dp</dimen>
+
+    <dimen name="gudieview_width">6dp</dimen>
+    <dimen name="gudieview_heigh">6dp</dimen>
+
+</resources>

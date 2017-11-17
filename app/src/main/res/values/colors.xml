@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#E9EAEB</color>
+    <color name="colorPrimaryDark">#88E9EAEB</color>
+    <color name="colorAccent">#88E9EAEB</color>
+    <color name="titleColor">#333333</color>
+    <color name="white">#FFFFFF</color>
+    <color name="seventy_percent_tranparent">#AA000000</color>
+
+    <color name="half_white">#dddddd</color>
+    <!-- 红紫色 -->
+    <color name="red">#FF0000</color>
+    <color name="title_color">#E9EAEB</color>
+    <color name="tab_normal_color">#000000</color>
+    <color name="tab_selected_color">#A40000</color>
+    <color name="tab_default_line">#EFDFC1</color>
+    <color name="transparent30">#30000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="divider_color">#E2E2E2</color>
+    <color name="background_color">#f1f1f1</color>
+    <color name="indicate_color">#f6ac2a</color>
+    <color name="gray_f6">#f6f6f6</color>
+    <color name="green">#00FF00</color>
+    <color name="half_transparent">#80000000</color>
+    <color name="black">#000000</color>
+    <color name="status_bar_color">#88FFFFFF</color>
+    <drawable name="transparent_drawable">#00000000</drawable>
+    <drawable name="select_drawable">#A40000</drawable>
+    <color name="circle_line_color">#A72524</color>
+    <color name="green_line_color">#40A81c</color>
+    <color name="gray_line_color">#B5B5B5</color>
+    <color name="gray_99">#999999</color>
+    <color name="verticle_line_color">#E0C99C</color>
+    <color name="light_gray_color">#666666</color>
+    <color name="cur_text_color">#A40000</color>
+    <color name="event_normal_bg_color">#E1C99B</color>
+    <color name="event_sign_bg_color">#CCCCCC</color>
+    <color name="btn_red_color">#970000</color>
+    <color name="btn_bg_color">#A40000</color>
+    <color name="tran_btn_bg_color">#88A40000</color>
+    <color name="dialog_style_color">#EEEEEEEE</color>
+    <color name="line_color">#eeeeee</color>
+    <drawable name="white_drawable">#FFFFFF</drawable>
+    <drawable name="alive_drawable">#f3f3f3</drawable>
+    <color name="title_light_color">#EDEEEF</color>
+    <color name="typeface_grey">#999999</color>
+    <color name="typeface_grey_off">#796950</color>
+    <color name="btn_red">#b81c22</color>
+
+    <color name="inform_details_line">#F3EBD6</color>
+    <color name="inform_details_title_bg">#EAEAEA</color>
+    <color name="inform_details_content_bg">#F5F5F5</color>
+
+    <color name="remove_course_red_bg">#ff5f4b</color>
+    <color name="remove_course_gray_bg">#c9b997</color>
+    <color name="remove_course_brown_bg">#665150</color>
+    <color name="dialog_gray_color">#F7F7F7</color>
+    <color name="dialog_message_color">#DE000000</color>
+    <color name="reminder_text_color">#E9DCC1</color>
+    <drawable name="transprant_drawable">#00000000</drawable>
+
+    <color name="gray_circle_line_color">#d9d9d9</color>
+    <color name="class_titile_color">#e1c99b</color>
+    <color name="category_bg_color">#FDF9ED</color>
+    <color name="indicator_unselect_color">#F5F7F5</color>
+    <color name="hal_transparent_white">#88FFFFFF</color>
+    <color name="square_stroke">#D4D4D4</color>
+    <color name="theme_body">#cc22292c</color>
+    <color name="low_light_color">#999999</color>
+
+    <color name="relation_course_background_color">#faf7ef</color>
+    <color name="relation_course_text_color">#d3b37d</color>
+
+    <color name="color_8290AF">#8290AF</color>
+    <color name="im_social_dig_name_bg">#DDDDDD</color>
+    <color name="im_font_color_text_hint">#abb1b6</color>
+    <color name="im_line_color">#dadada</color>
+    <color name="name_selector_color">#cccccc</color>
+
+    <color name="bg_no_photo">#EEEEEE</color>
+    <color name="title_bg">#373B3E</color>
+    <color name="video_bg">#ededed</color>
+    <color name="black_333">#333333</color>
+    <color name="praise_item_default">#333333</color>
+    <color name="praise_item_selector_default">#cccccc</color>
+    <color name="praise_item">#8290AF</color>
+
+    <color name="default_clickable_color">#cccccc</color>
+    <color name="basic_color_primary">#373b3e</color>
+    <color name="topic_item_color">#333333</color>
+    <color name="transparent_60">#96000000</color>
+</resources>

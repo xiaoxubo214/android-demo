@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/main_tab_item_height"
+    android:background="@color/white" >
+
+    <HorizontalScrollView
+        android:id="@+id/mTabHorizontalscrollview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:fadingEdge="none"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" 
+            android:orientation="vertical"
+            android:background="@color/transparent">
+
+            <com.baoyuan.teacher.tab.TabTitleIndicator
+                android:id="@+id/mTabTitleIndicator"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/main_tab_item_height" />
+
+            <com.baoyuan.teacher.tab.UnderlinePageIndicator
+                android:id="@+id/mTabIndicatorLine"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/margin_five"
+                app:selectedColor="@color/tab_selected_color"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+ </HorizontalScrollView>
+
+    <View
+        style="@style/full_line_style"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>
