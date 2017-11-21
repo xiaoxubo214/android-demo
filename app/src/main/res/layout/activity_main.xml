@@ -16,7 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_top_line"
-        android:layout_above="@+id/llMainLayout"/>
+        android:layout_above="@+id/llMainLayout"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:id="@+id/llMainLayout"
@@ -42,5 +43,6 @@
         android:layout_alignTop="@+id/llMainLayout"
         android:layout_centerHorizontal="true"
         android:scaleType="centerInside"
-        android:src="@drawable/img_fabu_dongtai" />
+        android:src="@drawable/img_fabu_dongtai"
+        android:visibility="gone"/>
 </RelativeLayout>

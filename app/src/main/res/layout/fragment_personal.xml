@@ -1,0 +1,104 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cil="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.by.wind.demo.fragment.PersonalFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.gc.materialdesign.views.LayoutRipple
+            android:id="@+id/user_rl"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/user_avatar_iv"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/margin_ten"
+                android:src="@drawable/icon_avatar" />
+
+            <TextView
+                android:id="@+id/user_name_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/user_avatar_iv"
+                android:gravity="center"
+                android:text="@string/please_login" />
+        </com.gc.materialdesign.views.LayoutRipple>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_twenty"
+            android:layout_marginTop="@dimen/margin_ten"
+            android:orientation="vertical">
+
+            <com.by.wind.demo.view.PersonalItem
+                android:id="@+id/pl_item_album"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_fifty"
+                android:background="@color/white"
+                cil:iv_drawable_right="@drawable/arrow_right"
+                cil:line_is="true"
+                cil:tv_drawable_left="@drawable/icon_setting"
+                cil:tv_text="我的相册" />
+
+            <com.by.wind.demo.view.PersonalItem
+                android:id="@+id/pl_item_collection"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_fifty"
+                android:background="@color/white"
+                cil:iv_drawable_right="@drawable/arrow_right"
+                cil:line_is="true"
+                cil:tv_drawable_left="@drawable/icon_setting"
+                cil:tv_text="我的收藏" />
+
+            <com.by.wind.demo.view.PersonalItem
+                android:id="@+id/pl_item_share"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_fifty"
+                android:background="@color/white"
+                cil:iv_drawable_right="@drawable/arrow_right"
+                cil:line_is="true"
+                cil:tv_drawable_left="@drawable/icon_setting"
+                cil:tv_text="我的分享" />
+
+            <com.by.wind.demo.view.PersonalItem
+                android:id="@+id/pl_item_message"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_fifty"
+                android:background="@color/white"
+                cil:iv_drawable_right="@drawable/arrow_right"
+                cil:line_is="true"
+                cil:tv_drawable_left="@drawable/icon_setting"
+                cil:tv_text="系统消息" />
+
+            <com.by.wind.demo.view.PersonalItem
+                android:id="@+id/pl_item_setting"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_fifty"
+                android:background="@color/white"
+                cil:iv_drawable_right="@drawable/arrow_right"
+                cil:line_is="false"
+                cil:tv_drawable_left="@drawable/icon_setting"
+                cil:tv_text="系统设置" />
+        </LinearLayout>
+
+        <com.gc.materialdesign.views.ButtonRectangle
+            android:id="@+id/login_out_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#1E88E5"
+            android:text="@string/login_out" />
+    </LinearLayout>
+</ScrollView>
+
+

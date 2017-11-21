@@ -1,116 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="CustomTitleBar">
-        <attr name="title_background" format="color"/>
-        <attr name="left_button_image" format="reference|integer"/>
-        <attr name="left_button_text" format="string"/>
-        <attr name="left_button_textColor" format="color"/>
-        <attr name="left_button_textSize" format="dimension"/>
-        <attr name="show_left_button" format="boolean"/>
-        <attr name="title_text" format="string"/>
-        <attr name="title_textColor" format="color"/>
-        <attr name="title_textSize" format="dimension"/>
-        <attr name="right_button_image" format="reference|integer"/>
-        <attr name="right_button_text" format="string"/>
-        <attr name="right_button_textColor" format="color"/>
-        <attr name="right_button_textSize" format="dimension"/>
-        <attr name="show_right_button" format="boolean"/>
-        <attr name="show_left_center_button" format="boolean"/>
-        <attr name="show_right_center_button" format="boolean"/>
-        <attr name="right_center_title_text" format="string"/>
-        <attr name="show_bottom_line_view" format="boolean"/>
-    </declare-styleable>
-
-    <declare-styleable name="CommonLinearLayout">
-        <attr name="title_label" format="reference|string"/>
-        <attr name="title_textcolor" format="reference|color"/>
-        <attr name="title_textsize" format="reference|dimension"/>
-        <attr name="content_label" format="reference|string"/>
-        <attr name="content_textcolor" format="reference|color"/>
-        <attr name="content_textsize" format="reference|dimension"/>
-        <attr name="flag_src" format="reference"/>
-        <attr name="top_line_visible" format="boolean"/>
-        <attr name="top_short_line_visible" format="boolean"/>
-        <attr name="bottom_line_visible" format="boolean"/>
-        <attr name="bottom_short_line_visible" format="boolean"/>
-        <attr name="arrow_visible" format="boolean"/>
-        <attr name="title_flag_visible" format="boolean"/>
-        <attr name="notification_flag_visible" format="boolean"/>
-        <attr name="flag_visible" format="boolean"/>
-        <attr name="padding_left" format="reference|dimension"/>
-        <attr name="padding_right" format="reference|dimension"/>
-    </declare-styleable>
-
-    <declare-styleable name="MaterialRippleLayout">
-        <attr name="mrl_rippleColor" format="color" localization="suggested"/>
-        <attr name="mrl_rippleDimension" format="dimension" localization="suggested"/>
-        <attr name="mrl_rippleOverlay" format="boolean" localization="suggested"/>
-        <attr name="mrl_rippleAlpha" format="float" localization="suggested"/>
-        <attr name="mrl_rippleDuration" format="integer" localization="suggested"/>
-        <attr name="mrl_rippleFadeDuration" format="integer" localization="suggested"/>
-        <attr name="mrl_rippleHover" format="boolean" localization="suggested"/>
-        <attr name="mrl_rippleBackground" format="color" localization="suggested"/>
-        <attr name="mrl_rippleDelayClick" format="boolean" localization="suggested"/>
-        <attr name="mrl_ripplePersistent" format="boolean" localization="suggested"/>
-        <attr name="mrl_rippleInAdapter" format="boolean" localization="suggested"/>
-        <attr name="mrl_rippleRoundedCorners" format="dimension" localization="suggested"/>
-    </declare-styleable>
-
-    <attr name="indexBarTextSize" format="dimension"/>
-
-    <declare-styleable name="IndexBar">
-        <attr name="indexBarTextSize"/>
-        <attr name="indexBarPressBackground" format="color"/>
-    </declare-styleable>
-
-    <declare-styleable name="CustomItemLayout">
+    <declare-styleable name="CustomPersonalItemLayout">
         <attr name="tv_text" format="string"/>
         <attr name="tv_text_size" format="reference|dimension"/>
         <attr name="tv_text_color" format="reference|color"/>
         <attr name="tv_drawable_left" format="reference|integer"/>
         <attr name="iv_drawable_right" format="reference|integer"/>
-        <attr name="line_is" format="boolean"/>
         <attr name="is_enabled_center" format="boolean"/>
-        <attr name="is_enabled_ripple" format="boolean"/>
-
-    </declare-styleable>
-
-    <declare-styleable name="CropImageView">
-        <attr name="cropMaskColor" format="color"/>
-        <attr name="cropBorderColor" format="color"/>
-        <attr name="cropBorderWidth" format="dimension"/>
-        <attr name="cropFocusWidth" format="dimension"/>
-        <attr name="cropFocusHeight" format="dimension"/>
-        <attr name="cropStyle" format="enum">
-            <enum name="rectangle" value="0"/>
-            <enum name="circle" value="1"/>
-        </attr>
-    </declare-styleable>
-
-    <declare-styleable name="CustomEvaluateItem">
-        <attr name="text_Center_Color" format="reference|color"/>
-        <attr name="text_Right_Color" format="reference|color"/>
-        <attr name="text_Sizes" format="reference|dimension"/>
-        <attr name="text_Left" format="string"/>
-        <attr name="left_Enable" format="boolean"/>
-        <attr name="text_Center" format="string"/>
-        <attr name="text_Right" format="string"/>
-        <attr name="text__Center_Background" format="reference|integer"/>
-        <attr name="text__Right_Background" format="reference|integer"/>
-        <attr name="padding_lefts" format="reference|dimension"/>
-        <attr name="padding_rights" format="reference|dimension"/>
-    </declare-styleable>
-
-    <declare-styleable name="PraiseListView">
-        <attr name="item_color" format="color"/>
-        <attr name="item_selector_color" format="color"/>
-    </declare-styleable>
-
-    <declare-styleable name="ExpandTextView">
-        <attr name="showLines" format="integer"/>
-    </declare-styleable>
-    <declare-styleable name="REditText">
-        <attr name="object_foreground_color" format="color"/>
-        <attr name="object_background_color" format="color"/>
+        <attr name="line_is" format="boolean"/>
     </declare-styleable>
 </resources>

@@ -1,11 +1,11 @@
 package com.by.wind.demo.activity;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -13,10 +13,11 @@ import android.widget.RelativeLayout;
 
 import com.by.wind.demo.R;
 import com.by.wind.demo.adapter.FragmentPagerAdapter;
-import com.by.wind.demo.fragment.FourFragment;
-import com.by.wind.demo.fragment.OneFragment;
-import com.by.wind.demo.fragment.ThreeFragment;
-import com.by.wind.demo.fragment.TwoFragment;
+import com.by.wind.demo.fragment.PersonalFragment;
+import com.by.wind.demo.fragment.CartFragment;
+import com.by.wind.demo.fragment.HomeFragment;
+import com.by.wind.demo.fragment.DiscoverFragment;
+import com.by.wind.demo.fragment.CategoryFragment;
 import com.by.wind.demo.view.BaseFragment;
 import com.by.wind.demo.view.NoScrollViewPager;
 import com.by.wind.demo.view.TitleActivity;
@@ -41,18 +42,20 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
     ImageView ivCommonImg;
     @BindView(R.id.activity_main)
     RelativeLayout activityMain;
-    private OneFragment mOneFragment;
-    private TwoFragment mTwoFragment;
-    private ThreeFragment mThreeFragment;
-    private FourFragment mFourFragment;
+    private HomeFragment mHomeFragment;
+    private CategoryFragment mCategoryFragment;
+    private DiscoverFragment mDiscoverFragment;
+    private CartFragment mCartFragment;
+    private PersonalFragment mPersonalFragment;
     private ArrayList<BaseFragment> mFragmentList;
     private FragmentPagerAdapter fragmentPagerAdapter;
 
     private int mCurIndex;
-    private static final int ONE_TYPE_TAB = 0;
-    private static final int TWO_TYPE_TAB = 1;
-    private static final int THREE_TYPE_TAB = 2;
-    private static final int FOUR_TYPE_TAB = 3;
+    private static final int HOME_TYPE_TAB = 0;
+    private static final int CATEGORY_TYPE_TAB = 1;
+    private static final int DISCOVER_TYPE_TAB = 2;
+    private static final int CART_TYPE_TAB = 3;
+    private static final int PERSONAL_TYPE_TAB = 4;
 
     public static void open(Context context) {
         Intent intent = new Intent();
@@ -72,29 +75,31 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
 
 
     protected void initializeViews() {
-        mOneFragment = new OneFragment();
-        mTwoFragment = new TwoFragment();
-        mThreeFragment = new ThreeFragment();
-        mFourFragment = new FourFragment();
+        mHomeFragment = new HomeFragment();
+        mCategoryFragment = new CategoryFragment();
+        mDiscoverFragment = new DiscoverFragment();
+        mCartFragment = new CartFragment();
+        mPersonalFragment = new PersonalFragment();
 
         mFragmentList = new ArrayList<>();
-        mFragmentList.add(mOneFragment);
-        mFragmentList.add(mTwoFragment);
-        mFragmentList.add(mThreeFragment);
-        mFragmentList.add(mFourFragment);
+        mFragmentList.add(mHomeFragment);
+        mFragmentList.add(mCategoryFragment);
+        mFragmentList.add(mDiscoverFragment);
+        mFragmentList.add(mCartFragment);
+        mFragmentList.add(mPersonalFragment);
 
         fragmentPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager(), mFragmentList);
         viewpager.setAdapter(fragmentPagerAdapter);
         viewpager.setCurrentItem(mCurIndex);
-        viewpager.setOffscreenPageLimit(4);
+        viewpager.setOffscreenPageLimit(5);
         viewpager.setPagingEnabled(false);
         viewpager.addOnPageChangeListener(new PageListener());
         ArrayList<Tab> tabs = new ArrayList<>();
-        tabs.add(new Tab(R.drawable.def_main_tab_home_selector, getResources().getString(R.string.one), null));
-        tabs.add(new Tab(R.drawable.def_main_tab_category_selector, getResources().getString(R.string.two), null));
-        tabs.add(new Tab(R.color.transparent, "", false, null));
-        tabs.add(new Tab(R.drawable.def_main_tab_cart_selector, getResources().getString(R.string.two), null));
-        tabs.add(new Tab(R.drawable.def_main_tab_personal_selector, getResources().getString(R.string.two), null));
+        tabs.add(new Tab(R.drawable.def_main_tab_home_selector, getResources().getString(R.string.home), null));
+        tabs.add(new Tab(R.drawable.def_main_tab_category_selector, getResources().getString(R.string.category), null));
+        tabs.add(new Tab(R.drawable.def_main_tab_faxian_selector, getString(R.string.discover), null));
+        tabs.add(new Tab(R.drawable.def_main_tab_cart_selector, getResources().getString(R.string.cart), null));
+        tabs.add(new Tab(R.drawable.def_main_tab_personal_selector, getResources().getString(R.string.personal), null));
         mMainIndicator.initializeData(tabs);
         mMainIndicator.setOnTabClickListener(this);
         mMainIndicator.setCurrentTab(mCurIndex);
@@ -102,15 +107,17 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
 
     @Override
     public void onTabClick(int index) {
+        Log.e(TAG,index + "");
         if (index == 0) {
-            viewpager.setCurrentItem(ONE_TYPE_TAB, false);
+            viewpager.setCurrentItem(HOME_TYPE_TAB, false);
         } else if (index == 1) {
-            //ToastUtil.showToast("该功能正努力开通中，暂未开放");
-            viewpager.setCurrentItem(TWO_TYPE_TAB, false);
+            viewpager.setCurrentItem(CATEGORY_TYPE_TAB,false);
+        } else if (index == 2) {
+            viewpager.setCurrentItem(DISCOVER_TYPE_TAB, false);
         } else if (index == 3) {
-            viewpager.setCurrentItem(THREE_TYPE_TAB, false);
-        } else if (index == 4) {
-            viewpager.setCurrentItem(THREE_TYPE_TAB, false);
+            viewpager.setCurrentItem(CART_TYPE_TAB, false);
+        }else if (index == 4) {
+            viewpager.setCurrentItem(PERSONAL_TYPE_TAB, false);
 
         }
     }

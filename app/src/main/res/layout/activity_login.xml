@@ -15,7 +15,7 @@
             android:id="@+id/username_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/usernmae"
+            android:hint="@string/username"
             android:text=" "
             android:textSize="20sp"
             app:met_baseColor="@android:color/black"

@@ -2,7 +2,8 @@ package com.by.wind.demo;
 
 import android.app.Application;
 
-//import com.squareup.leakcanary.LeakCanary;
+import com.by.wind.demo.common.AppException;
+import com.squareup.leakcanary.LeakCanary;
 
 /**
  * Created by Wind on 2017/11/15.
@@ -16,22 +17,20 @@ public class MyApplication extends Application {
     }
 
     public static synchronized MyApplication getInstance() {
-        if (app == null) {
-            app = new MyApplication();
-        }
         return app;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
+        app = this;
         //RealmConfig.getInstance().initDataConfig(this);
-        //LeakCanary.install(this);
-        //registerUncaughtExceptionHandler();
+        LeakCanary.install(this);
+        registerUncaughtExceptionHandler();
     }
 
     // 注册App异常崩溃处理器
-    /*private void registerUncaughtExceptionHandler() {
+    private void registerUncaughtExceptionHandler() {
         Thread.setDefaultUncaughtExceptionHandler(AppException.getAppExceptionHandler());
-    }*/
+    }
 }
