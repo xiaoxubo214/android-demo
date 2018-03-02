@@ -19,13 +19,13 @@ import com.by.wind.demo.activity.ActivityLifeCycleEvent;
 import com.by.wind.demo.util.ToastUtil;
 
 import butterknife.ButterKnife;
-import rx.subjects.PublishSubject;
+import io.reactivex.subjects.PublishSubject;
 
 /**
  * Created by Wind on 2017/11/17.
  */
 public abstract class BaseFragment extends Fragment {
-
+    public final String TAG = BaseFragment.class.getSimpleName();
     public final PublishSubject<ActivityLifeCycleEvent> lifecycleSubject = PublishSubject.create();
     protected InputMethodManager inputMethodManager;
     protected Context context;

@@ -3,6 +3,7 @@ package com.by.wind.demo;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,9 +19,9 @@ import static org.junit.Assert.*;
 public class ExampleInstrumentedTest {
     @Test
     public void useAppContext() throws Exception {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getTargetContext();
-
-        assertEquals("com.by.wind.demo", appContext.getPackageName());
+      Builder builder = new WindowsBuilder();
+      Director pcDirector = new Director(builder);
+      pcDirector.construct("华硕主板","三星显示器");
+     Log.e("Example",builder.create().toString());
     }
 }

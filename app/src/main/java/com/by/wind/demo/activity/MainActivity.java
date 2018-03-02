@@ -107,7 +107,6 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
 
     @Override
     public void onTabClick(int index) {
-        Log.e(TAG,index + "");
         if (index == 0) {
             viewpager.setCurrentItem(HOME_TYPE_TAB, false);
         } else if (index == 1) {

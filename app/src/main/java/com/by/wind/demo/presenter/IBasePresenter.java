@@ -6,4 +6,9 @@ package com.by.wind.demo.presenter;
 
 public interface IBasePresenter {
 
+    interface IHomePresenter {
+        void getHomeInfo();
+    }
+
+
 }

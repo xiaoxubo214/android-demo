@@ -3,7 +3,7 @@ package com.by.wind.demo.util;
 import android.content.Context;
 import android.content.SharedPreferences.Editor;
 
-import com.by.wind.demo.MyApplication;
+import com.by.wind.demo.BaseApplication;
 
 public class SharedPreferences {
 
@@ -31,7 +31,7 @@ public class SharedPreferences {
     }
 
     private android.content.SharedPreferences getSp() {
-        return MyApplication.getInstance().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
+        return BaseApplication.getInstance().getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
     }
 
     public int getInt(String key, int def) {

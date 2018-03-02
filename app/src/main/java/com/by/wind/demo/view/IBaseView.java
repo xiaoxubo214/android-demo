@@ -5,4 +5,8 @@ package com.by.wind.demo.view;
  */
 
 public interface IBaseView {
+    public interface HomeInfoView {
+        public void setBannerResult();
+        public void setFunctionResult();
+    }
 }

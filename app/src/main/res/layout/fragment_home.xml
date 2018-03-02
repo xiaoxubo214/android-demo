@@ -1,11 +1,64 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.by.wind.demo.fragment.DiscoverFragment">
+    android:scrollbars="none"
+    tools:context="com.by.wind.demo.fragment.HomeFragment">
 
-    <WebView
-        android:id="@+id/webView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</FrameLayout>
+        android:layout_height="match_parent">
+
+         <LinearLayout
+             android:id="@+id/tools_bar"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:padding="5dp">
+             <ImageView
+                 android:id="@+id/scan"
+                 android:layout_width="0dp"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="1"
+                 android:src="@drawable/home_title_scan_black"
+                 android:layout_gravity="center"
+                 android:layout_marginRight="8dp"/>
+             <EditText
+                 android:id="@+id/search_all"
+                 android:layout_width="0dp"
+                 android:layout_height="wrap_content"
+                 android:background="@drawable/jshop_search_input_bg"
+                 android:layout_weight="10"
+                 android:layout_gravity="center"/>
+             <ImageView
+                 android:id="@+id/message"
+                 android:layout_width="0dp"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="1"
+                 android:src="@drawable/ic_personal_home_message"
+                 android:layout_gravity="center"
+                 android:layout_marginLeft="8dp"
+                 android:layout_marginRight="8dp"/>
+         </LinearLayout>
+
+        <com.youth.banner.Banner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="@dimen/margin_two"
+            android:layout_below="@id/tools_bar"/>
+
+        <GridView
+            android:id="@+id/function_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/banner"
+            android:background="@drawable/bg_white_transparent" />
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_below="@id/function_navigation"
+            android:background="@drawable/bg_white_transparent"/>
+    </RelativeLayout>
+</ScrollView>

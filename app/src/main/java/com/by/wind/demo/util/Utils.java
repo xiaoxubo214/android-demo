@@ -7,7 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 
-import com.by.wind.demo.MyApplication;
+import com.by.wind.demo.BaseApplication;
 
 /**
  *
@@ -46,7 +46,7 @@ public class Utils {
      */
     static String getNetworkType() {
         String networkType = "wifi";
-        ConnectivityManager manager = (ConnectivityManager) MyApplication.getInstance()
+        ConnectivityManager manager = (ConnectivityManager) BaseApplication.getInstance()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo netWrokInfo = manager.getActiveNetworkInfo();

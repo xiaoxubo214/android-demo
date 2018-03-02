@@ -24,7 +24,7 @@ public class CategoryFragment extends BaseFragment {
 
     @Override
     public int getContentViewId() {
-        return R.layout.fragment_home;
+        return R.layout.fragment_category;
     }
 
     @Override

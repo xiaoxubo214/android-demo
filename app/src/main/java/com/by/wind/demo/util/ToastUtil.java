@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.by.wind.demo.MyApplication;
+import com.by.wind.demo.BaseApplication;
 import com.by.wind.demo.R;
 
 /**
@@ -24,11 +24,11 @@ public class ToastUtil {
 
     private static void toastRoot(String s) {
 
-        View view = View.inflate(MyApplication.getInstance(), R.layout.custom_toast_layout, null);
+        View view = View.inflate(BaseApplication.getInstance(), R.layout.custom_toast_layout, null);
         TextView textView = (TextView) view.findViewById(R.id.tvToast);
         if (!TextUtils.isEmpty(s)) {
             textView.setText(s);
-            Toast toast = new Toast(MyApplication.getInstance());
+            Toast toast = new Toast(BaseApplication.getInstance());
             toast.setDuration(Toast.LENGTH_LONG);
             // toast.setGravity(Gravity.BOTTOM, 0,200);
             toast.setMargin(0, 0.05f);
@@ -38,18 +38,18 @@ public class ToastUtil {
     }
 
     public static void show(String s) {
-        if (View.inflate(MyApplication.getInstance(), R.layout.custom_toast_layout, null) == null) {
+        if (View.inflate(BaseApplication.getInstance(), R.layout.custom_toast_layout, null) == null) {
             Log.e("Toast", "is null");
         } else {
             Log.e("Toast", "not null");
         }
 
         Log.e("Toast","start");
-        View view = View.inflate(MyApplication.getInstance(), R.layout.custom_toast_layout, null);
+        View view = View.inflate(BaseApplication.getInstance(), R.layout.custom_toast_layout, null);
         TextView textView = (TextView) view.findViewById(R.id.tvToast);
         if (!TextUtils.isEmpty(s)) {
             textView.setText(s);
-            Toast toast = new Toast(MyApplication.getInstance());
+            Toast toast = new Toast(BaseApplication.getInstance());
             toast.setDuration(Toast.LENGTH_SHORT);
             toast.setMargin(0, 0.05f);
             toast.setView(view);
@@ -59,11 +59,11 @@ public class ToastUtil {
 
     private static void toastRoot(int s) {
 
-        View view = View.inflate(MyApplication.getInstance(), R.layout.custom_toast_layout, null);
+        View view = View.inflate(BaseApplication.getInstance(), R.layout.custom_toast_layout, null);
         TextView textView = (TextView) view.findViewById(R.id.tvToast);
         textView.setText(s);
 
-        Toast toast = new Toast(MyApplication.getInstance());
+        Toast toast = new Toast(BaseApplication.getInstance());
         toast.setDuration(Toast.LENGTH_LONG);
         // toast.setGravity(Gravity.BOTTOM, 0,200);
         toast.setMargin(0, 0.05f);
