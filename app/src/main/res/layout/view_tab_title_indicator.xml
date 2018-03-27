@@ -20,12 +20,12 @@
             android:orientation="vertical"
             android:background="@color/transparent">
 
-            <com.baoyuan.teacher.tab.TabTitleIndicator
+            <com.by.wind.demo.widget.tab
                 android:id="@+id/mTabTitleIndicator"
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/main_tab_item_height" />
 
-            <com.baoyuan.teacher.tab.UnderlinePageIndicator
+            <com.by.wind.demo.widget.tab
                 android:id="@+id/mTabIndicatorLine"
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/margin_five"

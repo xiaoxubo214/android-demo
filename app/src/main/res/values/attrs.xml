@@ -12,12 +12,8 @@
 
     <!--loding Dialog属性-->
     <style name="indeterminate_dialog" parent="@android:style/Theme.Dialog">
-        <item name="android:windowBackground">@color/half_white</item>
+        <item name="android:windowBackground">@color/transparent</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_gravity">center_horizontal</item>
-        <item name="android:gravity">center_horizontal</item>
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 

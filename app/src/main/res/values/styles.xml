@@ -1,13 +1,20 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="BaseAppTheme" parent="AppTheme.Base">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="BaseAppTheme"/>
+    <style name="TranslucentTheme" parent="AppTheme">
+    </style>
     <!-- 横线 -->
     <style name="line_style">
         <item name="android:layout_width">fill_parent</item>
@@ -38,7 +45,7 @@
         <item name="android:background">@color/divider_color</item>
     </style>
 
-    <style name="AVLoadingIndicatorView">
+    <style name="LoadingIndicatorView">
         <item name="minWidth">48dip</item>
         <item name="maxWidth">48dip</item>
         <item name="minHeight">48dip</item>
@@ -46,7 +53,7 @@
         <item name="indicatorName">BallPulseIndicator</item>
     </style>
 
-    <style name="AVLoadingIndicatorView.Large">
+    <style name="LoadingIndicatorView.Large">
         <item name="minWidth">76dip</item>
         <item name="maxWidth">76dip</item>
         <item name="minHeight">76dip</item>
@@ -54,7 +61,7 @@
         <item name="indicatorName">BallPulseIndicator</item>
     </style>
 
-    <style name="AVLoadingIndicatorView.Small">
+    <style name="LoadingIndicatorView.Small">
         <item name="minWidth">24dip</item>
         <item name="maxWidth">24dip</item>
         <item name="minHeight">24dip</item>
