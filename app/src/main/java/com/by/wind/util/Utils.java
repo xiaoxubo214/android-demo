@@ -7,7 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 
-import com.by.wind.app.BaseApplication;
+import com.by.wind.BaseApplication;
 
 
 /**

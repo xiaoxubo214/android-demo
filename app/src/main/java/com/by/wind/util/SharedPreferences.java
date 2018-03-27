@@ -3,7 +3,7 @@ package com.by.wind.util;
 import android.content.Context;
 import android.content.SharedPreferences.Editor;
 
-import com.by.wind.app.BaseApplication;
+import com.by.wind.BaseApplication;
 
 public class SharedPreferences {
 

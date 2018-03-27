@@ -1,4 +1,4 @@
-package com.by.wind.adapter;
+package com.by.wind.widget;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

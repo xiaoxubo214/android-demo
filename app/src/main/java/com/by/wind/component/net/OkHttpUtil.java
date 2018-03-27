@@ -2,12 +2,6 @@ package com.by.wind.component.net;
 
 import android.content.Context;
 
-import com.by.wind.util.Constant;
-
-import java.io.File;
-import java.util.concurrent.TimeUnit;
-
-import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 
 /**

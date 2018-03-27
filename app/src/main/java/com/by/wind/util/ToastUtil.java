@@ -7,7 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.by.wind.R;
-import com.by.wind.app.BaseApplication;
+import com.by.wind.BaseApplication;
 
 /**
  * Created by christy ic_on 16/12/24.

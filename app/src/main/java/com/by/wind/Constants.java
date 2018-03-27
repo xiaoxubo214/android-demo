@@ -1,10 +1,10 @@
-package com.by.wind.util;
+package com.by.wind;
 
 /**
  * Created by Wind on 2017/12/8.
  */
 
-public class Constant {
+public class Constants {
 
     public final static String HOST = "http://www.baidu.com";
 

@@ -1,9 +1,9 @@
 package com.by.wind.presenter;
 
-import com.by.wind.component.net.CallBack;
+import com.by.wind.base.BaseMvpPresenter;
+import com.by.wind.base.IBasePresenter;
 import com.by.wind.component.net.CallBack;
 import com.by.wind.model.UserModel;
-import com.by.wind.view.LoginView;
 import com.by.wind.view.LoginView;
 
 /**

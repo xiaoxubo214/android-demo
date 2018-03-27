@@ -1,4 +1,4 @@
-package com.by.wind.app;
+package com.by.wind;
 
 import android.app.Application;
 
@@ -26,7 +26,6 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         app = this;
-        //RealmConfig.getInstance().initDataConfig(this);
         LeakCanary.install(this);
         registerUncaughtExceptionHandler();
 

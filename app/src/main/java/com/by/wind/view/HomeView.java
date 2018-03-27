@@ -1,6 +1,6 @@
 package com.by.wind.view;
 
-import com.by.wind.widget.BaseMvpView;
+import com.by.wind.base.BaseMvpView;
 
 public interface HomeView extends BaseMvpView {
 

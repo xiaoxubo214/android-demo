@@ -2,10 +2,8 @@ package com.by.wind.component.net;
 
 import android.content.Context;
 
-import com.by.wind.util.Constant;
-import com.by.wind.util.Constant;
+import com.by.wind.Constants;
 
-import io.reactivex.internal.schedulers.RxThreadFactory;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -25,7 +23,7 @@ public class RetrofitUtil {
     public static <T> T createApi(Context context, Class<T> clazz){
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl(Constant.HOST)
+                    .baseUrl(Constants.HOST)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();

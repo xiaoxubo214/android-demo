@@ -1,4 +1,4 @@
-package com.by.wind.presenter;
+package com.by.wind.base;
 
 /**
  * Created by Wind on 2017/11/15.

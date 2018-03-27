@@ -1,6 +1,6 @@
 package com.by.wind.presenter;
 
-import com.by.wind.view.HomeView;
+import com.by.wind.base.IBasePresenter;
 import com.by.wind.view.HomeView;
 
 

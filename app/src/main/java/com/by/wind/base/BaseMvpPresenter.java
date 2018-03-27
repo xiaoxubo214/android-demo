@@ -1,8 +1,5 @@
-package com.by.wind.presenter;
+package com.by.wind.base;
 
-
-import com.by.wind.widget.BaseMvpView;
-import com.by.wind.widget.BaseMvpView;
 
 public class BaseMvpPresenter<V extends BaseMvpView> implements Presenter<V> {
 

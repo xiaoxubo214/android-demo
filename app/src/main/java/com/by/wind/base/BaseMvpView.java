@@ -1,4 +1,4 @@
-package com.by.wind.widget;
+package com.by.wind.base;
 
 public interface BaseMvpView {
 
