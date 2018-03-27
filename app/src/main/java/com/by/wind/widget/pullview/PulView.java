@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 /**
- * Created by DELL on 2018/3/12.
+ * Created by wind on 2018/3/12.
  */
 
 public class PulView extends View {

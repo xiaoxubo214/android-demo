@@ -1,16 +1,15 @@
 package com.by.wind.presenter;
 
-import com.by.wind.base.IBasePresenter;
-import com.by.wind.view.HomeView;
 
+import com.by.wind.view.IBaseView;
 
 /**
  * Created by Wind on 2017/12/8.
  */
 
 public class HomeInfoPresenterImpl implements IBasePresenter.IHomePresenter {
-    HomeView homeInfoView;
-    public HomeInfoPresenterImpl(HomeView homeInfoView) {
+    IBaseView.IHomeView homeInfoView;
+    public HomeInfoPresenterImpl(IBaseView.IHomeView homeInfoView) {
         this.homeInfoView = homeInfoView;
     }
     @Override

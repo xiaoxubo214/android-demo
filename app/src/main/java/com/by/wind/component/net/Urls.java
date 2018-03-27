@@ -1,7 +1,7 @@
 package com.by.wind.component.net;
 
 /**
- * Created by DELL on 2018/3/26.
+ * Created by wind on 2018/3/26.
  */
 
 public class Urls {

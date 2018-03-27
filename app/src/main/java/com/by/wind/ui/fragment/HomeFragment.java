@@ -15,10 +15,10 @@ import android.widget.SimpleAdapter;
 import com.by.wind.R;
 import com.by.wind.base.BaseFragment;
 import com.by.wind.presenter.HomeInfoPresenterImpl;
-import com.by.wind.base.IBasePresenter;
+import com.by.wind.presenter.IBasePresenter;
 import com.by.wind.util.img.GlideImageLoader;
 import com.by.wind.util.img.PicDisplayActivity;
-import com.by.wind.view.HomeView;
+import com.by.wind.view.IBaseView;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -36,7 +36,7 @@ import butterknife.Unbinder;
 /**
  *
  */
-public class HomeFragment extends BaseFragment implements HomeView {
+public class HomeFragment extends BaseFragment implements IBaseView.IHomeView {
 
     @BindView(R.id.home_scan)
     ImageView mHomeScan;

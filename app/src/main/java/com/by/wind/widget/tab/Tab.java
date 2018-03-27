@@ -3,7 +3,7 @@ package com.by.wind.widget.tab;
 import com.by.wind.base.BaseFragment;
 
 /**
- * Created by christy ic_on 16/11/7.
+ * Created by wind on 16/11/7.
  */
 
 public class Tab {

@@ -8,7 +8,7 @@ import com.by.wind.component.net.CallBack;
 
 
 /**
- * Created by DELL on 2018/3/27.
+ * Created by wind on 2018/3/27.
  */
 
 public class UserModel {

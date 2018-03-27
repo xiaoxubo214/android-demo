@@ -10,7 +10,7 @@ import com.by.wind.util.img.Logger;
 import java.util.concurrent.Executor;
 
 /**
- * Created by DELL on 2018/3/22.
+ * Created by wind on 2018/3/22.
  */
 
 public class MainThreadExecutor implements Executor {

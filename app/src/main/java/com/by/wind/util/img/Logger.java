@@ -3,7 +3,7 @@ package com.by.wind.util.img;
 import android.util.Log;
 
 /**
- * Created by DELL on 2018/3/22.
+ * Created by wind on 2018/3/22.
  */
 
 public class Logger {

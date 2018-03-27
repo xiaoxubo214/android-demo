@@ -10,7 +10,7 @@ import com.by.wind.R;
 import com.by.wind.BaseApplication;
 
 /**
- * Created by christy ic_on 16/12/24.
+ * Created by wind on 16/12/24.
  */
 
 public class ToastUtil {
