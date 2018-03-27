@@ -14,7 +14,7 @@ import com.by.wind.R;
 import java.util.ArrayList;
 
 /**
- * Created by wind on 16/11/7.
+ * Created by wind on 17/11/7.
  */
 
 public class ViewTabTitleIndicator extends RelativeLayout implements TabTitleIndicator.OnTabClickListener {

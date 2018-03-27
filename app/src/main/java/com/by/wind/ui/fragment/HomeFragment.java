@@ -51,8 +51,8 @@ public class HomeFragment extends BaseFragment implements IBaseView.IHomeView {
     Unbinder unbinder;
     List<String> mBannerImages;
     List<String> mBannerTitles;
-    List<Integer> mChannelImages;
-    List<String> mChannelTitles;
+    //List<Integer> mChannelImages;
+    //List<String> mChannelTitles;
     IBasePresenter.IHomePresenter iHomePresenter;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

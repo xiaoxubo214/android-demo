@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 
 /**
- * Created by wind on 16/11/7.
+ * Created by wind on 17/11/7.
  */
 public class TabIndicator extends LinearLayout implements OnClickListener {
     private int mTabSize;
