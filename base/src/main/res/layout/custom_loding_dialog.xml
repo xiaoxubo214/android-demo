@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="3dp" >
 
-    <com.by.wind.demo.view.loading.indicators.LoadingIndicatorView
+    <com.by.wind.widget.loading.indicators.LoadingIndicatorView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/indicator"
