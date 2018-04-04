@@ -5,8 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
-import com.by.wind.base.BaseFragment;
-import com.by.wind.base.BaseFragment;
+import com.wind.base.BaseFragment;
 
 import java.util.ArrayList;
 
@@ -24,7 +23,6 @@ public class FragmentPagerAdapter extends FragmentStatePagerAdapter {
         this.fragments = list;
 
     }
-
     @Override
     public int getCount() {
         return fragments.size();

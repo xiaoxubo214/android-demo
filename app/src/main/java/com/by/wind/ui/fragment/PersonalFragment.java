@@ -11,11 +11,10 @@ import android.widget.TextView;
 
 import com.by.wind.R;
 import com.by.wind.ui.activity.LoginActivity;
-import com.by.wind.base.BaseFragment;
 import com.by.wind.widget.PersonalItem;
-import com.by.wind.ui.activity.LoginActivity;
-import com.by.wind.widget.PersonalItem;
+
 import com.gc.materialdesign.views.ButtonRectangle;
+import com.wind.base.BaseFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

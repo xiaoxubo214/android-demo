@@ -69,5 +69,9 @@
         <item name="indicatorName">BallPulseIndicator</item>
     </style>
 
+    <style name="StartStyle" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/start_window</item>
+    </style>
+
 
 </resources>

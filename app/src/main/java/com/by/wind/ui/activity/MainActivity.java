@@ -12,8 +12,6 @@ import android.widget.RelativeLayout;
 
 import com.by.wind.R;
 import com.by.wind.widget.FragmentPagerAdapter;
-import com.by.wind.base.BaseActivity;
-import com.by.wind.base.BaseFragment;
 import com.by.wind.ui.fragment.CartFragment;
 import com.by.wind.ui.fragment.CategoryFragment;
 import com.by.wind.ui.fragment.DiscoverFragment;
@@ -22,6 +20,8 @@ import com.by.wind.ui.fragment.PersonalFragment;
 import com.by.wind.widget.NoScrollViewPager;
 import com.by.wind.widget.tab.Tab;
 import com.by.wind.widget.tab.TabIndicator;
+import com.wind.base.BaseActivity;
+import com.wind.base.BaseFragment;
 
 import java.util.ArrayList;
 

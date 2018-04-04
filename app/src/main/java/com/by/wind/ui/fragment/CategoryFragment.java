@@ -11,9 +11,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.by.wind.R;
-import com.by.wind.base.BaseFragment;
-import com.by.wind.widget.loading.LoadingDialog;
-import com.by.wind.widget.loading.LoadingDialog;
+import com.wind.base.BaseFragment;
+import com.wind.base.loading.LoadingDialog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -13,12 +13,14 @@ import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 
 import com.by.wind.R;
-import com.by.wind.base.BaseFragment;
 import com.by.wind.presenter.HomeInfoPresenterImpl;
 import com.by.wind.presenter.IBasePresenter;
+import com.by.wind.util.ToastUtil;
 import com.by.wind.util.img.GlideImageLoader;
 import com.by.wind.util.img.PicDisplayActivity;
 import com.by.wind.view.IBaseView;
+import com.wind.base.BaseFragment;
+import com.wind.base.loading.LoadingDialog;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -54,6 +56,7 @@ public class HomeFragment extends BaseFragment implements IBaseView.IHomeView {
     //List<Integer> mChannelImages;
     //List<String> mChannelTitles;
     IBasePresenter.IHomePresenter iHomePresenter;
+    private LoadingDialog mLoadingDialog;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -203,16 +206,21 @@ public class HomeFragment extends BaseFragment implements IBaseView.IHomeView {
 
     @Override
     public void showLoading(String msg) {
-
+        if (mLoadingDialog == null) {
+            mLoadingDialog = new LoadingDialog(context,false);
+        }
+        mLoadingDialog.show();
     }
 
     @Override
     public void hideLoading() {
-
+        if (mLoadingDialog != null) {
+            mLoadingDialog.dismiss();
+        }
     }
 
     @Override
     public void showError(String err) {
-
+        ToastUtil.showToast(err);
     }
 }

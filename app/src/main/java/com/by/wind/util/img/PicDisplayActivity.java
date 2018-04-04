@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 import com.by.wind.R;
 import com.by.wind.util.DensityUtil;
-import com.by.wind.base.BaseActivity;
+import com.wind.base.BaseActivity;
 
 public class PicDisplayActivity extends BaseActivity {
 

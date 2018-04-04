@@ -40,7 +40,7 @@
             android:layout_marginTop="@dimen/margin_ten"
             android:orientation="vertical">
 
-            <com.by.wind.demo.view.PersonalItem
+            <com.by.wind.widget.PersonalItem
                 android:id="@+id/pl_item_album"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_fifty"
@@ -50,7 +50,7 @@
                 cil:tv_drawable_left="@drawable/icon_setting"
                 cil:tv_text="我的相册" />
 
-            <com.by.wind.demo.view.PersonalItem
+            <com.by.wind.widget.PersonalItem
                 android:id="@+id/pl_item_collection"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_fifty"
@@ -60,7 +60,7 @@
                 cil:tv_drawable_left="@drawable/icon_setting"
                 cil:tv_text="我的收藏" />
 
-            <com.by.wind.demo.view.PersonalItem
+            <com.by.wind.widget.PersonalItem
                 android:id="@+id/pl_item_share"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_fifty"
@@ -70,7 +70,7 @@
                 cil:tv_drawable_left="@drawable/icon_setting"
                 cil:tv_text="我的分享" />
 
-            <com.by.wind.demo.view.PersonalItem
+            <com.by.wind.widget.PersonalItem
                 android:id="@+id/pl_item_message"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_fifty"
@@ -80,7 +80,7 @@
                 cil:tv_drawable_left="@drawable/icon_setting"
                 cil:tv_text="系统消息" />
 
-            <com.by.wind.demo.view.PersonalItem
+            <com.by.wind.widget.PersonalItem
                 android:id="@+id/pl_item_setting"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_fifty"

@@ -10,7 +10,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.by.wind.R;
-import com.by.wind.base.BaseActivity;
+import com.wind.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

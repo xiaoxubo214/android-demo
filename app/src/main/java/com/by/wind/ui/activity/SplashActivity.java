@@ -10,8 +10,7 @@ import android.widget.ImageView;
 
 import com.by.wind.R;
 import com.by.wind.util.SharedPreferences;
-import com.by.wind.base.BaseActivity;
-import com.by.wind.util.SharedPreferences;
+import com.wind.base.BaseActivity;
 
 import java.lang.ref.WeakReference;
 import butterknife.BindView;

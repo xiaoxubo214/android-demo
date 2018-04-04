@@ -13,7 +13,7 @@ import static java.net.Proxy.Type.HTTP;
  * Created by Wind on 2017/11/21.
  */
 
-public interface ApiService {
+public interface Api {
 
 
     @POST("/login")

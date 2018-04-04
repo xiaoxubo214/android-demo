@@ -1,9 +1,12 @@
 package com.by.wind.presenter;
 
-import com.by.wind.base.BaseMvpPresenter;
+import android.content.Context;
+
 import com.by.wind.component.net.CallBack;
 import com.by.wind.model.UserModel;
 import com.by.wind.view.IBaseView;
+import com.wind.base.mvp.BaseMvpPresenter;
+import com.wind.base.loading.LoadingDialog;
 
 /**
  * Created by wind on 2018/3/27.
@@ -11,28 +14,31 @@ import com.by.wind.view.IBaseView;
 
 public class LoginPresenter extends BaseMvpPresenter<IBaseView.ILoginView> implements IBasePresenter.ILoginPresenter {
 
-    private UserModel userModel;
-    private IBaseView.ILoginView loginView;
+    private UserModel mUserModel;
+    private IBaseView.ILoginView mLoginView;
+    private LoadingDialog mLoading;
+    private Context mContext;
 
-    public LoginPresenter(UserModel userModel,IBaseView.ILoginView loginView) {
-        this.userModel = userModel;
-        this.loginView = loginView;
+    public LoginPresenter(UserModel userModel, IBaseView.ILoginView loginView, Context context) {
+        this.mUserModel = userModel;
+        this.mLoginView= loginView;
+        mContext =context;
     }
 
     public void login() {
-        loginView.showLoading("loading---");
-        userModel.login(loginView.getUsername(),loginView.getPassword(), new CallBack(){
+        //Observable observable = BaseApplication.getInstance().apiService.login();
+        mUserModel.login(mLoginView.getUsername(),mLoginView.getPassword(), new CallBack(){
 
             @Override
             public void onSuccess() {
-                loginView.hideLoading();
-                loginView.showResult("success");
+                mLoginView.hideLoading();
+                mLoginView.showResult("success");
             }
 
             @Override
             public void onFail(String fail) {
-                loginView.hideLoading();
-                loginView.showError("error");
+                mLoginView.hideLoading();
+                mLoginView.showError("error");
             }
         });
     }

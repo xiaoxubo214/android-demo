@@ -3,8 +3,6 @@ package com.by.wind;
 import android.app.Application;
 
 import com.by.wind.util.common.AppException;
-import com.by.wind.component.net.ApiService;
-import com.by.wind.component.net.RetrofitUtil;
 import com.squareup.leakcanary.LeakCanary;
 
 /**
@@ -13,7 +11,6 @@ import com.squareup.leakcanary.LeakCanary;
 
 public class BaseApplication extends Application {
     private static BaseApplication app;
-    public ApiService apiService;
     public BaseApplication() {
         app = this;
     }
@@ -29,7 +26,6 @@ public class BaseApplication extends Application {
         LeakCanary.install(this);
         registerUncaughtExceptionHandler();
 
-        apiService = RetrofitUtil.createApi(this,ApiService.class);
     }
 
     // 注册App异常崩溃处理器

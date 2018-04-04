@@ -1,6 +1,6 @@
 package com.by.wind.view;
 
-import com.by.wind.base.BaseMvpView;
+import com.wind.base.mvp.BaseMvpView;
 
 public interface IBaseView {
 

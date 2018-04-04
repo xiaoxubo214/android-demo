@@ -4,9 +4,9 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    tools:context=".ui.activity.MainActivity">
 
-    <com.by.wind.demo.view.NoScrollViewPager
+    <com.by.wind.widget.NoScrollViewPager
         android:id="@+id/viewpager"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -27,7 +27,7 @@
         android:layout_alignParentBottom="true"
         android:orientation="vertical">
 
-        <com.by.wind.demo.view.tab.TabIndicator
+        <com.by.wind.widget.tab.TabIndicator
             android:id="@+id/mMainIndicator"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/main_tab_height"

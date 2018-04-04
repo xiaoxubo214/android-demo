@@ -1,6 +1,7 @@
 package com.by.wind.widget.tab;
 
-import com.by.wind.base.BaseFragment;
+
+import com.wind.base.BaseFragment;
 
 /**
  * Created by wind on 17/11/7.
