@@ -2,44 +2,48 @@ package com.by.wind.presenter;
 
 import android.content.Context;
 
-import com.by.wind.component.net.CallBack;
+import com.by.wind.Constants;
+import com.by.wind.component.net.ApiManager;
+
+import com.by.wind.component.net.ObservableUtil;
+import com.by.wind.component.net.ProgressSubscriber;
+
 import com.by.wind.model.UserModel;
 import com.by.wind.view.IBaseView;
+import com.wind.base.event.ActivityLifeCycleEvent;
 import com.wind.base.mvp.BaseMvpPresenter;
 import com.wind.base.loading.LoadingDialog;
 
+
+import rx.Observable;
+import rx.subjects.PublishSubject;
 /**
  * Created by wind on 2018/3/27.
  */
 
 public class LoginPresenter extends BaseMvpPresenter<IBaseView.ILoginView> implements IBasePresenter.ILoginPresenter {
 
-    private UserModel mUserModel;
+
     private IBaseView.ILoginView mLoginView;
     private LoadingDialog mLoading;
-    private Context mContext;
 
     public LoginPresenter(UserModel userModel, IBaseView.ILoginView loginView, Context context) {
-        this.mUserModel = userModel;
         this.mLoginView= loginView;
-        mContext =context;
     }
 
-    public void login() {
-        //Observable observable = BaseApplication.getInstance().apiService.login();
-        mUserModel.login(mLoginView.getUsername(),mLoginView.getPassword(), new CallBack(){
+    public void login(UserModel userModel, Context context, PublishSubject<ActivityLifeCycleEvent> publishSubject) {
+        Observable observable = ApiManager.getInstance().getApiService().login(userModel.getUserName(),userModel.getPassword());
+        ObservableUtil.getInstance().toSubscribe(observable, new ProgressSubscriber <String>(context) {
 
             @Override
-            public void onSuccess() {
-                mLoginView.hideLoading();
-                mLoginView.showResult("success");
+            protected void _onNext(String s) {
+
             }
 
             @Override
-            public void onFail(String fail) {
-                mLoginView.hideLoading();
-                mLoginView.showError("error");
+            protected void _onError(String message) {
+
             }
-        });
+        }, Constants.HAWK_KEY, ActivityLifeCycleEvent.STOP, publishSubject, false, false);
     }
 }

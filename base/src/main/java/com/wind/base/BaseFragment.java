@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 
+import com.wind.base.event.ActivityLifeCycleEvent;
+
 import butterknife.ButterKnife;
 import io.reactivex.subjects.PublishSubject;
 
@@ -139,14 +141,4 @@ public abstract class BaseFragment extends Fragment {
     public abstract int getContentViewId();
 
     protected abstract void initAllView(Bundle savedInstanceState);
-
-    public enum ActivityLifeCycleEvent {
-        CREATE,
-        START,
-        RESUME,
-        PAUSE,
-        STOP,
-        DESTROY
-    }
-
 }

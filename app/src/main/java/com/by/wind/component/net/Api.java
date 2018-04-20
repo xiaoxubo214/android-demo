@@ -2,8 +2,10 @@ package com.by.wind.component.net;
 
 import com.by.wind.model.UserModel;
 
-import io.reactivex.Observable;
+
+import rx.Observable;
 import retrofit2.Call;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
@@ -17,5 +19,8 @@ public interface Api {
 
 
     @POST("/login")
-    Observable<UserModel> login();
+    Observable<UserModel> login(@Field("username") String userName,@Field("password") String password);
+
+    @GET
+    Observable<String>getRefreshToken(@Field("token") String token);
 }

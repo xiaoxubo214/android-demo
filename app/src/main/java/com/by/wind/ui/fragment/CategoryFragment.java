@@ -26,7 +26,7 @@ public class CategoryFragment extends BaseFragment implements LoadingDialog.Prog
     @BindView(R.id.webView)
     WebView mWebView;
     Unbinder unbinder;
-    private LoadingDialog mLoadingDialog;
+    //private LoadingDialog mLoadingDialog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class CategoryFragment extends BaseFragment implements LoadingDialog.Prog
 
     @Override
     protected void initAllView(Bundle savedInstanceState) {
-        mLoadingDialog = new LoadingDialog(context, this, true);
+        //mLoadingDialog = new LoadingDialog(context, this, true);
         WebSettings settings = mWebView.getSettings();
         settings.setAppCacheEnabled(true);
         settings.setDatabaseEnabled(true);
@@ -69,7 +69,7 @@ public class CategoryFragment extends BaseFragment implements LoadingDialog.Prog
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                mLoadingDialog.dismiss();
+                //mLoadingDialog.dismiss();
             }
         });
     }
@@ -77,7 +77,7 @@ public class CategoryFragment extends BaseFragment implements LoadingDialog.Prog
     @Override
     public void onResume() {
         super.onResume();
-        mLoadingDialog.show();
+        //mLoadingDialog.show();
     }
 
     @Override

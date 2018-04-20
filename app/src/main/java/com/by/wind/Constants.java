@@ -6,10 +6,11 @@ package com.by.wind;
 
 public class Constants {
 
-    public final static String HOST = "http://www.baidu.com";
+    public final static String HOST = "http://localhost:8080";
 
     public final static String RESPONSE_CACHE = "";
     public final static int RESPONSE_CACHE_SIZE = 1024;
     public final static int CONNECTION_TIMEOUT = 10 * 1000;
     public final static int READ_TIMEOUT = 10 * 1000;
+    public static final String HAWK_KEY = "demo_cache";
 }

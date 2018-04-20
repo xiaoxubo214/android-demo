@@ -26,7 +26,7 @@ public class CartFragment extends BaseFragment implements LoadingDialog.Progress
     @BindView(R.id.webView)
     WebView mWebView;
     Unbinder unbinder;
-    private LoadingDialog mLoadingDialog;
+    //private LoadingDialog mLoadingDialog;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +45,7 @@ public class CartFragment extends BaseFragment implements LoadingDialog.Progress
 
     @Override
     protected void initAllView(Bundle savedInstanceState) {
-        mLoadingDialog = new LoadingDialog(context, this, true);
+        //mLoadingDialog = new LoadingDialog(context, this, true);
         WebSettings settings = mWebView.getSettings();
         settings.setAppCacheEnabled(true);
         settings.setDatabaseEnabled(true);
@@ -68,7 +68,7 @@ public class CartFragment extends BaseFragment implements LoadingDialog.Progress
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                mLoadingDialog.dismiss();
+                //mLoadingDialog.dismiss();
             }
         });
     }
