@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/margin_forty"
+        android:layout_marginRight="@dimen/margin_forty"
+        android:layout_marginTop="@dimen/margin_fifty">
+
+        <EditText
+            android:id="@+id/etUserNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="@string/input_phone_num"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/margin_twenty"
+            android:singleLine="true"
+            android:textColorHint="@color/gray_line_color"
+            android:textSize="@dimen/sp_14"
+            android:inputType="number"
+            android:maxLength="6"
+            android:layout_marginTop="@dimen/margin_twenty_four"
+            android:layout_marginBottom="@dimen/margin_fifteen"/>
+
+        <View style="@style/full_line_style"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/margin_seven">
+
+            <com.by.wind.widget.MoblieEditText
+                android:id="@+id/etVertifyCodeetUserNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/input_verify_code_desc"
+                android:maxLines="1"
+                android:inputType="number"
+                android:paddingLeft="@dimen/margin_twenty"
+                android:singleLine="true"
+                android:textColorHint="@color/gray_line_color"
+                android:textSize="@dimen/sp_14"
+                android:layout_toLeftOf="@+id/tvVerifyCode"
+                android:layout_centerVertical="true"
+                android:maxLength="13"/>
+
+            <TextView
+                android:id="@+id/tvVerifyCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/tag_btn_botton_style"
+                android:textColor="@color/black"
+                android:text="@string/get_verify_code"
+                android:paddingLeft="@dimen/margin_twenty"
+                android:paddingRight="@dimen/margin_twenty"
+                android:paddingTop="@dimen/margin_eight"
+                android:paddingBottom="@dimen/margin_eight"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <View style="@style/full_line_style"/>
+
+        <EditText
+            android:id="@+id/etNewPwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="@string/user_pwd"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/margin_twenty"
+            android:singleLine="true"
+            android:textColorHint="@color/gray_line_color"
+            android:textSize="@dimen/sp_14"
+            android:inputType="textPassword"
+            android:maxLength="10"
+            android:layout_marginTop="@dimen/margin_twenty_four"
+            android:layout_marginBottom="@dimen/margin_fifteen"/>
+
+        <View style="@style/full_line_style"/>
+
+        <EditText
+            android:id="@+id/etConfirmPwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="@string/confirm_pwd"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/margin_twenty"
+            android:singleLine="true"
+            android:textColorHint="@color/gray_line_color"
+            android:textSize="@dimen/sp_14"
+            android:inputType="textPassword"
+            android:maxLength="10"
+            android:layout_marginTop="@dimen/margin_twenty_four"
+            android:layout_marginBottom="@dimen/margin_fifteen"/>
+
+        <View style="@style/full_line_style"/>
+    </LinearLayout>
+</LinearLayout>

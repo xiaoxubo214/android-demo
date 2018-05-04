@@ -74,5 +74,12 @@
         <item name="android:windowBackground">@drawable/start_window</item>
     </style>
 
+    <style name="tag_btn_botton_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_shape_item_remark_selector</item>
+        <item name="android:textColor">@color/typeface_grey</item>
+        <item name="android:gravity">center</item>
+    </style>
 
 </resources>
