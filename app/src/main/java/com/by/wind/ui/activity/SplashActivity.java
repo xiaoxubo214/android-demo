@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.by.wind.R;
 import com.by.wind.util.SharedPreferences;
@@ -22,15 +23,15 @@ import butterknife.ButterKnife;
 
 public class SplashActivity extends BaseActivity {
 
-    @BindView(R.id.mImageView)
-    ImageView mImageView;
+    @BindView(R.id.root_ll)
+    LinearLayout mRootLayout;
 
     private SplashHandler mSplashHandler;
 
     private static final int STEP_COVER_WHAT = 1;
     private static final int STEP_NEXT_REQUEST = 2;
 
-    private static final long DEFAULT_SHOWTIME = 500;
+    private static final long DEFAULT_SHOWTIME = 3000;
 
 
     @Override
@@ -77,7 +78,7 @@ public class SplashActivity extends BaseActivity {
 
     private void showImageCoverAnimation() {
 
-        AlphaAnimation showAnimation = new AlphaAnimation(0.3f, 1f);
+        AlphaAnimation showAnimation = new AlphaAnimation(1f, 1f);
         showAnimation.setDuration(DEFAULT_SHOWTIME);
         showAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -96,12 +97,12 @@ public class SplashActivity extends BaseActivity {
             }
         });
 
-        mImageView.setVisibility(View.VISIBLE);
-        mImageView.startAnimation(showAnimation);
+        mRootLayout.setVisibility(View.VISIBLE);
+        mRootLayout.startAnimation(showAnimation);
     }
 
     private void showNext() {
-        if (SharedPreferences.getInstance().getBoolean("isLogin", true)) {
+        if (SharedPreferences.getInstance().getBoolean("isLogin", false)) {
             MainActivity.open(this);
         } else {
             LoginActivity.open(this);

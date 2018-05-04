@@ -57,7 +57,7 @@ public class CategoryFragment extends BaseFragment implements LoadingDialog.Prog
         settings.setSupportZoom(true);
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         //mWebView.loadUrl(getIntent().getStringExtra("url"));
-        mWebView.loadUrl("http://www.jd.com");
+        mWebView.loadUrl("http://www.tmall.com");
         mWebView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onReceivedTitle(WebView view, String title) {

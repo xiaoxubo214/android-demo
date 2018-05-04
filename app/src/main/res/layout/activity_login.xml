@@ -1,55 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/margin_ten"
     android:orientation="vertical"
     android:background="@color/hal_transparent_white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="50dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/icon_avatar"/>
+    </LinearLayout>
 
     <com.by.wind.widget.MyEditText
         android:id="@+id/username_et"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:hint="@string/username"
-        android:textColor="@color/black_333"
-        android:textColorHint="@color/black"
-        android:textSize="20sp"/>
+        android:textSize="15sp"
+        android:drawableLeft="@drawable/username"
+        android:drawablePadding="10dp"/>
 
     <com.by.wind.widget.MyEditText
         android:id="@+id/password_et"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
         android:hint="@string/password"
-        android:textSize="20sp"/>
+        android:textSize="15sp"
+        android:drawableLeft="@drawable/password"
+        android:drawablePadding="10dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp">
-
-        <com.gc.materialdesign.views.ButtonRectangle
-            android:id="@+id/cancel_btn"
-            android:layout_width="0dp"
-            android:layout_height="67dp"
-            android:layout_weight="1"
-            android:background="@color/btn_red"
-            android:text="@string/login_cancel" />
+        android:layout_marginTop="30dp">
 
         <com.gc.materialdesign.views.ButtonRectangle
             android:id="@+id/submit_btn"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
             android:layout_height="67dp"
-            android:background="#1E88E5"
+            android:background="@color/btn_red"
             android:text="@string/login" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/register_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="快速注册"/>
+        <TextView
+            android:id="@+id/forget_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="忘记密码" />
     </LinearLayout>
 </LinearLayout>

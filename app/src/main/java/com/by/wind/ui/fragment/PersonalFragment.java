@@ -62,25 +62,14 @@ public class PersonalFragment extends BaseFragment {
 
     @Override
     protected void initAllView(Bundle savedInstanceState) {
-        mUserRl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        mUserRl.setOnClickListener(view -> {
 
-            }
         });
-        mPlItemSetting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        mPlItemSetting.setOnClickListener(view -> {
 
-            }
         });
 
-        mLoginOutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                LoginActivity.open(context);
-            }
-        });
+        mLoginOutBtn.setOnClickListener(view -> LoginActivity.open(context));
     }
 
     @Override

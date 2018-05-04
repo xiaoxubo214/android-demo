@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.by.wind.demo.fragment.PersonalFragment">
+    tools:context="com.by.wind.ui.fragment.PersonalFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -88,7 +88,7 @@
                 cil:iv_drawable_right="@drawable/arrow_right"
                 cil:line_is="false"
                 cil:tv_drawable_left="@drawable/icon_setting"
-                cil:tv_text="系统设置" />
+                cil:tv_text="修改密码" />
         </LinearLayout>
 
         <com.gc.materialdesign.views.ButtonRectangle

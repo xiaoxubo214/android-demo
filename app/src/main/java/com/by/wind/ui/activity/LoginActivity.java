@@ -49,12 +49,14 @@ public class LoginActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.submit_btn,R.id.cancel_btn})
+    @OnClick({R.id.submit_btn,R.id.register_tv,R.id.forget_tv})
     public void onViewClicked(View view)  {
         if (view.getId() == R.id.submit_btn) {
             MainActivity.open(this);
-        } else if (view.getId() == R.id.cancel_btn) {
-            finish();
+        } else if (view.getId() == R.id.register_tv) {
+            RegisterActivity.open(this);
+        } else if (view.getId() == R.id.forget_tv) {
+            ForgetActivity.open(this);
         } else {
           Log.e(TAG,"Error");
         }

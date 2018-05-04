@@ -94,11 +94,11 @@ public class MainActivity extends BaseActivity implements TabIndicator.OnTabClic
         viewpager.setPagingEnabled(false);
         viewpager.addOnPageChangeListener(new PageListener());
         ArrayList<Tab> tabs = new ArrayList<>();
-        tabs.add(new Tab(R.drawable.def_main_tab_home_selector, getResources().getString(R.string.home), null));
-        tabs.add(new Tab(R.drawable.def_main_tab_category_selector, getResources().getString(R.string.category), null));
-        tabs.add(new Tab(R.drawable.def_main_tab_faxian_selector, getString(R.string.discover), null));
-        tabs.add(new Tab(R.drawable.def_main_tab_cart_selector, getResources().getString(R.string.cart), null));
-        tabs.add(new Tab(R.drawable.def_main_tab_personal_selector, getResources().getString(R.string.personal), null));
+        tabs.add(new Tab(R.drawable.def_main_tab_message_selector, getResources().getString(R.string.home), null));
+        tabs.add(new Tab(R.drawable.def_main_tab_team_selector, getResources().getString(R.string.category), null));
+        tabs.add(new Tab(R.drawable.def_main_tab_ship_selector, getString(R.string.discover), null));
+        tabs.add(new Tab(R.drawable.def_main_tab_sale_selector, getResources().getString(R.string.cart), null));
+        tabs.add(new Tab(R.drawable.def_main_tab_my_selector, getResources().getString(R.string.personal), null));
         mMainIndicator.initializeData(tabs);
         mMainIndicator.setOnTabClickListener(this);
         mMainIndicator.setCurrentTab(mCurIndex);

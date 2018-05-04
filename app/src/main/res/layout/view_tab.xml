@@ -12,8 +12,8 @@
 
         <ImageView
             android:id="@+id/ivTabIconImg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:scaleType="centerInside"/>
 
         <TextView
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/view_selector_tab"
             android:textSize="@dimen/sp_9"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
     </LinearLayout>
 
     <ImageView
