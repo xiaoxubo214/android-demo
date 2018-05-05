@@ -1,60 +1,47 @@
 package com.by.wind.component.net;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
+import android.util.Log;
+import android.widget.Toast;
 
-
-import com.by.wind.BaseApplication;
 import com.by.wind.R;
+import com.by.wind.model.UserToken;
 import com.by.wind.ui.activity.LoginActivity;
 import com.by.wind.util.BussinessUtil;
-import com.by.wind.util.StringUtil;
-import com.by.wind.util.ToastUtil;
+import com.by.wind.util.FileUtil;
 import com.wind.base.loading.LoadingDialog;
 
-import java.lang.ref.WeakReference;
-import java.net.SocketTimeoutException;
-
 import retrofit2.HttpException;
+import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by wind ic_on 17/2/23.
+ * Created by christy ic_on 17/2/23.
  */
-public abstract class ProgressSubscriber<T> extends Subscriber<T> implements DialogInterface.OnCancelListener {
+public abstract class ProgressSubscriber<T> extends Subscriber<T> implements LoadingDialog.ProgressCancelListener {
 
-    private WeakReference<Activity> mContext;
-    private LoadingDialog mLoadingDialog;
+    private LoadingDialog mLodingDialog;
+    private Context mContext;
     private boolean mShowDialog = true;
 
-    public ProgressSubscriber(LoadingDialog dialog) {
-        this(dialog, true);
-    }
-
     public ProgressSubscriber(Context context) {
-    }
-
-    public ProgressSubscriber(Activity context) {
-        mContext = new WeakReference<>(context);
-    }
-
-    public ProgressSubscriber(LoadingDialog dialog, boolean showDialog) {
-        mLoadingDialog = dialog;
-        mShowDialog = showDialog;
-        if (null != mLoadingDialog) mLoadingDialog.setOnCancelListener(this);
+        mContext = context;
+        mLodingDialog = new LoadingDialog(context, this, true);
     }
 
     public ProgressSubscriber(Context context, boolean showDialog) {
+        mContext = context;
+        mLodingDialog = new LoadingDialog(context, this, true);
         mShowDialog = showDialog;
-        if (null != mLoadingDialog) mLoadingDialog.setOnCancelListener(this);
     }
 
     @Override
     public void onCompleted() {
+        Log.i("ProgressSubscriber", "onCompleted");
         if (mShowDialog) {
             dismissProgressDialog();
         }
@@ -65,9 +52,10 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Dia
      * 显示Dialog
      */
     public void showProgressDialog() {
+        Log.i("ProgressSubscriber", "showProgressDialog");
         if (mShowDialog) {
-            if (mLoadingDialog != null && !mLoadingDialog.isShowing()) {
-                mLoadingDialog.show();
+            if (mLodingDialog != null && !mLodingDialog.isShowing()) {
+                mLodingDialog.show();
             }
         }
     }
@@ -76,44 +64,46 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Dia
      * 隐藏Dialog
      */
     private void dismissProgressDialog() {
+        Log.i("ProgressSubscriber", "dismissProgressDialog");
         if (mShowDialog) {
-            if (mLoadingDialog != null) {
-                mLoadingDialog.dismiss();
-                mLoadingDialog = null;
+            if (mLodingDialog != null) {
+                mLodingDialog.dismiss();
+                mLodingDialog = null;
             }
         }
     }
 
     @Override
     public void onNext(T t) {
+        //Log.i("ProgressSubscriber","onNext");
         _onNext(t);
     }
 
     @Override
     public void onError(Throwable e) {
         e.printStackTrace();
-        if (!BussinessUtil.isNetWorkConnected(BaseApplication.getInstance())) { //这里自行替换判断网络的代码
-            _onError(StringUtil.getRes(R.string.network_exception));
+        // Log.i("ProgressSubscriber","onError");
+        if (!BussinessUtil.isNetWorkConnected(mContext)) { //这里自行替换判断网络的代码
+            _onError(mContext.getResources().getString(R.string.network_exception));
         } else if (e instanceof HttpException) {
             HttpException httpException = (HttpException) e;
+            //408请求超时 504网关超时 502坏的网关
             if (408 == httpException.code() || 504 == httpException.code()) {
-                _onError(StringUtil.getRes(R.string.network_timeout));
+                _onError(mContext.getResources().getString(R.string.network_timeout));
             } else if (500 == httpException.code()) {
-                _onError(StringUtil.getRes(R.string.server_exception));
+                _onError("服务器未知异常");
             } else {
-                _onError(StringUtil.getRes(R.string.request_fail));
+                _onError("请求失败，请稍后再试...");
             }
-        } else if (e instanceof ServerException) {
-            if (401 == ((ServerException) e).errorCode) {            //Token过期,刷新token
+        } else if (e instanceof ApiException) {
+            if (401 == ((ApiException) e).errorCode) {            //Token过期,刷新token
                 refreshToken();
                 _onError(e.getMessage());
             } else {
                 _onError(e.getMessage());
             }
-        } else if (e instanceof SocketTimeoutException) {
-            _onError(StringUtil.getRes(R.string.request_timeout));
         } else {
-            _onError(StringUtil.getRes(R.string.request_fail));
+            _onError("请求失败，请稍后再试...");
         }
         dismissProgressDialog();
     }
@@ -121,34 +111,38 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Dia
     /**
      * 刷新Token
      */
-    @SuppressLint("CheckResult")
     private void refreshToken() {
         if (null == PreferenceHelper.getUserToken()) return;
-        ApiManager
-                .getInstance()
-                .getApiService()
-                .getRefreshToken(PreferenceHelper.getUserToken())
-                .subscribeOn(Schedulers.io())
+        Observable o = ApiManager.getInstance().getApiService().getRefreshToken(PreferenceHelper.getUserToken().accessToken, PreferenceHelper.getUserToken().refreshToken, "PATCH");
+        o.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(userToken -> {
-                    PreferenceHelper.saveUserToken(userToken);
-                    _onError("Token已刷新，请重新刷新数据！");
-                }, throwable -> {
-                    ToastUtil.show("Token已过期，请重新登录！");
-                    PreferenceHelper.saveUserToken(null);
-                    if (null != mContext && null != mContext.get())
-                        LoginActivity.open(mContext.get());
-                    else
-                        LoginActivity.open(BaseApplication.getInstance());
-
+                .subscribe(new Action1<UserToken>() {
+                    @Override
+                    public void call(UserToken userToken) {
+                        PreferenceHelper.saveUserToken(userToken);
+//                        refreshTokenSuccess();                      //自动刷新数据回调方法
+                        _onError("Token已刷新，请重新刷新数据！");       //手动刷新数据提示方法
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Toast.makeText(mContext, "Token已过期，请重新登录！", Toast.LENGTH_SHORT).show();
+                        FileUtil.clearCache();
+                        LoginActivity.open(mContext);
+                        if (mContext instanceof Activity) ((Activity) mContext).finish();
+                    }
                 });
     }
 
     @Override
-    public void onCancel(DialogInterface dialog) {
+    public void onCancelProgress() {
+        //Log.i("ProgressSubscriber","onCancelProgress");
         if (!this.isUnsubscribed()) {
             this.unsubscribe();
         }
+    }
+
+    protected void refreshTokenSuccess() {
     }
 
     protected abstract void _onNext(T t);

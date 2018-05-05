@@ -1,5 +1,7 @@
 package com.by.wind.component.net;
 
+import com.by.wind.BaseApplication;
+
 public class ApiManager {
 
     private static ApiManager apiManager;
@@ -13,6 +15,9 @@ public class ApiManager {
     }
 
     public Api getApiService() {
-        return null;
+        if (api == null) {
+            api = RetrofitUtil.createApi(BaseApplication.getInstance(),Api.class);
+        }
+        return api;
     }
 }

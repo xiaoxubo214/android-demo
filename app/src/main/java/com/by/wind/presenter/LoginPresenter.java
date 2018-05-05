@@ -1,8 +1,11 @@
 package com.by.wind.presenter;
 
 import android.content.Context;
+import android.util.Log;
 
+import com.by.wind.BaseApplication;
 import com.by.wind.Constants;
+import com.by.wind.component.net.Api;
 import com.by.wind.component.net.ApiManager;
 
 import com.by.wind.component.net.ObservableUtil;
@@ -23,27 +26,28 @@ import rx.subjects.PublishSubject;
 
 public class LoginPresenter extends BaseMvpPresenter<IBaseView.ILoginView> implements IBasePresenter.ILoginPresenter {
 
-
     private IBaseView.ILoginView mLoginView;
-    private LoadingDialog mLoading;
 
-    public LoginPresenter(UserModel userModel, IBaseView.ILoginView loginView, Context context) {
+    public LoginPresenter( IBaseView.ILoginView loginView, Context context) {
         this.mLoginView= loginView;
     }
 
     public void login(UserModel userModel, Context context, PublishSubject<ActivityLifeCycleEvent> publishSubject) {
         Observable observable = ApiManager.getInstance().getApiService().login(userModel.getUserName(),userModel.getPassword());
+
         ObservableUtil.getInstance().toSubscribe(observable, new ProgressSubscriber <String>(context) {
 
             @Override
             protected void _onNext(String s) {
-
+                mLoginView.hideLoading();
+                mLoginView.showResult(Constants.SUCCESS);
             }
 
             @Override
             protected void _onError(String message) {
-
+                mLoginView.hideLoading();
+                mLoginView.showResult(Constants.TEST);
             }
-        }, Constants.HAWK_KEY, ActivityLifeCycleEvent.STOP, publishSubject, false, false);
+        }, Constants.HAWK_KEY, ActivityLifeCycleEvent.DESTROY, publishSubject, false, false);
     }
 }

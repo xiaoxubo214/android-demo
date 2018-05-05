@@ -2,7 +2,10 @@ package com.by.wind;
 
 import android.app.Application;
 
+import com.by.wind.component.net.Api;
+import com.by.wind.component.net.RetrofitUtil;
 import com.by.wind.util.common.AppException;
+import com.orhanobut.hawk.Hawk;
 import com.squareup.leakcanary.LeakCanary;
 
 /**
@@ -11,6 +14,7 @@ import com.squareup.leakcanary.LeakCanary;
 
 public class BaseApplication extends Application {
     private static BaseApplication app;
+    public Api apiService;
     public BaseApplication() {
         app = this;
     }
@@ -23,6 +27,8 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         app = this;
+        apiService = RetrofitUtil.createApi(this, Api.class);
+        Hawk.init(this);
         LeakCanary.install(this);
         registerUncaughtExceptionHandler();
 

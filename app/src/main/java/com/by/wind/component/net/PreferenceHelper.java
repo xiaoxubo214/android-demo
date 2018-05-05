@@ -4,6 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.by.wind.BaseApplication;
+import com.by.wind.model.UserToken;
+import com.by.wind.util.JsonUtil;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 
 /**
  * Created by wind on 17/4/26.
@@ -69,25 +74,16 @@ public class PreferenceHelper {
      *
      * @param userToken
      */
-    public static void saveUserToken(String userToken) {
+    public static void saveUserToken(UserToken userToken) {
         SharedPreferences.Editor editor = getEditor(LOGININFO_PREFERENCES);
         if (userToken != null) {
-            editor.putString(LAST_TEACHER_TOKEN,userToken);
+            editor.putString(LAST_TEACHER_TOKEN, JsonUtil.toJson(userToken));
         } else {
             editor.putString(LAST_TEACHER_TOKEN, "");
         }
         editor.commit();
     }
 
-    /**
-     * ＊ 获取用户Token
-     */
-    public static String getUserToken() {
-
-        SharedPreferences preferences = getSharedPreferences(LOGININFO_PREFERENCES);
-        String userToken = preferences.getString(LAST_TEACHER_TOKEN, "");
-        return userToken;
-    }
 
     /**
      * 是否登录
@@ -121,5 +117,21 @@ public class PreferenceHelper {
     }
 
 
+    /**
+     ＊ 获取用户Token
+     */
+    public static UserToken getUserToken() {
+        UserToken userToken = null;
+        try {
+            SharedPreferences preferences = getSharedPreferences(LOGININFO_PREFERENCES);
+            String userTokenJson = preferences.getString(LAST_TEACHER_TOKEN, "");
+            if (userTokenJson != null && !"".equals(userTokenJson)) {
+                Type memberInfoType = new TypeToken<UserToken>() {}.getType();
+                userToken = (UserToken) JsonUtil.toObject(userTokenJson, memberInfoType);
+            }
+        } catch (Exception e) {
+        }
+        return userToken;
+    }
 
 }

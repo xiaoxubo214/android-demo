@@ -12,40 +12,29 @@ import com.by.wind.component.net.CallBack;
 
 public class UserModel {
 
-    private String id;
-    private String UserName;
-    private String Password;
-    private String tel;
+    //private String id;
+    private String userName;
+    private String password;
+    //private String tel;
 
-    public String getId() {
-        return id;
+    public UserModel(String userName, String password){
+        this.userName = userName;
+        this.password = password;
     }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getUserName() {
-        return UserName;
+        return userName;
     }
 
     public void setUserName(String userName) {
-        UserName = userName;
+        userName = userName;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        password = password;
     }
 
-    public String getTel() {
-        return tel;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
 }

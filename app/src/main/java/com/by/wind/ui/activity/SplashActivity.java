@@ -31,7 +31,7 @@ public class SplashActivity extends BaseActivity {
     private static final int STEP_COVER_WHAT = 1;
     private static final int STEP_NEXT_REQUEST = 2;
 
-    private static final long DEFAULT_SHOWTIME = 1000;
+    private static final long DEFAULT_SHOWTIME = 500;
 
 
     @Override

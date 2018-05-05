@@ -3,6 +3,8 @@ package com.wind.base.mvp;
 
 public class BaseMvpPresenter<V extends BaseMvpView> implements Presenter<V> {
 
+    public final static String TAG = "BaseMvpPresenter";
+
     private V mvpView;
     @Override
     public void attachView(V mvpView) {
