@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 
 import com.by.wind.R;
+import com.by.wind.util.BussinessUtil;
 
 import java.util.ArrayList;
 
@@ -40,9 +41,9 @@ public class TabTitleIndicator extends LinearLayout implements OnClickListener {
 	}
 
 	public void initializeData(ArrayList<Tab> tabs) {
-/*		if (!BussinessUtil.isValidate(tabs)) {
+		if (!BussinessUtil.isValidate(tabs)) {
 			throw new IllegalArgumentException("the tabs should not be 0");
-		}*/
+		}
 		mTabSize = tabs.size();
 		TabTitleView tab = null;
         int screenWidth = getScreenWidth();// 屏幕的宽度

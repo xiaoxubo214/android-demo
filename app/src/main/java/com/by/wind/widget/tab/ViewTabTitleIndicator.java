@@ -14,9 +14,8 @@ import com.by.wind.R;
 import java.util.ArrayList;
 
 /**
- * Created by wind on 17/11/7.
+ * Created by christy ic_on 16/11/7.
  */
-
 public class ViewTabTitleIndicator extends RelativeLayout implements TabTitleIndicator.OnTabClickListener {
 
     private LayoutInflater mInflater;
@@ -90,7 +89,7 @@ public class ViewTabTitleIndicator extends RelativeLayout implements TabTitleInd
         initializeData(tabs, pager, 0);
     }
 
-    public void initializeData(ArrayList<Tab> tabs, ViewPager pager, int position) {
+    public void initializeData(ArrayList<Tab> tabs, ViewPager pager,int position) {
         if (mTabTitleIndicator != null && mTabTilteLineIndicator != null) {
             mViewPager = pager;
             mTabTitleIndicator.initializeData(tabs);

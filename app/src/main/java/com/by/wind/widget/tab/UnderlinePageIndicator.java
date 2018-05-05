@@ -9,7 +9,6 @@
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
-
 package com.by.wind.widget.tab;
 
 import android.app.Activity;
@@ -32,13 +31,10 @@ import android.view.ViewConfiguration;
 
 import com.by.wind.R;
 import com.by.wind.util.DensityUtil;
-import com.by.wind.util.DensityUtil;
-
 
 /**
  * Draws a line for each page. The current page line is colored differently than the unselected page lines.
  */
-
 public class UnderlinePageIndicator extends View implements PageIndicator {
     private static final int INVALID_POINTER = -1;
     private static final int FADE_FRAME_MS = 30;
@@ -443,13 +439,12 @@ public class UnderlinePageIndicator extends View implements PageIndicator {
             }
         };
     }
-
-/**
+    
+    /**
      * 得到手机屏幕的宽度
      * 
      * @return
      */
-
     private int getScreenWidth() {
         DisplayMetrics dm = new DisplayMetrics();
         ((Activity) mContext).getWindowManager().getDefaultDisplay().getMetrics(dm);

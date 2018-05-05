@@ -4,7 +4,7 @@ package com.by.wind.widget.tab;
 import com.wind.base.BaseFragment;
 
 /**
- * Created by wind on 17/11/7.
+ * Created by christy ic_on 16/11/7.
  */
 
 public class Tab {
@@ -35,7 +35,7 @@ public class Tab {
         this.fragment = fragment;
     }
 
-    public Tab(String infoText, boolean canClickable, Class<? extends BaseFragment> fragment) {
+    public Tab(String infoText, boolean canClickable,Class<? extends BaseFragment> fragment) {
         this.fragment = fragment;
         this.infoText = infoText;
         this.canClickable = canClickable;

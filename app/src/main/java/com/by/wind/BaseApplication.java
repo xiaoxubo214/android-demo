@@ -29,7 +29,6 @@ public class BaseApplication extends Application {
         Hawk.init(this);
         LeakCanary.install(this);
         registerUncaughtExceptionHandler();
-
     }
 
     // 注册App异常崩溃处理器

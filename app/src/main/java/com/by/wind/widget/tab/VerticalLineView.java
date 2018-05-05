@@ -1,4 +1,5 @@
 package com.by.wind.widget.tab;
+
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -6,10 +7,10 @@ import android.widget.LinearLayout;
 
 import com.by.wind.R;
 
-/**
- * Created by wind on 17/11/7.
- */
 
+/**
+ * Created by christy ic_on 16/11/7.
+ */
 public class VerticalLineView extends LinearLayout {
 
     public VerticalLineView(Context context, AttributeSet attrs, int defStyle) {

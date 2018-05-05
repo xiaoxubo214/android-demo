@@ -12,9 +12,8 @@ import com.by.wind.R;
 
 
 /**
- * Created by wind on 17/11/7.
+ * Created by christy ic_on 16/11/7.
  */
-
 
 public class TabView extends RelativeLayout {
 
@@ -49,7 +48,7 @@ public class TabView extends RelativeLayout {
     public void initializeData(Tab tab) {
         ivTabIconImg.setImageResource(tab.getIconResId());
         if (!tab.getInfoText().isEmpty()) {
-            tvTabInfoLabel.setVisibility(View.GONE);
+            tvTabInfoLabel.setVisibility(View.VISIBLE);
             tvTabInfoLabel.setText(tab.getInfoText());
         } else {
             tvTabInfoLabel.setVisibility(View.GONE);

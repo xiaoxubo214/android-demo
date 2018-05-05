@@ -6,11 +6,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 
+import com.by.wind.util.BussinessUtil;
 
 import java.util.ArrayList;
 
 /**
- * Created by wind on 17/11/7.
+ * Created by christy ic_on 16/11/7.
  */
 public class TabIndicator extends LinearLayout implements OnClickListener {
     private int mTabSize;
@@ -40,9 +41,9 @@ public class TabIndicator extends LinearLayout implements OnClickListener {
 
     public void initializeData(ArrayList<Tab> tabs, boolean needSeperate) {
         removeAllViews();
-/*        if (!BussinessUtil.isValidate(tabs)) {
+        if (!BussinessUtil.isValidate(tabs)) {
             throw new IllegalArgumentException("the tabs should not be 0");
-        }*/
+        }
         mTabSize = tabs.size();
         TabView tab;
         for (int i = 0; i < mTabSize; i++) {
