@@ -1,37 +1,68 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cil="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.by.wind.ui.fragment.PersonalFragment">
-
+    tools:context="com.by.wind.ui.fragment.PersonalFragment"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <com.gc.materialdesign.views.LayoutRipple
-            android:id="@+id/user_rl"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@color/white">
-
-            <ImageView
-                android:id="@+id/user_avatar_iv"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_margin="@dimen/margin_ten"
-                android:src="@drawable/icon_avatar" />
-
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:padding="10dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/user_avatar_iv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/margin_ten"
+            android:src="@drawable/icon_avatar" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
             <TextView
                 android:id="@+id/user_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/user_avatar_iv"
+                android:gravity="center"
+                android:text="@string/please_login" />
+            <TextView
+                android:id="@+id/user_phone_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/user_avatar_iv"
                 android:gravity="center"
                 android:text="@string/please_login" />
-        </com.gc.materialdesign.views.LayoutRipple>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="right|center_vertical">
+
+            <ImageView
+                android:id="@+id/arraw_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/margin_ten"
+                android:src="@drawable/arrow_right" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,7 +79,8 @@
                 cil:iv_drawable_right="@drawable/arrow_right"
                 cil:line_is="true"
                 cil:tv_drawable_left="@drawable/icon_setting"
-                cil:tv_text="我的相册" />
+                android:layout_marginBottom="20dp"
+                cil:tv_text="修改密码" />
 
             <com.by.wind.widget.PersonalItem
                 android:id="@+id/pl_item_collection"
@@ -58,7 +90,7 @@
                 cil:iv_drawable_right="@drawable/arrow_right"
                 cil:line_is="true"
                 cil:tv_drawable_left="@drawable/icon_setting"
-                cil:tv_text="我的收藏" />
+                cil:tv_text="通用" />
 
             <com.by.wind.widget.PersonalItem
                 android:id="@+id/pl_item_share"
@@ -68,7 +100,7 @@
                 cil:iv_drawable_right="@drawable/arrow_right"
                 cil:line_is="true"
                 cil:tv_drawable_left="@drawable/icon_setting"
-                cil:tv_text="我的分享" />
+                cil:tv_text="帮助与反馈" />
 
             <com.by.wind.widget.PersonalItem
                 android:id="@+id/pl_item_message"
@@ -78,17 +110,8 @@
                 cil:iv_drawable_right="@drawable/arrow_right"
                 cil:line_is="true"
                 cil:tv_drawable_left="@drawable/icon_setting"
-                cil:tv_text="系统消息" />
-
-            <com.by.wind.widget.PersonalItem
-                android:id="@+id/pl_item_setting"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/margin_fifty"
-                android:background="@color/white"
-                cil:iv_drawable_right="@drawable/arrow_right"
-                cil:line_is="false"
-                cil:tv_drawable_left="@drawable/icon_setting"
-                cil:tv_text="修改密码" />
+                android:layout_marginTop="20dp"
+                cil:tv_text="关于YIHO商户通" />
         </LinearLayout>
 
         <com.gc.materialdesign.views.ButtonRectangle
@@ -99,6 +122,6 @@
             android:background="#1E88E5"
             android:text="@string/login_out" />
     </LinearLayout>
-</ScrollView>
+</LinearLayout>
 
 

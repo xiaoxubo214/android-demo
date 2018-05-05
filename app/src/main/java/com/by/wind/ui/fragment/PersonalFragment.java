@@ -29,13 +29,11 @@ public class PersonalFragment extends BaseFragment {
     ImageView mUserAvatarIv;
     @BindView(R.id.user_name_tv)
     TextView mUserNameTv;
-    @BindView(R.id.user_rl)
-    RelativeLayout mUserRl;
+/*    @BindView(R.id.user_rl)
+    RelativeLayout mUserRl;*/
     @BindView(R.id.login_out_btn)
     ButtonRectangle mLoginOutBtn;
     Unbinder unbinder;
-    @BindView(R.id.pl_item_setting)
-    PersonalItem mPlItemSetting;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,12 +60,10 @@ public class PersonalFragment extends BaseFragment {
 
     @Override
     protected void initAllView(Bundle savedInstanceState) {
-        mUserRl.setOnClickListener(view -> {
+/*        mUserRl.setOnClickListener(view -> {
 
-        });
-        mPlItemSetting.setOnClickListener(view -> {
+        });*/
 
-        });
 
         mLoginOutBtn.setOnClickListener(view -> LoginActivity.open(context));
     }
