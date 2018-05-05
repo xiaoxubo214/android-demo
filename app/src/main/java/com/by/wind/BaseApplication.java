@@ -14,7 +14,6 @@ import com.squareup.leakcanary.LeakCanary;
 
 public class BaseApplication extends Application {
     private static BaseApplication app;
-    public Api apiService;
     public BaseApplication() {
         app = this;
     }
@@ -27,7 +26,6 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         app = this;
-        apiService = RetrofitUtil.createApi(this, Api.class);
         Hawk.init(this);
         LeakCanary.install(this);
         registerUncaughtExceptionHandler();
