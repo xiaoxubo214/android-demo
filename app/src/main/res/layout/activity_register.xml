@@ -39,7 +39,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="67dp"
-            android:background="@color/btn_red"
+            android:background="@drawable/shape"
             android:text="返回登录" />
 
 
@@ -48,7 +48,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="67dp"
-            android:background="@color/btn_red"
+            android:background="@drawable/shape"
             android:text="确认注册" />
     </LinearLayout>
 </LinearLayout>

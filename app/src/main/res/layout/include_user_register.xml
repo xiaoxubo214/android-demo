@@ -8,14 +8,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="@dimen/margin_forty"
-        android:layout_marginRight="@dimen/margin_forty"
         android:layout_marginTop="@dimen/margin_fifty">
 
         <EditText
             android:id="@+id/etUserNum"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:background="@null"
             android:hint="@string/input_phone_num"
             android:maxLines="1"
@@ -26,7 +24,9 @@
             android:inputType="number"
             android:maxLength="6"
             android:layout_marginTop="@dimen/margin_twenty_four"
-            android:layout_marginBottom="@dimen/margin_fifteen"/>
+            android:layout_marginBottom="@dimen/margin_fifteen"
+            android:drawableLeft="@drawable/username"
+            android:drawablePadding="10dp"/>
 
         <View style="@style/full_line_style"/>
 
@@ -36,10 +36,10 @@
             android:orientation="horizontal"
             android:layout_marginBottom="@dimen/margin_seven">
 
-            <com.by.wind.widget.MoblieEditText
-                android:id="@+id/etVertifyCodeetUserNum"
+            <EditText
+                android:id="@+id/etVerifyCode"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="70dp"
                 android:background="@null"
                 android:hint="@string/input_verify_code_desc"
                 android:maxLines="1"
@@ -50,7 +50,9 @@
                 android:textSize="@dimen/sp_14"
                 android:layout_toLeftOf="@+id/tvVerifyCode"
                 android:layout_centerVertical="true"
-                android:maxLength="13"/>
+                android:maxLength="13"
+                android:drawableLeft="@drawable/username"
+                android:drawablePadding="10dp"/>
 
             <TextView
                 android:id="@+id/tvVerifyCode"
@@ -71,7 +73,7 @@
         <EditText
             android:id="@+id/etNewPwd"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:background="@null"
             android:hint="@string/user_pwd"
             android:maxLines="1"
@@ -81,15 +83,15 @@
             android:textSize="@dimen/sp_14"
             android:inputType="textPassword"
             android:maxLength="10"
-            android:layout_marginTop="@dimen/margin_twenty_four"
-            android:layout_marginBottom="@dimen/margin_fifteen"/>
+            android:drawableLeft="@drawable/password"
+            android:drawablePadding="10dp"/>
 
         <View style="@style/full_line_style"/>
 
         <EditText
             android:id="@+id/etConfirmPwd"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:background="@null"
             android:hint="@string/confirm_pwd"
             android:maxLines="1"
@@ -99,8 +101,8 @@
             android:textSize="@dimen/sp_14"
             android:inputType="textPassword"
             android:maxLength="10"
-            android:layout_marginTop="@dimen/margin_twenty_four"
-            android:layout_marginBottom="@dimen/margin_fifteen"/>
+            android:drawableLeft="@drawable/password"
+            android:drawablePadding="10dp"/>
 
         <View style="@style/full_line_style"/>
     </LinearLayout>
