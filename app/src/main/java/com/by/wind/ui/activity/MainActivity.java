@@ -20,8 +20,8 @@ import com.by.wind.ui.fragment.PersonalFragment;
 import com.by.wind.widget.NoScrollViewPager;
 import com.by.wind.widget.tab.Tab;
 import com.by.wind.widget.tab.TabIndicator;
-import com.wind.base.BaseActivity;
 import com.wind.base.BaseFragment;
+import com.by.wind.widget.TitleActivity;
 
 import java.util.ArrayList;
 
@@ -29,7 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity implements TabIndicator.OnTabClickListener {
+public class MainActivity extends TitleActivity implements TabIndicator.OnTabClickListener {
 
     @BindView(R.id.viewpager)
     NoScrollViewPager viewpager;
@@ -62,16 +62,20 @@ public class MainActivity extends BaseActivity implements TabIndicator.OnTabClic
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(intent);
     }
+    @Override
+    protected void setContentView() {
+        setContentView(R.layout.activity_main);
+    }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+    protected void initializeData() {
         initializeViews();
     }
 
-
+    @Override
+    protected void bindViews() {
+        ButterKnife.bind(this);
+    }
 
     protected void initializeViews() {
         mHomeFragment = new HomeFragment();

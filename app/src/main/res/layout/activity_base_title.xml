@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/llBaseLayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/title_color"
+    android:orientation="vertical">
+
+    <com.by.wind.util.CustomTitleBar
+        android:id="@+id/llCustomTitle"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title_text=""
+        app:left_button_text=""
+        app:right_button_text=""
+        app:title_background="@color/title_color"
+        android:layout_alignParentTop="true" />
+
+    <LinearLayout
+        android:id="@+id/llBody"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/llCustomTitle"
+        android:background="@drawable/def_bg"
+        android:orientation="vertical">
+    </LinearLayout>
+
+</LinearLayout>
