@@ -78,6 +78,8 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
     }
 
     protected void initializeViews() {
+        llCustomTitle.setIvLeftButtonVisible(false);
+        llCustomTitle.setIvRightButtonVisible(true);
         mHomeFragment = new HomeFragment();
         mCategoryFragment = new CategoryFragment();
         mDiscoverFragment = new DiscoverFragment();

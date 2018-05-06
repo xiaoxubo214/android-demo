@@ -4,6 +4,7 @@ import com.by.wind.model.UserToken;
 
 
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Path;
 import rx.Observable;
 import retrofit2.http.Field;
@@ -29,4 +30,7 @@ public interface Api {
      */
     @POST("/token")
     Observable<RetrofitResult<UserToken>> getRefreshToken(@Path("accessToken") String accessToken, @Field("refreshToken") String refreshToken, @Field("_method") String patch);
+
+    @GET("/forget")
+    Observable<RetrofitResult<String>> forget();
 }

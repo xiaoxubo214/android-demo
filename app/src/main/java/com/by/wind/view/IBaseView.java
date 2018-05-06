@@ -14,8 +14,18 @@ public interface IBaseView {
 
     public interface ILoginView extends BaseMvpView {
 
-        void showResult(String result);
+        void showResult(int result);
     }
+
+
+    interface IForgetPwdView extends BaseMvpView {
+        void doForgetPwd(int retCode);
+
+        void getCheckCode(int retCode);
+
+        void validData(int validCode);
+    }
+
 
 
 }

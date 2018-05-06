@@ -96,9 +96,9 @@ public class LoginActivity extends BaseActivity implements IBaseView.ILoginView{
     }
 
     @Override
-    public void showResult(String result) {
+    public void showResult(int result) {
         Log.e(TAG,"RESULT");
-        if (Constants.SUCCESS.equals(result)) {
+        if (Constants.SUCCESS == result) {
             MainActivity.open(this);
         } else {
             MainActivity.open(this);

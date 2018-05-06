@@ -22,7 +22,7 @@
             android:textColorHint="@color/gray_line_color"
             android:textSize="@dimen/sp_14"
             android:inputType="number"
-            android:maxLength="6"
+            android:maxLength="11"
             android:layout_marginTop="@dimen/margin_twenty_four"
             android:layout_marginBottom="@dimen/margin_fifteen"
             android:drawableLeft="@drawable/username"
@@ -50,7 +50,7 @@
                 android:textSize="@dimen/sp_14"
                 android:layout_toLeftOf="@+id/tvVerifyCode"
                 android:layout_centerVertical="true"
-                android:maxLength="13"
+                android:maxLength="6"
                 android:drawableLeft="@drawable/username"
                 android:drawablePadding="10dp"/>
 

@@ -17,6 +17,10 @@ public class UserModel {
     private String password;
     //private String tel;
 
+    public UserModel() {
+
+    }
+
     public UserModel(String userName, String password){
         this.userName = userName;
         this.password = password;
