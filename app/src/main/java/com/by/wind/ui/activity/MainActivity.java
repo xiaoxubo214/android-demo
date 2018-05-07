@@ -1,7 +1,11 @@
 package com.by.wind.ui.activity;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -13,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.by.wind.R;
+import com.by.wind.component.net.event.MessageEvent;
 import com.by.wind.util.ToastUtil;
 import com.by.wind.widget.FragmentPagerAdapter;
 import com.by.wind.ui.fragment.CartFragment;
@@ -27,6 +32,8 @@ import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.wind.base.BaseFragment;
 import com.by.wind.widget.TitleActivity;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 
@@ -53,6 +60,10 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
     private PersonalFragment mPersonalFragment;
     private ArrayList<BaseFragment> mFragmentList;
     private FragmentPagerAdapter fragmentPagerAdapter;
+
+    private IntentFilter mIntentFilter;
+    private NetworkChangeReceiver mNetworkChangeReceiver;
+
 
     private int mCurIndex = 0 ;
     private final static int HOME_TYPE_TAB = 0;
@@ -118,7 +129,20 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        registerNetwork();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(mNetworkChangeReceiver);
+    }
+
+    @Override
     public void onTabClick(int index) {
+        Log.e(TAG,index + "");
         if (index == 0) {
             viewpager.setCurrentItem(HOME_TYPE_TAB, false);
             showTitleContent(getResources().getString(R.string.message));
@@ -181,6 +205,14 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
     }
 
 
+    private void registerNetwork() {
+        mIntentFilter = new IntentFilter();
+        mIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+        mNetworkChangeReceiver = new NetworkChangeReceiver();
+        registerReceiver(mNetworkChangeReceiver, mIntentFilter);
+    }
+
+
     public class PageListener implements ViewPager.OnPageChangeListener {
         public PageListener() {
         }
@@ -193,6 +225,23 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
 
         public void onPageSelected(int position) {
             mCurIndex = position;
+        }
+    }
+
+
+    class NetworkChangeReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            MessageEvent messageEvent;
+            if (networkInfo != null && networkInfo.isAvailable()) {
+                messageEvent = new MessageEvent(MessageEvent.NETWORK_OK);
+            } else {
+                messageEvent = new MessageEvent(MessageEvent.NETWORK_FAIL);
+            }
+            Log.e(TAG,"send message");
+            EventBus.getDefault().post(messageEvent);
         }
     }
 

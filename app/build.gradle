@@ -66,5 +66,6 @@ dependencies {
     compile('com.alibaba.android:vlayout:1.2.8@aar')
     implementation 'com.squareup.picasso:picasso:2.71828'
     compile 'cn.yipianfengye.android:zxing-library:2.2'
+    compile 'org.greenrobot:eventbus:3.1.1'
     compile project(path: ':base')
 }
