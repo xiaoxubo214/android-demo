@@ -9,6 +9,7 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -45,9 +46,9 @@ public class ForgetActivity extends BaseActivity implements IBaseView.IForgetPwd
     @BindView(R.id.viewflipper)
     ViewFlipper viewflipper;
     @BindView(R.id.return_btn)
-    ButtonRectangle returnBtn;
+    Button returnBtn;
     @BindView(R.id.submit_btn)
-    ButtonRectangle submitBtn;
+    Button submitBtn;
     private int mGetType;
     ForgetPwdPresenterImpl mForgetPwdPresenterImpl;
 

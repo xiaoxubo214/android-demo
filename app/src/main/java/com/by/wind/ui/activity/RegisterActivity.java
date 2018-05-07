@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -31,9 +32,9 @@ public class RegisterActivity extends BaseActivity {
     @BindView(R.id.viewflipper)
     ViewFlipper viewflipper;
     @BindView(R.id.return_btn)
-    ButtonRectangle returnBtn;
+    Button returnBtn;
     @BindView(R.id.submit_btn)
-    ButtonRectangle submitBtn;
+    Button submitBtn;
 
     public static void open(Context context) {
         Intent intent = new Intent();

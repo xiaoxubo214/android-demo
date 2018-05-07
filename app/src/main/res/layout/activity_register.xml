@@ -3,7 +3,6 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/margin_ten"
     android:orientation="vertical"
     android:background="@color/white">
     <LinearLayout
@@ -35,21 +34,27 @@
         android:orientation="horizontal"
         android:paddingTop="30dp">
 
-        <com.gc.materialdesign.views.ButtonRectangle
+        <Button
             android:id="@+id/return_btn"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="67dp"
-            android:background="@color/btn_red"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="50dp"
+            android:background="@drawable/shape"
+            android:textColor="@color/white"
             android:text="返回登录" />
 
 
-        <com.gc.materialdesign.views.ButtonRectangle
+        <Button
             android:id="@+id/submit_btn"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="67dp"
-            android:background="@color/btn_red"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="50dp"
+            android:background="@drawable/shape"
+            android:textColor="@color/white"
             android:text="确认注册" />
     </LinearLayout>
 </LinearLayout>
