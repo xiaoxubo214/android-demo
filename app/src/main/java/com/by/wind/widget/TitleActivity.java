@@ -24,7 +24,7 @@ import com.by.wind.util.SystemBarTintManager;
 
 public abstract class TitleActivity extends BaseActivity implements CustomTitleBar.TitleOnClickListener {
 
-    private static final String TAG = TitleActivity.class.getSimpleName();
+    public static final String TAG = TitleActivity.class.getSimpleName();
     protected LinearLayout llBody;
     protected LinearLayout llBaseLayout;
     public CustomTitleBar llCustomTitle;

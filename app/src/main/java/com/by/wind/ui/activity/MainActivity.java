@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -53,7 +54,7 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
     private ArrayList<BaseFragment> mFragmentList;
     private FragmentPagerAdapter fragmentPagerAdapter;
 
-    private int mCurIndex;
+    private int mCurIndex = 0 ;
     private final static int HOME_TYPE_TAB = 0;
     private final static int CATEGORY_TYPE_TAB = 1;
     private final static int DISCOVER_TYPE_TAB = 2;
@@ -113,7 +114,7 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
         tabs.add(new Tab(R.drawable.def_main_tab_my_selector, getResources().getString(R.string.personal), null));
         mMainIndicator.initializeData(tabs);
         mMainIndicator.setOnTabClickListener(this);
-        mMainIndicator.setCurrentTab(mCurIndex);
+        mMainIndicator.setCurrentTab(0);
     }
 
     @Override
@@ -170,8 +171,10 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
                 if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
                     String result = bundle.getString(CodeUtils.RESULT_STRING);
                     ToastUtil.show( "解析结果:" + result);
+                    Log.e("MainActivity",result);
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
                     ToastUtil.show( "解析二维码失败");
+                    Log.e("MainActivity","解析二维码失败");
                 }
             }
         }
