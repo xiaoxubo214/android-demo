@@ -81,7 +81,7 @@ public class CategoryFragment extends BaseFragment implements LoadingDialog.Prog
             mIvNotNetwork.setVisibility(View.VISIBLE);
         }
 
-        if(BussinessUtil.isNetWorkConnected(this.getActivity())) {
+        if(!BussinessUtil.isNetWorkConnected(this.getActivity())) {
             mWebView.setVisibility(View.GONE);
             mIvNotNetwork.setVisibility(View.VISIBLE);
         }

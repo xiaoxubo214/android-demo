@@ -19,6 +19,7 @@ import android.widget.ImageView;
 
 import com.by.wind.R;
 import com.by.wind.component.net.event.MessageEvent;
+import com.by.wind.util.BussinessUtil;
 import com.by.wind.util.ToastUtil;
 import com.wind.base.BaseFragment;
 import com.wind.base.loading.LoadingDialog;
@@ -82,7 +83,10 @@ public class DiscoverFragment extends BaseFragment implements LoadingDialog.Prog
             }
         });
 
-
+        if(!BussinessUtil.isNetWorkConnected(this.getActivity())) {
+            mWebView.setVisibility(View.GONE);
+            mIvNotNetwork.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

@@ -6,6 +6,7 @@
     tools:context="com.by.wind.ui.fragment.PersonalFragment"
     android:orientation="vertical">
     <LinearLayout
+        android:id="@+id/ll_user_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -72,7 +73,7 @@
             android:orientation="vertical">
 
             <com.by.wind.widget.PersonalItem
-                android:id="@+id/pl_item_album"
+                android:id="@+id/pl_chnage_pwd"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_fifty"
                 android:background="@color/white"
@@ -83,7 +84,7 @@
                 cil:tv_text="修改密码" />
 
             <com.by.wind.widget.PersonalItem
-                android:id="@+id/pl_item_collection"
+                android:id="@+id/pl_common"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_fifty"
                 android:background="@color/white"
@@ -93,7 +94,7 @@
                 cil:tv_text="通用" />
 
             <com.by.wind.widget.PersonalItem
-                android:id="@+id/pl_item_share"
+                android:id="@+id/pl_help"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_fifty"
                 android:background="@color/white"
@@ -103,7 +104,7 @@
                 cil:tv_text="帮助与反馈" />
 
             <com.by.wind.widget.PersonalItem
-                android:id="@+id/pl_item_message"
+                android:id="@+id/pl_about"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_fifty"
                 android:background="@color/white"

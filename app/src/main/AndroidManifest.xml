@@ -8,13 +8,14 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
 
     <application
         android:name=".BaseApplication"
@@ -37,7 +38,8 @@
         <activity android:name=".ui.activity.MainActivity" />
         <activity android:name=".util.img.PicDisplayActivity" />
         <activity android:name=".ui.activity.RegisterActivity" />
-        <activity android:name=".ui.activity.ForgetActivity"></activity>
+        <activity android:name=".ui.activity.ForgetActivity" />
+        <activity android:name=".ui.activity.WebViewActivity"/>
     </application>
 
 </manifest>

@@ -11,7 +11,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.by.wind.R;
+import com.by.wind.ui.activity.ForgetActivity;
 import com.by.wind.ui.activity.LoginActivity;
+import com.by.wind.ui.activity.WebViewActivity;
 import com.by.wind.widget.PersonalItem;
 
 import com.gc.materialdesign.views.ButtonRectangle;
@@ -26,12 +28,16 @@ import butterknife.Unbinder;
  */
 public class PersonalFragment extends BaseFragment {
 
-    @BindView(R.id.user_avatar_iv)
-    ImageView mUserAvatarIv;
-    @BindView(R.id.user_name_tv)
-    TextView mUserNameTv;
-/*    @BindView(R.id.user_rl)
-    RelativeLayout mUserRl;*/
+    @BindView(R.id.ll_user_info)
+    LinearLayout mLlUserInfo;
+    @BindView(R.id.pl_chnage_pwd)
+    PersonalItem mChangePwd;
+    @BindView(R.id.pl_common)
+    PersonalItem mCommon;
+    @BindView(R.id.pl_help)
+    PersonalItem mHelp;
+    @BindView(R.id.pl_about)
+    PersonalItem mAbout;
     @BindView(R.id.login_out_btn)
     LinearLayout mLoginOutLl;
     Unbinder unbinder;
@@ -61,9 +67,37 @@ public class PersonalFragment extends BaseFragment {
 
     @Override
     protected void initAllView(Bundle savedInstanceState) {
-/*        mUserRl.setOnClickListener(view -> {
+        mLlUserInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                WebViewActivity.open(getActivity());
+            }
+        });
+        mChangePwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ForgetActivity.open(getActivity());
+            }
+        });
+        mCommon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                WebViewActivity.open(getActivity());
+            }
+        });
+        mHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                WebViewActivity.open(getActivity());
+            }
+        });
 
-        });*/
+        mAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                WebViewActivity.open(getActivity());
+            }
+        });
 
 
         mLoginOutLl.setOnClickListener(view -> LoginActivity.open(context));

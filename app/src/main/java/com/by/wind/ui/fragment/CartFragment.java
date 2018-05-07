@@ -77,7 +77,7 @@ public class CartFragment extends BaseFragment implements LoadingDialog.Progress
             }
         });
 
-        if(BussinessUtil.isNetWorkConnected(this.getActivity())) {
+        if(!BussinessUtil.isNetWorkConnected(this.getActivity())) {
             mWebView.setVisibility(View.GONE);
             mIvNotNetwork.setVisibility(View.VISIBLE);
         }
