@@ -33,8 +33,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="@dimen/margin_seven">
+            android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/etVerifyCode"
@@ -56,10 +55,10 @@
 
             <TextView
                 android:id="@+id/tvVerifyCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="75dp"
                 style="@style/tag_btn_botton_style"
-                android:textColor="@color/black"
+                android:textColor="@color/red"
                 android:text="@string/get_verify_code"
                 android:paddingLeft="@dimen/margin_twenty"
                 android:paddingRight="@dimen/margin_twenty"

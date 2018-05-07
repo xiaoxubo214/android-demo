@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.by.wind.Constants;
 import com.by.wind.R;
@@ -18,7 +19,6 @@ import com.by.wind.presenter.LoginPresenter;
 import com.by.wind.util.StringUtil;
 import com.by.wind.util.ToastUtil;
 import com.by.wind.view.IBaseView;
-import com.by.wind.widget.MyEditText;
 import com.wind.base.BaseActivity;
 import com.wind.base.loading.LoadingDialog;
 
@@ -34,9 +34,9 @@ import butterknife.OnClick;
 public class LoginActivity extends BaseActivity implements IBaseView.ILoginView{
 
     @BindView(R.id.username_et)
-    MyEditText mUsernameEt;
+    EditText mUsernameEt;
     @BindView(R.id.password_et)
-    MyEditText mPasswordEt;
+    EditText mPasswordEt;
     @BindView(R.id.submit_btn)
     Button mSubmitBtn;
 

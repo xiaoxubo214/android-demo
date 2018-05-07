@@ -16,32 +16,44 @@
             android:src="@drawable/icon_avatar"/>
     </LinearLayout>
 
-    <com.by.wind.widget.MyEditText
+    <EditText
         android:id="@+id/username_et"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="50dp"
-        android:hint="@string/username"
-        android:textSize="15sp"
+        android:background="@null"
+        android:hint="@string/input_phone_num"
+        android:maxLines="1"
+        android:paddingLeft="@dimen/margin_twenty"
+        android:singleLine="true"
+        android:textColorHint="@color/gray_line_color"
+        android:textSize="@dimen/sp_14"
+        android:inputType="number"
+        android:maxLength="11"
+        android:layout_marginTop="@dimen/margin_twenty_four"
+        android:layout_marginBottom="@dimen/margin_fifteen"
         android:drawableLeft="@drawable/username"
-        android:drawablePadding="10dp"
-        android:inputType="phone"
-        android:focusable="true" />
+        android:drawablePadding="10dp"/>
 
-    <com.by.wind.widget.MyEditText
+    <View style="@style/full_line_style"/>
+
+    <EditText
         android:id="@+id/password_et"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:hint="@string/password"
-        android:textSize="15sp"
-        android:drawableLeft="@drawable/password"
-        android:drawablePadding="10dp"
+        android:background="@null"
+        android:hint="@string/user_pwd"
+        android:maxLines="1"
+        android:paddingLeft="@dimen/margin_twenty"
+        android:singleLine="true"
+        android:textColorHint="@color/gray_line_color"
+        android:textSize="@dimen/sp_14"
         android:inputType="textPassword"
-        android:focusable="true" />
+        android:maxLength="10"
+        android:drawableLeft="@drawable/password"
+        android:drawablePadding="10dp"/>
+
+    <View style="@style/full_line_style"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
