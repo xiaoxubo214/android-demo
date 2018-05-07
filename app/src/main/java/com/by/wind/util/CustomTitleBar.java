@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -376,6 +377,7 @@ public class CustomTitleBar extends LinearLayout {
      * @param title_text
      */
     public void setTvCenterLeftButton(String title_text) {
+        tvCenterLeftButton.setWidth(150);
         tvCenterLeftButton.setText(title_text);
     }
 
