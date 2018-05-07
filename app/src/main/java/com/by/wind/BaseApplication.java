@@ -2,11 +2,10 @@ package com.by.wind;
 
 import android.app.Application;
 
-import com.by.wind.component.net.Api;
-import com.by.wind.component.net.RetrofitUtil;
 import com.by.wind.util.common.AppException;
 import com.orhanobut.hawk.Hawk;
 import com.squareup.leakcanary.LeakCanary;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 /**
  * Created by Wind on 2017/11/15.
@@ -28,6 +27,7 @@ public class BaseApplication extends Application {
         app = this;
         Hawk.init(this);
         LeakCanary.install(this);
+        ZXingLibrary.initDisplayOpinion(this);
         registerUncaughtExceptionHandler();
     }
 

@@ -9,8 +9,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.by.wind.R;
+import com.by.wind.util.ToastUtil;
 import com.by.wind.widget.FragmentPagerAdapter;
 import com.by.wind.ui.fragment.CartFragment;
 import com.by.wind.ui.fragment.CategoryFragment;
@@ -20,6 +22,8 @@ import com.by.wind.ui.fragment.PersonalFragment;
 import com.by.wind.widget.NoScrollViewPager;
 import com.by.wind.widget.tab.Tab;
 import com.by.wind.widget.tab.TabIndicator;
+import com.uuzuche.lib_zxing.activity.CaptureActivity;
+import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.wind.base.BaseFragment;
 import com.by.wind.widget.TitleActivity;
 
@@ -50,11 +54,13 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
     private FragmentPagerAdapter fragmentPagerAdapter;
 
     private int mCurIndex;
-    private static final int HOME_TYPE_TAB = 0;
-    private static final int CATEGORY_TYPE_TAB = 1;
-    private static final int DISCOVER_TYPE_TAB = 2;
-    private static final int CART_TYPE_TAB = 3;
-    private static final int PERSONAL_TYPE_TAB = 4;
+    private final static int HOME_TYPE_TAB = 0;
+    private final static int CATEGORY_TYPE_TAB = 1;
+    private final static int DISCOVER_TYPE_TAB = 2;
+    private final static int CART_TYPE_TAB = 3;
+    private final static int PERSONAL_TYPE_TAB = 4;
+
+    public final static int REQUEST_CODE = 1;
 
     public static void open(Context context) {
         Intent intent = new Intent();
@@ -78,8 +84,8 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
     }
 
     protected void initializeViews() {
-        llCustomTitle.setIvLeftButtonVisible(false);
-        llCustomTitle.setIvRightButtonVisible(true);
+        llCustomTitle.set_show_left_button(false);
+        llCustomTitle.set_show_Right_button(true);
         mHomeFragment = new HomeFragment();
         mCategoryFragment = new CategoryFragment();
         mDiscoverFragment = new DiscoverFragment();
@@ -100,10 +106,10 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
         viewpager.setPagingEnabled(false);
         viewpager.addOnPageChangeListener(new PageListener());
         ArrayList<Tab> tabs = new ArrayList<>();
-        tabs.add(new Tab(R.drawable.def_main_tab_message_selector, getResources().getString(R.string.home), null));
-        tabs.add(new Tab(R.drawable.def_main_tab_team_selector, getResources().getString(R.string.category), null));
-        tabs.add(new Tab(R.drawable.def_main_tab_ship_selector, getString(R.string.discover), null));
-        tabs.add(new Tab(R.drawable.def_main_tab_sale_selector, getResources().getString(R.string.cart), null));
+        tabs.add(new Tab(R.drawable.def_main_tab_message_selector, getResources().getString(R.string.message), null));
+        tabs.add(new Tab(R.drawable.def_main_tab_team_selector, getResources().getString(R.string.team), null));
+        tabs.add(new Tab(R.drawable.def_main_tab_ship_selector, getString(R.string.ship), null));
+        tabs.add(new Tab(R.drawable.def_main_tab_sale_selector, getResources().getString(R.string.sale), null));
         tabs.add(new Tab(R.drawable.def_main_tab_my_selector, getResources().getString(R.string.personal), null));
         mMainIndicator.initializeData(tabs);
         mMainIndicator.setOnTabClickListener(this);
@@ -114,14 +120,19 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
     public void onTabClick(int index) {
         if (index == 0) {
             viewpager.setCurrentItem(HOME_TYPE_TAB, false);
+            showTitleContent(getResources().getString(R.string.message));
         } else if (index == 1) {
             viewpager.setCurrentItem(CATEGORY_TYPE_TAB,false);
+            showTitleContent(getResources().getString(R.string.team));
         } else if (index == 2) {
             viewpager.setCurrentItem(DISCOVER_TYPE_TAB, false);
+            showTitleContent(getResources().getString(R.string.ship));
         } else if (index == 3) {
             viewpager.setCurrentItem(CART_TYPE_TAB, false);
+            showTitleContent(getResources().getString(R.string.sale));
         }else if (index == 4) {
             viewpager.setCurrentItem(PERSONAL_TYPE_TAB, false);
+            showTitleContent(getResources().getString(R.string.personal));
 
         }
     }
@@ -139,6 +150,33 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
                 break;
         }
     }
+
+    @Override
+    public void onRightClick() {
+        super.onRightClick();
+        Intent intent = new Intent(MainActivity.this, CaptureActivity.class);
+        startActivityForResult(intent, REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE) {
+            //处理扫描结果（在界面上显示）
+            if (null != data) {
+                Bundle bundle = data.getExtras();
+                if (bundle == null) {
+                    return;
+                }
+                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
+                    String result = bundle.getString(CodeUtils.RESULT_STRING);
+                    ToastUtil.show( "解析结果:" + result);
+                } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
+                    ToastUtil.show( "解析二维码失败");
+                }
+            }
+        }
+    }
+
 
     public class PageListener implements ViewPager.OnPageChangeListener {
         public PageListener() {
