@@ -10,7 +10,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.RelativeLayout;
 
 import com.by.wind.R;
-
+import  com.by.wind.widget.tab.TabTitleIndicator.OnTabClickListener;
 import java.util.ArrayList;
 
 /**
@@ -114,7 +114,7 @@ public class ViewTabTitleIndicator extends RelativeLayout implements TabTitleInd
         }
     }
 
-    public void setOnTabClickListener(TabTitleIndicator.OnTabClickListener listener){
+    public void setOnTabClickListener(OnTabClickListener listener){
         if (listener != null){
             mTabTitleIndicator.setOnTabClickListener(listener);
         }

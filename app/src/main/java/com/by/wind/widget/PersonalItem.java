@@ -11,13 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.by.wind.R;
+import com.gc.materialdesign.views.CustomView;
 import com.gc.materialdesign.views.LayoutRipple;
 
 /**
  * Created by Wind on 2017/11/20.
  */
 
-public class PersonalItem extends LayoutRipple {
+public class PersonalItem extends CustomView {
     private TextView mContentTv;
     private ImageView mRightIconIv;
     private View mBottomLine;

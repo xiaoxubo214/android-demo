@@ -65,7 +65,7 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
     private NetworkChangeReceiver mNetworkChangeReceiver;
 
 
-    private int mCurIndex = 0 ;
+    private int mCurIndex ;
     private final static int HOME_TYPE_TAB = 0;
     private final static int CATEGORY_TYPE_TAB = 1;
     private final static int DISCOVER_TYPE_TAB = 2;
@@ -87,7 +87,7 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
 
     @Override
     protected void initializeData() {
-        initializeViews();
+        initTitle(mCurIndex);
     }
 
     @Override
@@ -125,7 +125,7 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
         tabs.add(new Tab(R.drawable.def_main_tab_my_selector, getResources().getString(R.string.personal), null));
         mMainIndicator.initializeData(tabs);
         mMainIndicator.setOnTabClickListener(this);
-        mMainIndicator.setCurrentTab(0);
+        mMainIndicator.setCurrentTab(mCurIndex);
     }
 
     @Override
@@ -162,20 +162,8 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
         }
     }
 
-    @OnClick({R.id.viewpager, R.id.llMainLayout, R.id.ivCommonImg, R.id.activity_main})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.viewpager:
-                break;
-            case R.id.llMainLayout:
-                break;
-            case R.id.ivCommonImg:
-                break;
-            case R.id.activity_main:
-                break;
-        }
+    private void initTitle(int position) {
     }
-
     @Override
     public void onRightClick() {
         super.onRightClick();
