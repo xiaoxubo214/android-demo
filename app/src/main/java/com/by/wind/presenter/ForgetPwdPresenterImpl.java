@@ -8,6 +8,7 @@ import com.by.wind.component.net.ApiManager;
 import com.by.wind.component.net.ObservableUtil;
 import com.by.wind.component.net.ProgressSubscriber;
 import com.by.wind.model.UserModel;
+import com.by.wind.util.ToastUtil;
 import com.by.wind.view.IBaseView;
 import com.wind.base.event.ActivityLifeCycleEvent;
 
@@ -26,7 +27,18 @@ public class ForgetPwdPresenterImpl implements IBasePresenter.IForgetPwdPresente
 
     @Override
     public void doForgetPwd(Context context, PublishSubject<ActivityLifeCycleEvent> lifecycleSubject) {
-        IForgetPwdView.doForgetPwd(200);
+        Observable getCodeOb = ApiManager.getInstance().getApiService().forget();
+        ObservableUtil.getInstance().toSubscribe(getCodeOb, new ProgressSubscriber<String>(context) {
+            @Override
+            protected void _onNext(String verifyCode) {
+                IForgetPwdView.doForgetPwd(Constants.SUCCESS);
+            }
+            @Override
+            protected void _onError(String message) {
+                IForgetPwdView.doForgetPwd(Constants.TEST);
+                ToastUtil.show( message);
+            }
+        }, Constants.HAWK_KEY, ActivityLifeCycleEvent.DESTROY, lifecycleSubject, false, false);
     }
 
     @Override

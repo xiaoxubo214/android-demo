@@ -114,14 +114,26 @@
                 cil:tv_text="关于YIHO商户通" />
         </LinearLayout>
 
-        <com.gc.materialdesign.views.ButtonRectangle
-            android:id="@+id/login_out_btn"
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/login_out_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="@dimen/margin_twenty"
+        android:layout_marginTop="@dimen/margin_ten"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:gravity="center">
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:background="#1E88E5"
-            android:text="@string/login_out" />
+            android:textColor="@color/red"
+            android:text="@string/login_out"
+            android:gravity="center"/>
     </LinearLayout>
+
 </LinearLayout>
 
 

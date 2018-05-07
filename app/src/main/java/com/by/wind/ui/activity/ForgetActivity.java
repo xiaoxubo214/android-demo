@@ -52,6 +52,8 @@ public class ForgetActivity extends BaseActivity implements IBaseView.IForgetPwd
     private int mGetType;
     ForgetPwdPresenterImpl mForgetPwdPresenterImpl;
 
+    private String code = "0000";
+
     public static void open(Context context) {
         Intent intent = new Intent();
         intent.setClass(context, ForgetActivity.class);
@@ -76,14 +78,34 @@ public class ForgetActivity extends BaseActivity implements IBaseView.IForgetPwd
         switch (view.getId()) {
             case R.id.tvVerifyCode:
                 mGetType = 0;
-
                 if (StringUtil.isMobile(etUserNum.getText().toString())) {
                     mForgetPwdPresenterImpl.getCheckCode(this, lifecycleSubject);
                 }
                 break;
             case R.id.submit_btn:
                 mGetType = 1;
-                mForgetPwdPresenterImpl.checkUserModel(etUserNum.getText().toString().trim(), etNewPwd.getText().toString().trim());
+                if (!StringUtil.isMobile(etUserNum.getText().toString())) {
+                    ToastUtil.show("请输入正确的手机号码");
+                    return;
+                }
+                if (etVerifyCode.getText().toString() == null || etVerifyCode.getText().toString().length() < 4) {
+                    ToastUtil.show("验证码长度大于等于4");
+                    return;
+                }
+                if ( !etVerifyCode.getText().toString().equals(code)) {
+                    ToastUtil.show("验证码错误");
+                    return;
+                }
+
+                if (etNewPwd.getText().toString().length()< 6 || etConfirmPwd.getText().toString().length()< 6 ) {
+                    ToastUtil.show("密码长度必须大于等于 6");
+                    return;
+                }
+                if (!etNewPwd.getText().toString().equals(etConfirmPwd.getText().toString())) {
+                    ToastUtil.show("2 次输入密码不一致");
+                    return;
+                }
+                mForgetPwdPresenterImpl.doForgetPwd(this, lifecycleSubject);
                 break;
             case R.id.return_btn:
                 finish();
@@ -95,7 +117,7 @@ public class ForgetActivity extends BaseActivity implements IBaseView.IForgetPwd
 
     @Override
     public void doForgetPwd(int retCode) {
-        if (retCode == 200) {
+        if (retCode == 200 || Constants.isDebug == true) {
             ToastUtil.showToast("密码修改成功");
             finish();
         }

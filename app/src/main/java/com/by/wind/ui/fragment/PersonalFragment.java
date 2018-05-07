@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -32,7 +33,7 @@ public class PersonalFragment extends BaseFragment {
 /*    @BindView(R.id.user_rl)
     RelativeLayout mUserRl;*/
     @BindView(R.id.login_out_btn)
-    ButtonRectangle mLoginOutBtn;
+    LinearLayout mLoginOutLl;
     Unbinder unbinder;
 
     @Override
@@ -65,7 +66,7 @@ public class PersonalFragment extends BaseFragment {
         });*/
 
 
-        mLoginOutBtn.setOnClickListener(view -> LoginActivity.open(context));
+        mLoginOutLl.setOnClickListener(view -> LoginActivity.open(context));
     }
 
     @Override
