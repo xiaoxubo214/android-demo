@@ -3,7 +3,7 @@ package com.by.wind.component.net;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by christy ic_on 16/12/23.
+ * Created by wind ic_on 16/12/23.
  */
 
 public class RetrofitResult<T> {

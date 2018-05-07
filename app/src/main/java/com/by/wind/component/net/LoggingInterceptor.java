@@ -18,7 +18,7 @@ import okio.Buffer;
 import okio.BufferedSource;
 
 /**
- * Created by christy ic_on 17/2/23.
+ * Created by wind ic_on 17/2/23.
  */
 public class LoggingInterceptor implements Interceptor {
 

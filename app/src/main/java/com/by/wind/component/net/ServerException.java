@@ -3,7 +3,7 @@ package com.by.wind.component.net;
 import android.text.TextUtils;
 
 /**
- * Created by christy ic_on 17/2/23.
+ * Created by wind ic_on 17/2/23.
  */
 public class ServerException extends RuntimeException {
 

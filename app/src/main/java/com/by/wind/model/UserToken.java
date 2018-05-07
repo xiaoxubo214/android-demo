@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by christy on 17/4/24.
+ * Created by wind on 17/4/24.
  */
 
 public class UserToken implements Parcelable {

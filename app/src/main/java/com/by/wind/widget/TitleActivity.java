@@ -19,7 +19,7 @@ import com.by.wind.util.CustomTitleBar;
 import com.by.wind.util.SystemBarTintManager;
 
 /**
- * Created by christy ic_on 16/11/15.
+ * Created by wind ic_on 16/11/15.
  */
 
 public abstract class TitleActivity extends BaseActivity implements CustomTitleBar.TitleOnClickListener {

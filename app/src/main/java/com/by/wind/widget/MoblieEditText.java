@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.widget.EditText;
 
 /**
- * Created by christy ic_on 17/1/24.
+ * Created by wind ic_on 17/1/24.
  */
 
 public class MoblieEditText extends android.support.v7.widget.AppCompatEditText {

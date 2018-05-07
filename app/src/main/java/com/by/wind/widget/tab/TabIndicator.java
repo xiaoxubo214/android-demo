@@ -11,7 +11,7 @@ import com.by.wind.util.BussinessUtil;
 import java.util.ArrayList;
 
 /**
- * Created by christy ic_on 16/11/7.
+ * Created by wind ic_on 16/11/7.
  */
 public class TabIndicator extends LinearLayout implements OnClickListener {
     private int mTabSize;

@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.by.wind.R;
 
 /**
- * Created by christy ic_on 16/11/7.
+ * Created by wind ic_on 16/11/7.
  */
 public class TabTitleView extends RelativeLayout {
 

@@ -8,7 +8,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by christy ic_on 17/2/23.
+ * Created by wind ic_on 17/2/23.
  */
 
 public class RetrofitCache {

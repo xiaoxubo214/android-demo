@@ -22,7 +22,7 @@ import android.widget.FrameLayout;
 import java.lang.reflect.Method;
 
 /**
- * Created by christy ic_on 17/2/6.
+ * Created by wind ic_on 17/2/6.
  */
 
 public class SystemBarTintManager {
