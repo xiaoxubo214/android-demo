@@ -10,9 +10,9 @@ public class RetrofitResult<T> {
 
 
     //用来模仿resultCode和resultMessage
-    @SerializedName("code")
+    @SerializedName("result_code")
     private String code;
-    @SerializedName("message")
+    @SerializedName("msg")
     private String message;
     //用来模仿Data
     @SerializedName("data")

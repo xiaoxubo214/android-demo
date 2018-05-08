@@ -1,5 +1,6 @@
 package com.by.wind.component.net;
 
+import com.by.wind.Constants;
 import com.by.wind.model.UserToken;
 
 
@@ -19,7 +20,7 @@ import retrofit2.http.POST;
 public interface Api {
 
     @FormUrlEncoded
-    @POST("/login")
+    @POST(Constants.URL_API)
     Observable<RetrofitResult<String>> login(@Field("username") String username,@Field("password") String password);
 
     /**
@@ -28,9 +29,15 @@ public interface Api {
      * @param accessToken
      * @return
      */
-    @POST("/token")
+    @FormUrlEncoded
+    @POST(Constants.URL_API)
     Observable<RetrofitResult<UserToken>> getRefreshToken(@Path("accessToken") String accessToken, @Field("refreshToken") String refreshToken, @Field("_method") String patch);
 
-    @GET("/forget")
+    @FormUrlEncoded
+    @POST(Constants.URL_API)
     Observable<RetrofitResult<String>> forget();
+
+    @FormUrlEncoded
+    @POST(Constants.URL_API)
+    Observable<RetrofitResult<String>> getCode(@Field("request_type") String requesType, @Field("phone_h") String phone);
 }

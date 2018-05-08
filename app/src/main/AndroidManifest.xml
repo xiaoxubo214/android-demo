@@ -38,7 +38,6 @@
         <activity android:name=".ui.activity.MainActivity" />
         <activity android:name=".util.img.PicDisplayActivity" />
         <activity android:name=".ui.activity.RegisterActivity" />
-        <activity android:name=".ui.activity.ForgetActivity" />
         <activity android:name=".ui.activity.WebViewActivity"/>
     </application>
 

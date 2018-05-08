@@ -10,21 +10,21 @@
         android:id="@+id/viewpager"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@+id/llMainLayout"/>
+        android:layout_above="@+id/llMainLayout" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_top_line"
         android:layout_above="@+id/llMainLayout"
-        android:visibility="gone"/>
+        android:background="@drawable/bg_top_line"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/llMainLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/transparent"
         android:layout_alignParentBottom="true"
+        android:background="@color/transparent"
         android:orientation="vertical">
 
         <com.by.wind.widget.tab.TabIndicator
@@ -44,5 +44,5 @@
         android:layout_centerHorizontal="true"
         android:scaleType="centerInside"
         android:src="@drawable/img_fabu_dongtai"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 </RelativeLayout>

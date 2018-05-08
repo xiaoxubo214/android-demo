@@ -18,12 +18,12 @@ public interface IBaseView {
     }
 
 
-    interface IForgetPwdView extends BaseMvpView {
+    interface IRegisterView extends BaseMvpView {
         void doForgetPwd(int retCode);
 
         void getCheckCode(int retCode);
 
-        void validData(int validCode);
+        void doRegister(int retCode);
     }
 
 

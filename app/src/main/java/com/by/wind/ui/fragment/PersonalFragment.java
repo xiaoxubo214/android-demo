@@ -5,18 +5,15 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
+import com.by.wind.Constants;
 import com.by.wind.R;
-import com.by.wind.ui.activity.ForgetActivity;
 import com.by.wind.ui.activity.LoginActivity;
+import com.by.wind.ui.activity.RegisterActivity;
 import com.by.wind.ui.activity.WebViewActivity;
 import com.by.wind.widget.PersonalItem;
 
-import com.gc.materialdesign.views.ButtonRectangle;
 import com.wind.base.BaseFragment;
 
 import butterknife.BindView;
@@ -76,7 +73,7 @@ public class PersonalFragment extends BaseFragment {
         mChangePwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ForgetActivity.open(getActivity());
+                RegisterActivity.open(getActivity(), Constants.START_ACTIVITY_FORGET);
             }
         });
         mCommon.setOnClickListener(new View.OnClickListener() {

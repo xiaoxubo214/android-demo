@@ -1,6 +1,8 @@
 package com.by.wind.component.net;
 
 import android.support.annotation.NonNull;
+
+import com.by.wind.Constants;
 import com.wind.base.event.ActivityLifeCycleEvent;
 
 import rx.Observable;
@@ -59,7 +61,7 @@ public class RxHelper {
                 return tObservable.flatMap(new Func1<RetrofitResult<T>, Observable<T>>() {
                     @Override
                     public Observable<T> call(RetrofitResult<T> result) {
-                        if ("0".equals(result.getCode())) {
+                        if (Constants.RESULT_CODE_OK.equals(result.getCode())) {
                             if (result.getData() != null) {
                                 return createData(result.getData());
                             } else {
@@ -82,7 +84,7 @@ public class RxHelper {
      */
     public static <T> Observable.Transformer<RetrofitResult<T>, T> handleResult() {
         return tObservable -> tObservable.flatMap(result -> {
-            if ("0".equals(result.getCode())) {
+            if (Constants.RESULT_CODE_OK.equals(result.getCode())) {
                 if (result.getData() != null) {
                     return createData(result.getData());
                 } else {

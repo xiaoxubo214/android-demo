@@ -67,11 +67,10 @@ public class LoginActivity extends BaseActivity implements IBaseView.ILoginView{
     public void onViewClicked(View view)  {
         if (view.getId() == R.id.submit_btn) {
             login(mUsernameEt.getText().toString(),mPasswordEt.getText().toString());
-
         } else if (view.getId() == R.id.register_tv) {
-            RegisterActivity.open(this);
+            RegisterActivity.open(this,Constants.START_ACTIVITY_REGISTER);
         } else if (view.getId() == R.id.forget_tv) {
-            ForgetActivity.open(this);
+            RegisterActivity.open(this,Constants.START_ACTIVITY_FORGET);
         } else {
           Log.e(TAG,"Error");
         }

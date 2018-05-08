@@ -15,14 +15,12 @@ import com.wind.base.event.ActivityLifeCycleEvent;
 import rx.Observable;
 import rx.subjects.PublishSubject;
 
-public class ForgetPwdPresenterImpl implements IBasePresenter.IForgetPwdPresenter{
+public class RegisterPresenterImpl implements IBasePresenter.IRegisterPresenter{
 
-    private IBaseView.IForgetPwdView IForgetPwdView;
-    private UserModel userModel;
+    private IBaseView.IRegisterView iRegisterView;
 
-    public ForgetPwdPresenterImpl(IBaseView.IForgetPwdView view) {
-        this.IForgetPwdView = view;
-        userModel = new UserModel();
+    public RegisterPresenterImpl(IBaseView.IRegisterView view) {
+        this.iRegisterView = view;
     }
 
     @Override
@@ -31,38 +29,34 @@ public class ForgetPwdPresenterImpl implements IBasePresenter.IForgetPwdPresente
         ObservableUtil.getInstance().toSubscribe(getCodeOb, new ProgressSubscriber<String>(context) {
             @Override
             protected void _onNext(String verifyCode) {
-                IForgetPwdView.doForgetPwd(Constants.SUCCESS);
+                iRegisterView.doForgetPwd(Constants.SUCCESS);
             }
             @Override
             protected void _onError(String message) {
-                IForgetPwdView.doForgetPwd(Constants.TEST);
+                iRegisterView.doForgetPwd(Constants.TEST);
                 ToastUtil.show( message);
             }
         }, Constants.HAWK_KEY, ActivityLifeCycleEvent.DESTROY, lifecycleSubject, false, false);
     }
 
     @Override
-    public void getCheckCode(final Context context, PublishSubject<ActivityLifeCycleEvent> lifecycleSubject) {
-        Observable getCodeOb = ApiManager.getInstance().getApiService().forget();
+    public void getCheckCode(String phone, final Context context, PublishSubject<ActivityLifeCycleEvent> lifecycleSubject) {
+        Observable getCodeOb = ApiManager.getInstance().getApiService().getCode(Constants.API_GET_SMS, phone);
         ObservableUtil.getInstance().toSubscribe(getCodeOb, new ProgressSubscriber<String>(context) {
             @Override
             protected void _onNext(String verifyCode) {
-                IForgetPwdView.getCheckCode(Constants.SUCCESS);
+                iRegisterView.getCheckCode(Constants.SUCCESS);
             }
             @Override
             protected void _onError(String message) {
-                IForgetPwdView.getCheckCode(Constants.TEST);
+                iRegisterView.getCheckCode(Constants.TEST);
                 Toast.makeText(context, message, Toast.LENGTH_LONG).show();
             }
         }, Constants.HAWK_KEY, ActivityLifeCycleEvent.DESTROY, lifecycleSubject, false, false);
     }
 
-    public void checkUserMobile(String userNum){
+    @Override
+    public void doRegister(Context context, PublishSubject<ActivityLifeCycleEvent> lifecycleSubject) {
 
     }
-
-    public void checkUserModel(String name , String pwd){
-
-    }
-
 }

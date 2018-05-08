@@ -21,9 +21,13 @@ public interface IBasePresenter {
         void login(UserModel userModel, Context context, PublishSubject<ActivityLifeCycleEvent> publishSubject);
     }
 
-    interface IForgetPwdPresenter {
+    interface IRegisterPresenter {
         void doForgetPwd(Context context, PublishSubject<ActivityLifeCycleEvent> lifecycleSubject);
 
-        void getCheckCode(Context context, PublishSubject<ActivityLifeCycleEvent> lifecycleSubject);
+        void getCheckCode(String phone, Context context, PublishSubject<ActivityLifeCycleEvent> lifecycleSubject);
+
+        void doRegister(Context context, PublishSubject<ActivityLifeCycleEvent> lifecycleSubject);
+
     }
+
 }

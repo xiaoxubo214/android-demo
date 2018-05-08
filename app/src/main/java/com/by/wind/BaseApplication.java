@@ -1,6 +1,8 @@
 package com.by.wind;
 
 import android.app.Application;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 
 import com.by.wind.util.common.AppException;
 import com.orhanobut.hawk.Hawk;
@@ -13,6 +15,8 @@ import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 public class BaseApplication extends Application {
     private static BaseApplication app;
+    private String mVersionName;
+    private int mVersionCode;
     public BaseApplication() {
         app = this;
     }
@@ -35,4 +39,33 @@ public class BaseApplication extends Application {
     private void registerUncaughtExceptionHandler() {
         Thread.setDefaultUncaughtExceptionHandler(AppException.getAppExceptionHandler());
     }
+
+    // 获取软件版本号
+    public String getVersionName() {
+        try {
+            PackageManager packageManager = getPackageManager();
+            PackageInfo packInfo = packageManager.getPackageInfo(getPackageName(), 0);
+            mVersionName = packInfo.versionName;
+            return "v" + mVersionName;
+        } catch (PackageManager.NameNotFoundException ignored) {
+        }
+        return "V1.0";
+    }
+
+    // 获取软件版本号
+    public int getVersionCode() {
+        if (mVersionCode > 0) {
+            return mVersionCode;
+        } else {
+            try {
+                PackageManager packageManager = getPackageManager();
+                PackageInfo packInfo = packageManager.getPackageInfo(getPackageName(), 0);
+                mVersionCode = packInfo.versionCode;
+                return mVersionCode;
+            } catch (PackageManager.NameNotFoundException ignored) {
+            }
+            return 15;
+        }
+    }
+
 }

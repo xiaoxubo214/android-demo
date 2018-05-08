@@ -3,7 +3,9 @@ package com.by.wind.component.net;
 import android.content.Context;
 import android.util.Base64;
 
+import com.by.wind.BaseApplication;
 import com.by.wind.Constants;
+import com.by.wind.util.DeviceUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -47,19 +49,19 @@ public class OkHttpUtil {
             Request originalRequest = chain.request();
             HttpUrl.Builder authorizedUrlBuilder = originalRequest.url().newBuilder()
                     .scheme(originalRequest.url().scheme())
-                    .host(originalRequest.url().host());
+                    .host(originalRequest.url().host())
                     //添加统一参数 如手机唯一标识符,token等
-/*                    .addQueryParameter("deviceId", DeviceUtil.getIMEI(TeacherApplication.getInstance().getApplicationContext()))
-                    .addQueryParameter("platform", Urls.PLATFORM_INFO)
-                    .addQueryParameter("channel", Urls.CHANNEL_INFO)
-                    .addQueryParameter("appVersion", TeacherApplication.getInstance().getVersionName());*/
+                    .addQueryParameter("device_type", "android")
+                    .addQueryParameter("device_ver", DeviceUtil.getIMEI(BaseApplication.getInstance().getApplicationContext()))
+                    .addQueryParameter("device_id", DeviceUtil.getIMEI(BaseApplication.getInstance().getApplicationContext()))
+                    .addQueryParameter("app_ver", BaseApplication.getInstance().getVersionName());
             Request.Builder requestBuilder = originalRequest.newBuilder()
-                    .addHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
-                    .addHeader("Accept-Encoding", "gzip, deflate")
-                    .addHeader("Connection", "keep-alive")
-                    .addHeader("Accept", "*/*")
-                    .addHeader("Cookie", "add cookies here")
-                    .addHeader("AppType", "TPOS")
+//                    .addHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
+//                    .addHeader("Accept-Encoding", "gzip, deflate")
+//                    .addHeader("Connection", "keep-alive")
+//                    .addHeader("Accept", "*/*")
+//                    .addHeader("Cookie", "add cookies here")
+//                    .addHeader("AppType", "TPOS")
                     .method(originalRequest.method(), originalRequest.body())
                     .url(authorizedUrlBuilder.build());
             Request request;
