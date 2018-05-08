@@ -1,19 +1,17 @@
 package com.by.wind.ui.activity;
 
+import android.app.Activity;
+
+import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.widget.ImageView;
+import android.os.CountDownTimer;
+import android.util.Log;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
 
 import com.by.wind.R;
-import com.by.wind.util.SharedPreferences;
 import com.wind.base.BaseActivity;
 
-import java.lang.ref.WeakReference;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -25,14 +23,10 @@ public class SplashActivity extends BaseActivity {
 
     @BindView(R.id.root_ll)
     LinearLayout mRootLayout;
-
-    private SplashHandler mSplashHandler;
-
-    private static final int STEP_COVER_WHAT = 1;
-    private static final int STEP_NEXT_REQUEST = 2;
-
-    private static final long DEFAULT_SHOWTIME = 500;
-
+    @BindView(R.id.SeekBar)
+    SeekBar mSeekBar;
+    private final int COUNTDOWN_TIME_MILLION = 2000;
+    private final int COUNTDOWN_INTERVAL = 19;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,66 +41,32 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void initialView() {
-        mSplashHandler = new SplashHandler(this);
-        mSplashHandler.sendEmptyMessageDelayed(STEP_COVER_WHAT, DEFAULT_SHOWTIME / 2);
+        new CountDownTimerUtils(mSeekBar,this,COUNTDOWN_TIME_MILLION,COUNTDOWN_INTERVAL).start();
     }
 
-    private static class SplashHandler extends Handler {
 
-        private final WeakReference<SplashActivity> mActivity;
+    public class CountDownTimerUtils extends CountDownTimer {
+        private SeekBar seekBar;
+        private Context context;
+        private int count = 0;
 
-        public SplashHandler(SplashActivity activity) {
-            mActivity = new WeakReference<>(activity);
+        public CountDownTimerUtils(SeekBar seekBar,Context context
+                , long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+            this.seekBar = seekBar;
+            this.context = context;
         }
 
         @Override
-        public void handleMessage(Message msg) {
-            if (mActivity.get() == null || mActivity.get().isFinishing()) {
-                return;
-            }
+        public void onTick(long millisUntilFinished) {
+            seekBar.setProgress( count++);
+            Log.e(TAG,"count:" +count);
 
-            switch (msg.what) {
-                case STEP_NEXT_REQUEST:
-                    mActivity.get().showNext();
-                    break;
-                case STEP_COVER_WHAT:
-                    mActivity.get().showImageCoverAnimation();
-                    break;
-            }
         }
-    }
 
-    private void showImageCoverAnimation() {
-
-        AlphaAnimation showAnimation = new AlphaAnimation(1f, 1f);
-        showAnimation.setDuration(DEFAULT_SHOWTIME);
-        showAnimation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                mSplashHandler.sendEmptyMessageDelayed(STEP_NEXT_REQUEST, DEFAULT_SHOWTIME);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-
-        mRootLayout.setVisibility(View.VISIBLE);
-        mRootLayout.startAnimation(showAnimation);
-    }
-
-    private void showNext() {
-        if (SharedPreferences.getInstance().getBoolean("isLogin", false)) {
-            MainActivity.open(this);
-        } else {
-            LoginActivity.open(this);
+        @Override
+        public void onFinish() {
+            MainActivity.open(context);
         }
-        finish();
     }
 }

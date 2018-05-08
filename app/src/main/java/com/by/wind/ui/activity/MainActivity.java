@@ -192,7 +192,6 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
         }
     }
 
-
     private void registerNetwork() {
         mIntentFilter = new IntentFilter();
         mIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
