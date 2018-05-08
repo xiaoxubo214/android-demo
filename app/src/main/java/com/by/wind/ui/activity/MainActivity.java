@@ -163,7 +163,7 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
 
     @Override
     public void onTabClick(int index) {
-        Log.e(TAG,index + "");
+        //Log.e(TAG,index + "");
         if (index == 0) {
             viewpager.setCurrentItem(MESSAGE_TYPE_TAB, false);
             showTitleContent(getResources().getString(R.string.message));
