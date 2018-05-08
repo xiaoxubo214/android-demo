@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 
 import com.by.wind.Constants;
 import com.by.wind.R;
-import com.by.wind.component.net.PreferenceHelper;
+import com.by.wind.util.PreferenceHelper;
 import com.by.wind.ui.activity.LoginActivity;
 import com.by.wind.ui.activity.RegisterActivity;
 import com.by.wind.ui.activity.WebViewActivity;

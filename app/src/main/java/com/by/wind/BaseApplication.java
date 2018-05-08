@@ -30,7 +30,7 @@ public class BaseApplication extends Application {
         super.onCreate();
         app = this;
         Hawk.init(this);
-        //LeakCanary.install(this);
+        LeakCanary.install(this);
         ZXingLibrary.initDisplayOpinion(this);
         registerUncaughtExceptionHandler();
     }
@@ -53,18 +53,18 @@ public class BaseApplication extends Application {
     }
 
     // 获取软件版本号
-    public int getVersionCode() {
+    public String getVersionCode() {
         if (mVersionCode > 0) {
-            return mVersionCode;
+            return mVersionCode + "";
         } else {
             try {
                 PackageManager packageManager = getPackageManager();
                 PackageInfo packInfo = packageManager.getPackageInfo(getPackageName(), 0);
                 mVersionCode = packInfo.versionCode;
-                return mVersionCode;
+                return mVersionCode + "";
             } catch (PackageManager.NameNotFoundException ignored) {
             }
-            return 15;
+            return 15 + "";
         }
     }
 

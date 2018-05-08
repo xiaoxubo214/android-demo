@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
 import com.by.wind.R;
-import com.by.wind.component.net.PreferenceHelper;
+import com.by.wind.util.PreferenceHelper;
 import com.by.wind.component.net.event.MessageEvent;
 import com.by.wind.ui.activity.LoginActivity;
 import com.wind.base.BaseFragment;
@@ -52,7 +51,11 @@ public class SplashFragment extends BaseFragment {
 
     @Override
     protected void initAllView(Bundle savedInstanceState) {
-        new CountDownTimerUtils(mSeekBar,this.getActivity(),COUNTDOWN_TIME_MILLION,COUNTDOWN_INTERVAL).start();
+        if (PreferenceHelper.isLogin() == true) {
+            new CountDownTimerUtils(mSeekBar, this.getActivity(), COUNTDOWN_TIME_MILLION, COUNTDOWN_INTERVAL).start();
+        } else {
+            LoginActivity.open(getActivity());
+        }
     }
 
     public class CountDownTimerUtils extends CountDownTimer {
@@ -75,11 +78,7 @@ public class SplashFragment extends BaseFragment {
 
         @Override
         public void onFinish() {
-            if (PreferenceHelper.isLogin() == true) {
-                EventBus.getDefault().post(new MessageEvent(MessageEvent.SPLASH_FINISH));
-            } else {
-                LoginActivity.open(getActivity());
-            }
+            EventBus.getDefault().post(new MessageEvent(MessageEvent.SPLASH_FINISH));
         }
     }
 }

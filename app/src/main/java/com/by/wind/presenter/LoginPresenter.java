@@ -6,7 +6,7 @@ import com.by.wind.Constants;
 import com.by.wind.component.net.ApiManager;
 
 import com.by.wind.component.net.ObservableUtil;
-import com.by.wind.component.net.PreferenceHelper;
+import com.by.wind.util.PreferenceHelper;
 import com.by.wind.component.net.ProgressSubscriber;
 
 import com.by.wind.entity.UserModel;
@@ -46,7 +46,11 @@ public class LoginPresenter extends BaseMvpPresenter<IBaseView.ILoginView> imple
             @Override
             protected void _onError(String message) {
                 mLoginView.hideLoading();
-                mLoginView.showResult(Constants.TEST);
+                if(Constants.isDebug) {
+                    PreferenceHelper.setIsLogin(true);
+                    mLoginView.showResult(Constants.TEST);
+                }
+
             }
         }, Constants.HAWK_KEY, ActivityLifeCycleEvent.DESTROY, publishSubject, false, false);
     }

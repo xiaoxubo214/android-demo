@@ -72,4 +72,6 @@ public class Constants {
     public static final int VALID_SUCCESS = 100;//验证通过
     public static final int VALID_VERIFY_CODE_NULL = 105;//验证码为空
     public static final int VALID_VERIFY_CODE_INVALID = 106;//无效验证码
+
+    public final static String DEVICE = "android";
 }

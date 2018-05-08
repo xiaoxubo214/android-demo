@@ -1,7 +1,5 @@
 package com.by.wind.util;
 
-import com.by.wind.component.net.PreferenceHelper;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

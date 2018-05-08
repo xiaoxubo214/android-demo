@@ -15,11 +15,19 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
+import com.by.wind.BaseApplication;
 import com.by.wind.Constants;
 import com.by.wind.component.net.event.MessageEvent;
+import com.by.wind.entity.RequestInfo;
 import com.by.wind.util.BussinessUtil;
+import com.by.wind.util.DeviceUtil;
+import com.by.wind.util.JsonUtil;
+import com.by.wind.util.PreferenceHelper;
+import com.by.wind.util.SharedPreferences;
 import com.by.wind.widget.TitleActivity;
 import com.by.wind.R;
+
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -62,8 +70,27 @@ public class WebViewActivity extends TitleActivity {
         settings.setDisplayZoomControls(true);
         settings.setSupportZoom(true);
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        //mWebView.loadUrl(getIntent().getStringExtra("url"));
-        mWebView.loadUrl(Constants.URL_PAGE + Constants.PARAM_SPLIT + PAGE_URL);
+        mWebView.post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    RequestInfo requestInfo = new RequestInfo();
+                    requestInfo.setRequest_type(PAGE_URL);
+                    requestInfo.setPhone_h(PreferenceHelper.getUserInfo().getUserPhone());
+                    requestInfo.setDevice_type(Constants.DEVICE);
+                    requestInfo.setDevice_ver(BaseApplication.getInstance().getVersionCode());
+                    requestInfo.setDevice_id(DeviceUtil.getIMEI(BaseApplication.getInstance().getApplicationContext()));
+                    requestInfo.setApp_ver(BaseApplication.getInstance().getVersionName());
+                    requestInfo.setAccess_token(PreferenceHelper.getUserToken().access_token);
+                    String jsonString = JsonUtil.toJson(requestInfo);
+                    mWebView.postUrl(Constants.URL_PAGE,jsonString.getBytes());
+                }catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        //Log.e(TAG,Constants.URL_PAGE + Constants.PARAM_SPLIT + PAGE_URL);
+        //mWebView.loadUrl(Constants.URL_PAGE + Constants.PARAM_SPLIT + PAGE_URL);
         mWebView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onReceivedTitle(WebView view, String title) {

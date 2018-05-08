@@ -1,4 +1,4 @@
-package com.by.wind.component.net;
+package com.by.wind.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import com.by.wind.BaseApplication;
 import com.by.wind.entity.User;
 import com.by.wind.entity.UserToken;
-import com.by.wind.util.JsonUtil;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;

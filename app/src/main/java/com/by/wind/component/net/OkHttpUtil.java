@@ -1,11 +1,11 @@
 package com.by.wind.component.net;
 
 import android.content.Context;
-import android.util.Base64;
 
 import com.by.wind.BaseApplication;
 import com.by.wind.Constants;
 import com.by.wind.util.DeviceUtil;
+import com.by.wind.util.PreferenceHelper;
 
 import java.io.File;
 import java.io.IOException;
@@ -52,7 +52,7 @@ public class OkHttpUtil {
                     .host(originalRequest.url().host())
                     //添加统一参数 如手机唯一标识符,token等
                     .addQueryParameter("device_type", "android")
-                    .addQueryParameter("device_ver", DeviceUtil.getIMEI(BaseApplication.getInstance().getApplicationContext()))
+                    .addQueryParameter("device_ver", BaseApplication.getInstance().getVersionCode() + "")
                     .addQueryParameter("device_id", DeviceUtil.getIMEI(BaseApplication.getInstance().getApplicationContext()))
                     .addQueryParameter("app_ver", BaseApplication.getInstance().getVersionName());
             Request.Builder requestBuilder = originalRequest.newBuilder()
