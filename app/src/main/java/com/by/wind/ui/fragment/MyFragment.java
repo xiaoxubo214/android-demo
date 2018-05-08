@@ -23,7 +23,7 @@ import butterknife.Unbinder;
 /**
  *
  */
-public class PersonalFragment extends BaseFragment {
+public class MyFragment extends BaseFragment {
 
     @BindView(R.id.ll_user_info)
     LinearLayout mLlUserInfo;
@@ -59,7 +59,7 @@ public class PersonalFragment extends BaseFragment {
 
     @Override
     public int getContentViewId() {
-        return R.layout.fragment_personal;
+        return R.layout.fragment_my;
     }
 
     @Override

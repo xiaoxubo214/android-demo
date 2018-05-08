@@ -28,7 +28,7 @@ public class Constants {
 
     public final static String PAGE_TEAM = "goto_url_group";//团队
 
-    public final static String PAGE_SHIP = "goto_url_biz";//商户通
+    public final static String PAGE_SHOP = "goto_url_biz";//商户通
 
     public final static String PAGE_SALE = "goto_url_sale";//销售
 

@@ -19,14 +19,14 @@ import android.widget.RelativeLayout;
 
 import com.by.wind.R;
 import com.by.wind.component.net.event.MessageEvent;
+import com.by.wind.ui.fragment.MessageFragment;
+import com.by.wind.ui.fragment.MyFragment;
+import com.by.wind.ui.fragment.SaleFragment;
+import com.by.wind.ui.fragment.ShopFragment;
 import com.by.wind.ui.fragment.SplashFragment;
+import com.by.wind.ui.fragment.TeamFragment;
 import com.by.wind.util.ToastUtil;
 import com.by.wind.widget.FragmentPagerAdapter;
-import com.by.wind.ui.fragment.CartFragment;
-import com.by.wind.ui.fragment.CategoryFragment;
-import com.by.wind.ui.fragment.DiscoverFragment;
-import com.by.wind.ui.fragment.HomeFragment;
-import com.by.wind.ui.fragment.PersonalFragment;
 import com.by.wind.widget.NoScrollViewPager;
 import com.by.wind.widget.tab.Tab;
 import com.by.wind.widget.tab.TabIndicator;
@@ -55,11 +55,11 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
     @BindView(R.id.mMainIndicator)
     TabIndicator mMainIndicator;
 
-    private HomeFragment mHomeFragment;
-    private CategoryFragment mCategoryFragment;
-    private DiscoverFragment mDiscoverFragment;
-    private CartFragment mCartFragment;
-    private PersonalFragment mPersonalFragment;
+    private MessageFragment mMessageFragment;
+    private TeamFragment mTeamFragment;
+    private ShopFragment mShopFragment;
+    private SaleFragment mSaleFragment;
+    private MyFragment mMyFragment;
     private ArrayList<BaseFragment> mFragmentList;
     private FragmentPagerAdapter fragmentPagerAdapter;
 
@@ -68,11 +68,11 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
 
 
     private int mCurIndex ;
-    private final static int HOME_TYPE_TAB = 0;
-    private final static int CATEGORY_TYPE_TAB = 1;
-    private final static int DISCOVER_TYPE_TAB = 2;
-    private final static int CART_TYPE_TAB = 3;
-    private final static int PERSONAL_TYPE_TAB = 4;
+    private final static int MESSAGE_TYPE_TAB = 0;
+    private final static int TEAM_TYPE_TAB = 1;
+    private final static int SHOP_TYPE_TAB = 2;
+    private final static int SALE_TYPE_TAB = 3;
+    private final static int MY_TYPE_TAB = 4;
 
     public final static int REQUEST_CODE = 1;
 
@@ -104,22 +104,22 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
         SplashFragment splashFragment= new SplashFragment();
         transaction.replace(R.id.fl_splash, splashFragment);
         transaction.commit();
-        
+
         llCustomTitle.setVisibility(View.GONE);
         llCustomTitle.set_show_left_button(false);
         llCustomTitle.set_show_Right_button(true);
-        mHomeFragment = new HomeFragment();
-        mCategoryFragment = new CategoryFragment();
-        mDiscoverFragment = new DiscoverFragment();
-        mCartFragment = new CartFragment();
-        mPersonalFragment = new PersonalFragment();
+        mMessageFragment = new MessageFragment();
+        mTeamFragment = new TeamFragment();
+        mShopFragment = new ShopFragment();
+        mSaleFragment = new SaleFragment();
+        mMyFragment = new MyFragment();
 
         mFragmentList = new ArrayList<>();
-        mFragmentList.add(mHomeFragment);
-        mFragmentList.add(mCategoryFragment);
-        mFragmentList.add(mDiscoverFragment);
-        mFragmentList.add(mCartFragment);
-        mFragmentList.add(mPersonalFragment);
+        mFragmentList.add(mMessageFragment);
+        mFragmentList.add(mTeamFragment);
+        mFragmentList.add(mShopFragment);
+        mFragmentList.add(mSaleFragment);
+        mFragmentList.add(mMyFragment);
 
         fragmentPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager(), mFragmentList);
         viewpager.setAdapter(fragmentPagerAdapter);
@@ -130,7 +130,7 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
         ArrayList<Tab> tabs = new ArrayList<>();
         tabs.add(new Tab(R.drawable.def_main_tab_message_selector, getResources().getString(R.string.message), null));
         tabs.add(new Tab(R.drawable.def_main_tab_team_selector, getResources().getString(R.string.team), null));
-        tabs.add(new Tab(R.drawable.def_main_tab_ship_selector, getString(R.string.ship), null));
+        tabs.add(new Tab(R.drawable.def_main_tab_shop_selector, getString(R.string.shop), null));
         tabs.add(new Tab(R.drawable.def_main_tab_sale_selector, getResources().getString(R.string.sale), null));
         tabs.add(new Tab(R.drawable.def_main_tab_my_selector, getResources().getString(R.string.personal), null));
         mMainIndicator.initializeData(tabs);
@@ -165,19 +165,19 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
     public void onTabClick(int index) {
         Log.e(TAG,index + "");
         if (index == 0) {
-            viewpager.setCurrentItem(HOME_TYPE_TAB, false);
+            viewpager.setCurrentItem(MESSAGE_TYPE_TAB, false);
             showTitleContent(getResources().getString(R.string.message));
         } else if (index == 1) {
-            viewpager.setCurrentItem(CATEGORY_TYPE_TAB,false);
+            viewpager.setCurrentItem(TEAM_TYPE_TAB,false);
             showTitleContent(getResources().getString(R.string.team));
         } else if (index == 2) {
-            viewpager.setCurrentItem(DISCOVER_TYPE_TAB, false);
-            showTitleContent(getResources().getString(R.string.ship));
+            viewpager.setCurrentItem(SHOP_TYPE_TAB, false);
+            showTitleContent(getResources().getString(R.string.shop));
         } else if (index == 3) {
-            viewpager.setCurrentItem(CART_TYPE_TAB, false);
+            viewpager.setCurrentItem(SALE_TYPE_TAB, false);
             showTitleContent(getResources().getString(R.string.sale));
         }else if (index == 4) {
-            viewpager.setCurrentItem(PERSONAL_TYPE_TAB, false);
+            viewpager.setCurrentItem(MY_TYPE_TAB, false);
             showTitleContent(getResources().getString(R.string.personal));
 
         }

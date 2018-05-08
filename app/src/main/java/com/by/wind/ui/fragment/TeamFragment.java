@@ -1,13 +1,6 @@
 package com.by.wind.ui.fragment;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +13,6 @@ import android.widget.ImageView;
 import com.by.wind.R;
 import com.by.wind.component.net.event.MessageEvent;
 import com.by.wind.util.BussinessUtil;
-import com.by.wind.util.ToastUtil;
 import com.wind.base.BaseFragment;
 import com.wind.base.loading.LoadingDialog;
 
@@ -35,7 +27,7 @@ import butterknife.Unbinder;
 /**
  *
  */
-public class DiscoverFragment extends BaseFragment implements LoadingDialog.ProgressCancelListener {
+public class TeamFragment extends BaseFragment implements LoadingDialog.ProgressCancelListener {
 
     @BindView(R.id.webView)
     WebView mWebView;
@@ -51,7 +43,7 @@ public class DiscoverFragment extends BaseFragment implements LoadingDialog.Prog
 
     @Override
     public int getContentViewId() {
-        return R.layout.fragment_discover;
+        return R.layout.fragment_team;
     }
 
     @Override

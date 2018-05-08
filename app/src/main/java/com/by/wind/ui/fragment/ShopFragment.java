@@ -1,8 +1,6 @@
 package com.by.wind.ui.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +27,7 @@ import butterknife.Unbinder;
 /**
  *
  */
-public class CategoryFragment extends BaseFragment implements LoadingDialog.ProgressCancelListener {
+public class ShopFragment extends BaseFragment implements LoadingDialog.ProgressCancelListener {
 
     @BindView(R.id.webView)
     WebView mWebView;
@@ -45,7 +43,7 @@ public class CategoryFragment extends BaseFragment implements LoadingDialog.Prog
 
     @Override
     public int getContentViewId() {
-        return R.layout.fragment_category;
+        return R.layout.fragment_shop;
     }
 
     @Override

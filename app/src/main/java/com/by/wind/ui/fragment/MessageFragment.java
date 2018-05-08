@@ -38,7 +38,7 @@ import butterknife.Unbinder;
 /**
  *
  */
-public class HomeFragment extends BaseFragment implements IBaseView.IHomeView {
+public class MessageFragment extends BaseFragment implements IBaseView.IHomeView {
 
     @BindView(R.id.home_scan)
     ImageView mHomeScan;
@@ -91,7 +91,7 @@ public class HomeFragment extends BaseFragment implements IBaseView.IHomeView {
 
     @Override
     public int getContentViewId() {
-        return R.layout.fragment_home;
+        return R.layout.fragment_messge;
     }
 
     @Override
