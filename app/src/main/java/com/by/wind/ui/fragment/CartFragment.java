@@ -97,7 +97,6 @@ public class CartFragment extends BaseFragment implements LoadingDialog.Progress
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(MessageEvent event) {
-        Log.e(TAG,"receive message");
         if (event.getEventType().equals(MessageEvent.NETWORK_OK)) {
             mWebView.setVisibility(View.VISIBLE);
             mIvNotNetwork.setVisibility(View.GONE);

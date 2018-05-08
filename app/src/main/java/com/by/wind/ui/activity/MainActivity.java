@@ -7,17 +7,19 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
+
 
 import com.by.wind.R;
 import com.by.wind.component.net.event.MessageEvent;
+import com.by.wind.ui.fragment.SplashFragment;
 import com.by.wind.util.ToastUtil;
 import com.by.wind.widget.FragmentPagerAdapter;
 import com.by.wind.ui.fragment.CartFragment;
@@ -34,25 +36,25 @@ import com.wind.base.BaseFragment;
 import com.by.wind.widget.TitleActivity;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainActivity extends TitleActivity implements TabIndicator.OnTabClickListener {
 
+    @BindView(R.id.fl_splash)
+    FrameLayout flSplash;
+    @BindView(R.id.rl_content)
+    RelativeLayout mContent;
     @BindView(R.id.viewpager)
     NoScrollViewPager viewpager;
     @BindView(R.id.mMainIndicator)
     TabIndicator mMainIndicator;
-    @BindView(R.id.llMainLayout)
-    LinearLayout llMainLayout;
-    @BindView(R.id.ivCommonImg)
-    ImageView ivCommonImg;
-    @BindView(R.id.activity_main)
-    RelativeLayout activityMain;
+
     private HomeFragment mHomeFragment;
     private CategoryFragment mCategoryFragment;
     private DiscoverFragment mDiscoverFragment;
@@ -96,6 +98,14 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
     }
 
     protected void initializeViews() {
+
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        SplashFragment splashFragment= new SplashFragment();
+        transaction.replace(R.id.fl_splash, splashFragment);
+        transaction.commit();
+        
+        llCustomTitle.setVisibility(View.GONE);
         llCustomTitle.set_show_left_button(false);
         llCustomTitle.set_show_Right_button(true);
         mHomeFragment = new HomeFragment();
@@ -132,12 +142,23 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
     protected void onResume() {
         super.onResume();
         registerNetwork();
+        EventBus.getDefault().register(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         unregisterReceiver(mNetworkChangeReceiver);
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(MessageEvent event) {
+        if (event.getEventType().equals(MessageEvent.SPLASH_FINISH)) {
+            flSplash.setVisibility(View.GONE);
+            mContent.setVisibility(View.VISIBLE);
+            llCustomTitle.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

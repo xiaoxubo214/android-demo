@@ -109,13 +109,13 @@ public abstract class BaseFragment extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
 
-        if (getUserVisibleHint()) {
+        /*if (getUserVisibleHint()) {
             isVisible = true;
             onVisible();
         } else {
             isVisible = false;
             onInvisible();
-        }
+        }*/
     }
 
     /**

@@ -25,7 +25,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/TranslucentTheme">
-        <activity android:name=".ui.activity.SplashActivity">
+        <activity android:name=".ui.activity.MainActivity">
 
             <!-- android:theme="@style/StartStyle"> -->
             <intent-filter>
@@ -35,7 +35,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.LoginActivity" />
-        <activity android:name=".ui.activity.MainActivity" />
         <activity android:name=".util.img.PicDisplayActivity" />
         <activity android:name=".ui.activity.RegisterActivity" />
         <activity android:name=".ui.activity.WebViewActivity"/>

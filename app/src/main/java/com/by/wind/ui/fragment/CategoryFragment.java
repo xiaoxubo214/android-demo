@@ -76,10 +76,6 @@ public class CategoryFragment extends BaseFragment implements LoadingDialog.Prog
                 //mLoadingDialog.dismiss();
             }
         });
-        if(BussinessUtil.isNetWorkConnected(this.getActivity())) {
-            mWebView.setVisibility(View.GONE);
-            mIvNotNetwork.setVisibility(View.VISIBLE);
-        }
 
         if(!BussinessUtil.isNetWorkConnected(this.getActivity())) {
             mWebView.setVisibility(View.GONE);
@@ -101,7 +97,6 @@ public class CategoryFragment extends BaseFragment implements LoadingDialog.Prog
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(MessageEvent event) {
-        Log.e(TAG,"receive message");
         if (event.getEventType().equals(MessageEvent.NETWORK_OK)) {
             mWebView.setVisibility(View.VISIBLE);
             mIvNotNetwork.setVisibility(View.GONE);

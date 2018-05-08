@@ -5,6 +5,8 @@ public class MessageEvent {
     public final static String NETWORK_OK = "network_ok";
     public final static String NETWORK_FAIL = "network_fail";
 
+    public final static String SPLASH_FINISH = "splash_finish";
+
     private String eventType;
 
     public MessageEvent(String eventType) {
