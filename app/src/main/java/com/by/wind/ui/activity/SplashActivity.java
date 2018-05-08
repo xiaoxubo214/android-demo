@@ -1,7 +1,5 @@
 package com.by.wind.ui.activity;
 
-import android.app.Activity;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -41,6 +39,10 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void initialView() {
+/*        mSeekBar.setClickable(false);
+        mSeekBar.setEnabled(false);
+        mSeekBar.setSelected(false);
+        mSeekBar.setFocusable(false);*/
         new CountDownTimerUtils(mSeekBar,this,COUNTDOWN_TIME_MILLION,COUNTDOWN_INTERVAL).start();
     }
 
@@ -67,6 +69,7 @@ public class SplashActivity extends BaseActivity {
         @Override
         public void onFinish() {
             MainActivity.open(context);
+            SplashActivity.this.finish();
         }
     }
 }
