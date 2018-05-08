@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.by.wind.BaseApplication;
-import com.by.wind.model.UserToken;
+import com.by.wind.entity.User;
+import com.by.wind.entity.UserToken;
 import com.by.wind.util.JsonUtil;
 import com.google.gson.reflect.TypeToken;
 
@@ -16,13 +17,22 @@ import java.lang.reflect.Type;
 
 public class PreferenceHelper {
 
-    private static final String LOGININFO_PREFERENCES = "login_info_preferences";
+    private final static String LOGININFO_PREFERENCES = "login_info_preferences";
 
-    private static final String LAST_TEACHER_TOKEN = "last_teacher_token";
-    private static final String LAST_IS_LOGIN = "last_is_login";
-    private static final String LAST_LOGIN_TYPE = "last_login_type";
+    private final static String LAST_USER_TOKEN = "last_user_token";
+    private final static String LAST_IS_LOGIN = "last_is_login";
+    private final static String LAST_LOGIN_TYPE = "last_login_type";
+    private final static String LAST_USER_INFO = "last_user_info";
 
-    private static final String CACHE_DATA_PRE = "cache_data_pre";
+    private final static String CACHE_DATA_PRE = "cache_data_pre";
+
+
+    public static void clearCache() {
+        saveUserToken(null);
+        saveUserInfo(null);
+        setIsLogin(false);
+    }
+
 
     /**
      * 清空用户信息
@@ -77,9 +87,9 @@ public class PreferenceHelper {
     public static void saveUserToken(UserToken userToken) {
         SharedPreferences.Editor editor = getEditor(LOGININFO_PREFERENCES);
         if (userToken != null) {
-            editor.putString(LAST_TEACHER_TOKEN, JsonUtil.toJson(userToken));
+            editor.putString(LAST_USER_TOKEN, JsonUtil.toJson(userToken));
         } else {
-            editor.putString(LAST_TEACHER_TOKEN, "");
+            editor.putString(LAST_USER_TOKEN, "");
         }
         editor.commit();
     }
@@ -124,7 +134,7 @@ public class PreferenceHelper {
         UserToken userToken = null;
         try {
             SharedPreferences preferences = getSharedPreferences(LOGININFO_PREFERENCES);
-            String userTokenJson = preferences.getString(LAST_TEACHER_TOKEN, "");
+            String userTokenJson = preferences.getString(LAST_USER_TOKEN, "");
             if (userTokenJson != null && !"".equals(userTokenJson)) {
                 Type memberInfoType = new TypeToken<UserToken>() {}.getType();
                 userToken = (UserToken) JsonUtil.toObject(userTokenJson, memberInfoType);
@@ -132,6 +142,40 @@ public class PreferenceHelper {
         } catch (Exception e) {
         }
         return userToken;
+    }
+
+    /**
+     * 获取老师信息
+     */
+    public static User getUserInfo() {
+        User user = null;
+        try {
+            SharedPreferences preferences = getSharedPreferences(LOGININFO_PREFERENCES);
+            String teacherInfoJson = preferences.getString(LAST_USER_INFO, "");
+            if (teacherInfoJson != null && !"".equals(teacherInfoJson)) {
+                Type memberInfoType = new TypeToken<User>() {
+                }.getType();
+                user = (User) JsonUtil.toObject(teacherInfoJson, memberInfoType);
+            }
+        } catch (Exception e) {
+        }
+
+        return user;
+    }
+
+    /**
+     * 保存用户信息
+     *
+     * @param user
+     */
+    public static void saveUserInfo(User user) {
+        SharedPreferences.Editor editor = getEditor(LOGININFO_PREFERENCES);
+        if (user != null) {
+            editor.putString(LAST_USER_INFO, JsonUtil.toJson(user));
+        } else {
+            editor.putString(LAST_USER_INFO, "");
+        }
+        editor.commit();
     }
 
 }

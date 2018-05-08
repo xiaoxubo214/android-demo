@@ -64,12 +64,12 @@ public class OkHttpUtil {
 //                    .addHeader("AppType", "TPOS")
                     .method(originalRequest.method(), originalRequest.body())
                     .url(authorizedUrlBuilder.build());
-            Request request;
+            Request request = requestBuilder.build();
             if (PreferenceHelper.getUserToken() == null) {
                 request = requestBuilder.build();
             } else {
-                String basicToken = "Bearer " + Base64.encodeToString(PreferenceHelper.getUserToken().accessToken.getBytes(), Base64.NO_WRAP);
-                request = requestBuilder.addHeader("Authorization", basicToken).build();
+                /*String basicToken = "Bearer " + Base64.encodeToString(PreferenceHelper.getUserToken().accessToken.getBytes(), Base64.NO_WRAP);
+                request = requestBuilder.addHeader("Authorization", basicToken).build();*/
             }
             return chain.proceed(request);
         }

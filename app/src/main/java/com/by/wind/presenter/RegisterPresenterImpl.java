@@ -7,7 +7,6 @@ import com.by.wind.Constants;
 import com.by.wind.component.net.ApiManager;
 import com.by.wind.component.net.ObservableUtil;
 import com.by.wind.component.net.ProgressSubscriber;
-import com.by.wind.model.UserModel;
 import com.by.wind.util.ToastUtil;
 import com.by.wind.view.IBaseView;
 import com.wind.base.event.ActivityLifeCycleEvent;

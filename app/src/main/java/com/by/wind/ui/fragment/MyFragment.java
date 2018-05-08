@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 
 import com.by.wind.Constants;
 import com.by.wind.R;
+import com.by.wind.component.net.PreferenceHelper;
 import com.by.wind.ui.activity.LoginActivity;
 import com.by.wind.ui.activity.RegisterActivity;
 import com.by.wind.ui.activity.WebViewActivity;
@@ -67,7 +68,7 @@ public class MyFragment extends BaseFragment {
         mLlUserInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                WebViewActivity.open(getActivity());
+                WebViewActivity.open(getActivity(),Constants.PAGE_USER);
             }
         });
         mChangePwd.setOnClickListener(new View.OnClickListener() {
@@ -79,25 +80,31 @@ public class MyFragment extends BaseFragment {
         mCommon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                WebViewActivity.open(getActivity());
+                WebViewActivity.open(getActivity(), Constants.PAGE_COMMON);
             }
         });
         mHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                WebViewActivity.open(getActivity());
+                WebViewActivity.open(getActivity(),Constants.PAGE_HELP);
             }
         });
 
         mAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                WebViewActivity.open(getActivity());
+                WebViewActivity.open(getActivity(),Constants.PAGE_ABOUT);
             }
         });
 
 
-        mLoginOutLl.setOnClickListener(view -> LoginActivity.open(context));
+        mLoginOutLl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LoginActivity.open(getActivity());
+                PreferenceHelper.clearCache();
+            }
+        });
     }
 
     @Override

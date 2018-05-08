@@ -40,8 +40,10 @@ public class Constants {
 
     public final static String PAGE_ABOUT = "goto_url_about";//关于我们
 
+    public final static String PARAM_SPLIT = "?request_type=";
 
     public static final String KEY_PROTECT_APP = "key_protect_app";
+
 
     public final static String RESPONSE_CACHE = "";
     public final static int RESPONSE_CACHE_SIZE = 1024;

@@ -1,11 +1,10 @@
 package com.by.wind.component.net;
 
 import com.by.wind.Constants;
-import com.by.wind.model.UserToken;
+import com.by.wind.entity.UserToken;
 
 
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
 import retrofit2.http.Path;
 import rx.Observable;
 import retrofit2.http.Field;
@@ -21,7 +20,7 @@ public interface Api {
 
     @FormUrlEncoded
     @POST(Constants.URL_API)
-    Observable<RetrofitResult<String>> login(@Field("username") String username,@Field("password") String password);
+    Observable<RetrofitResult<UserToken>> login(@Field("username") String username,@Field("password") String password);
 
     /**
      * 刷新token

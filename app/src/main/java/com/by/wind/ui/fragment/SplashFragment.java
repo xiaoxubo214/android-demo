@@ -12,7 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
 import com.by.wind.R;
+import com.by.wind.component.net.PreferenceHelper;
 import com.by.wind.component.net.event.MessageEvent;
+import com.by.wind.ui.activity.LoginActivity;
 import com.wind.base.BaseFragment;
 
 import org.greenrobot.eventbus.EventBus;
@@ -73,7 +75,11 @@ public class SplashFragment extends BaseFragment {
 
         @Override
         public void onFinish() {
-            EventBus.getDefault().post(new MessageEvent(MessageEvent.SPLASH_FINISH));
+            if (PreferenceHelper.isLogin() == true) {
+                EventBus.getDefault().post(new MessageEvent(MessageEvent.SPLASH_FINISH));
+            } else {
+                LoginActivity.open(getActivity());
+            }
         }
     }
 }

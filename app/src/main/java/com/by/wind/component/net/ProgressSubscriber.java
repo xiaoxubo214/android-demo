@@ -6,7 +6,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.by.wind.R;
-import com.by.wind.model.UserToken;
+import com.by.wind.entity.UserToken;
 import com.by.wind.ui.activity.LoginActivity;
 import com.by.wind.util.BussinessUtil;
 import com.by.wind.util.FileUtil;
@@ -97,7 +97,8 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Loa
             }
         } else if (e instanceof ApiException) {
             if (401 == ((ApiException) e).errorCode) {            //Token过期,刷新token
-                refreshToken();
+                //refreshToken();
+                gotoLogin();
                 _onError(e.getMessage());
             } else {
                 _onError(e.getMessage());
@@ -111,7 +112,7 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Loa
     /**
      * 刷新Token
      */
-    private void refreshToken() {
+/*    private void refreshToken() {
         if (null == PreferenceHelper.getUserToken()) return;
         Observable o = ApiManager.getInstance().getApiService().getRefreshToken(PreferenceHelper.getUserToken().accessToken, PreferenceHelper.getUserToken().refreshToken, "PATCH");
         o.subscribeOn(Schedulers.io())
@@ -126,12 +127,16 @@ public abstract class ProgressSubscriber<T> extends Subscriber<T> implements Loa
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
-                        Toast.makeText(mContext, "Token已过期，请重新登录！", Toast.LENGTH_SHORT).show();
-                        FileUtil.clearCache();
-                        LoginActivity.open(mContext);
-                        if (mContext instanceof Activity) ((Activity) mContext).finish();
+                        gotoLogin();
                     }
                 });
+    }*/
+
+    private void gotoLogin() {
+        Toast.makeText(mContext, "Token已过期，请重新登录！", Toast.LENGTH_SHORT).show();
+        FileUtil.clearCache();
+        LoginActivity.open(mContext);
+        if (mContext instanceof Activity) ((Activity) mContext).finish();
     }
 
     @Override

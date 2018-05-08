@@ -1,4 +1,4 @@
-package com.by.wind.model;
+package com.by.wind.entity;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,24 +9,19 @@ import android.os.Parcelable;
 
 public class UserToken implements Parcelable {
 
-    public String accessToken;
-    public String clientId;
-    public long expireTime;
-    public String refreshToken;
+    public String phone_h;
+    public String access_token;
 
     protected UserToken(Parcel in) {
-        accessToken = in.readString();
-        clientId = in.readString();
-        expireTime = in.readLong();
-        refreshToken = in.readString();
+
+        phone_h = in.readString();
+        access_token = in.readString();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(accessToken);
-        dest.writeString(clientId);
-        dest.writeLong(expireTime);
-        dest.writeString(refreshToken);
+        dest.writeString(phone_h);
+        dest.writeString(access_token);
     }
 
     @Override

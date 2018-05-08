@@ -13,7 +13,7 @@ import android.widget.EditText;
 
 import com.by.wind.Constants;
 import com.by.wind.R;
-import com.by.wind.model.UserModel;
+import com.by.wind.entity.UserModel;
 import com.by.wind.presenter.IBasePresenter;
 import com.by.wind.presenter.LoginPresenter;
 import com.by.wind.util.StringUtil;

@@ -1,9 +1,4 @@
-package com.by.wind.model;
-
-import android.os.Handler;
-import android.os.Looper;
-
-import com.by.wind.component.net.CallBack;
+package com.by.wind.entity;
 
 
 /**

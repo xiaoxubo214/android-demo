@@ -2,7 +2,7 @@ package com.by.wind.presenter;
 
 import android.content.Context;
 
-import com.by.wind.model.UserModel;
+import com.by.wind.entity.UserModel;
 import com.wind.base.event.ActivityLifeCycleEvent;
 
 import rx.subjects.PublishSubject;

@@ -15,6 +15,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
+import com.by.wind.Constants;
 import com.by.wind.component.net.event.MessageEvent;
 import com.by.wind.util.BussinessUtil;
 import com.by.wind.widget.TitleActivity;
@@ -34,7 +35,10 @@ public class WebViewActivity extends TitleActivity {
     private IntentFilter mIntentFilter;
     private NetworkChangeReceiver mNetworkChangeReceiver;
 
-    public static void open(Context context) {
+    private static String PAGE_URL = "";
+
+    public static void open(Context context, String pageUrl) {
+        PAGE_URL = pageUrl;
         Intent intent = new Intent();
         intent.setClass(context, WebViewActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -59,7 +63,7 @@ public class WebViewActivity extends TitleActivity {
         settings.setSupportZoom(true);
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         //mWebView.loadUrl(getIntent().getStringExtra("url"));
-        mWebView.loadUrl("http://www.tmall.com");
+        mWebView.loadUrl(Constants.URL_PAGE + Constants.PARAM_SPLIT + PAGE_URL);
         mWebView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onReceivedTitle(WebView view, String title) {
