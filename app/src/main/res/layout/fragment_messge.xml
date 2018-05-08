@@ -1,74 +1,19 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ScrollView
+    android:layout_height="match_parent"
+    tools:context="com.by.wind.ui.fragment.DiscoverFragment">
+
+    <WebView
+        android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.youth.banner.Banner
-                android:id="@+id/banner"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginBottom="@dimen/margin_two" />
-
-            <GridView
-                android:id="@+id/function_navigation"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_below="@id/banner"
-                android:numColumns="5"
-                android:background="@drawable/bg_white_transparent"
-                android:padding="10dp"
-                android:gravity="center_horizontal"/>
-
-            <ListView
-                android:id="@+id/list"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_below="@id/function_navigation"
-                android:background="@drawable/bg_white_transparent"/>
-        </RelativeLayout>
-    </ScrollView>
-    <LinearLayout
-        android:id="@+id/tools_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="30dp">
-        <ImageView
-            android:id="@+id/home_scan"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/home_title_scan_white"
-            android:layout_gravity="center"
-            android:layout_marginRight="8dp"
-            android:layout_marginLeft="5dp"
-            />
-        <EditText
-            android:id="@+id/home_search"
-            android:layout_width="0dp"
-            android:layout_height="33dp"
-            android:background="@drawable/jshop_search_input_bg"
-            android:layout_weight="10"
-            android:layout_gravity="center"
-            android:hint="@string/home_search_hint"
-            android:textSize="@dimen/sp_15"
-            android:drawableLeft="@drawable/home_title_search_black"
-            android:paddingLeft="@dimen/margin_ten"
-            android:drawablePadding="@dimen/margin_five"/>
-        <ImageView
-            android:id="@+id/home_message"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_personal_home_message"
-            android:layout_gravity="center"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"/>
-    </LinearLayout>
+        android:visibility="visible"/>
+    <ImageView
+        android:id="@+id/not_network_iv"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:src="@drawable/not_network"
+        android:visibility="gone"/>
 </FrameLayout>

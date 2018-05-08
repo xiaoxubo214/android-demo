@@ -204,7 +204,17 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
                 if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
                     String result = bundle.getString(CodeUtils.RESULT_STRING);
                     ToastUtil.show( "解析结果:" + result);
-                    Log.e("MainActivity",result);
+                    String scanPage = "";
+                    if (mCurIndex == -1 || mCurIndex == 0){
+                        scanPage = MessageEvent.SCAN_MESSAGE;
+                    } else if ( mCurIndex == 1 ) {
+                        scanPage = MessageEvent.SCAN_TEAM;
+                    } else if ( mCurIndex == 2 ) {
+                        scanPage = MessageEvent.SCAN_SHOP;
+                    } else if ( mCurIndex == 3 ) {
+                        scanPage = MessageEvent.SCAN_SALE;
+                    }
+                    EventBus.getDefault().post(new MessageEvent(scanPage,result));
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
                     ToastUtil.show( "解析二维码失败");
                     Log.e("MainActivity","解析二维码失败");

@@ -101,6 +101,9 @@ public class SaleFragment extends BaseFragment implements LoadingDialog.Progress
         } else if (event.getEventType().equals(MessageEvent.NETWORK_FAIL)) {
             mWebView.setVisibility(View.GONE);
             mIvNotNetwork.setVisibility(View.VISIBLE);
+        } else if(event.getEventType().equals(MessageEvent.SCAN_SALE)){
+            String call = "javascript:AppScan(" + event.getMessage() + ")";
+            mWebView.loadUrl(call);
         }
     }
 

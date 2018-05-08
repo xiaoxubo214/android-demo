@@ -30,7 +30,7 @@ public class BaseApplication extends Application {
         super.onCreate();
         app = this;
         Hawk.init(this);
-        LeakCanary.install(this);
+        //LeakCanary.install(this);
         ZXingLibrary.initDisplayOpinion(this);
         registerUncaughtExceptionHandler();
     }
