@@ -154,7 +154,9 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(MessageEvent event) {
+        Log.e(TAG,"Receive message");
         if (event.getEventType().equals(MessageEvent.SPLASH_FINISH)) {
+            Log.e(TAG,"operation message");
             flSplash.setVisibility(View.GONE);
             mContent.setVisibility(View.VISIBLE);
             llCustomTitle.setVisibility(View.VISIBLE);

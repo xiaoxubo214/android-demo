@@ -1,6 +1,7 @@
 package com.by.wind.component.net;
 
 import com.by.wind.Constants;
+import com.by.wind.entity.UserInfo;
 import com.by.wind.entity.UserToken;
 
 
@@ -20,7 +21,7 @@ public interface Api {
 
     @FormUrlEncoded
     @POST(Constants.URL_API)
-    Observable<RetrofitResult<UserToken>> login(@Field("username") String username,@Field("password") String password);
+    Observable<RetrofitResult<UserToken>> login(@Field("request_type") String requestType,@Field("phone_h") String username,@Field("password") String password);
 
     /**
      * 刷新token
@@ -34,9 +35,18 @@ public interface Api {
 
     @FormUrlEncoded
     @POST(Constants.URL_API)
-    Observable<RetrofitResult<String>> forget();
+    Observable<RetrofitResult<UserToken>> doForget(@Field("request_type") String requestType,@Field("phone_h") String username,@Field("password") String password);
+
 
     @FormUrlEncoded
     @POST(Constants.URL_API)
-    Observable<RetrofitResult<String>> getCode(@Field("request_type") String requesType, @Field("phone_h") String phone);
+    Observable<RetrofitResult<UserToken>> doRegister(@Field("request_type") String requestType,@Field("phone_h") String username,@Field("password") String password);
+
+    @FormUrlEncoded
+    @POST(Constants.URL_API)
+    Observable<RetrofitResult<String>> getCode(@Field("request_type") String requestType, @Field("phone_h") String phone);
+
+    @FormUrlEncoded
+    @POST(Constants.URL_API)
+    Observable<RetrofitResult<UserInfo>> getUserInfo(@Field("request_type") String requestType, @Field("phone_h") String phone);
 }

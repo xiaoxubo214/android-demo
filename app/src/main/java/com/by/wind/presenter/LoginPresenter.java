@@ -9,7 +9,7 @@ import com.by.wind.component.net.ObservableUtil;
 import com.by.wind.util.PreferenceHelper;
 import com.by.wind.component.net.ProgressSubscriber;
 
-import com.by.wind.entity.UserModel;
+import com.by.wind.entity.LoginInfo;
 import com.by.wind.entity.UserToken;
 import com.by.wind.view.IBaseView;
 import com.wind.base.event.ActivityLifeCycleEvent;
@@ -30,8 +30,8 @@ public class LoginPresenter extends BaseMvpPresenter<IBaseView.ILoginView> imple
         this.mLoginView= loginView;
     }
 
-    public void login(UserModel userModel, Context context, PublishSubject<ActivityLifeCycleEvent> publishSubject) {
-        Observable observable = ApiManager.getInstance().getApiService().login(userModel.getUserName(),userModel.getPassword());
+    public void login(LoginInfo loginInfo, Context context, PublishSubject<ActivityLifeCycleEvent> publishSubject) {
+        Observable observable = ApiManager.getInstance().getApiService().login(Constants.API_LOGIN,loginInfo.getUserName(), loginInfo.getPassword());
 
         ObservableUtil.getInstance().toSubscribe(observable, new ProgressSubscriber <UserToken>(context) {
 

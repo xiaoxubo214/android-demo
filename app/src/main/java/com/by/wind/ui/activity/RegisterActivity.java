@@ -16,6 +16,7 @@ import android.widget.ViewFlipper;
 
 import com.by.wind.Constants;
 import com.by.wind.R;
+import com.by.wind.entity.LoginInfo;
 import com.by.wind.presenter.RegisterPresenterImpl;
 import com.by.wind.util.StringUtil;
 import com.by.wind.util.ToastUtil;
@@ -52,7 +53,7 @@ public class RegisterActivity extends BaseActivity implements IBaseView.IRegiste
 
     public static String ACTION_TYPE = "";
 
-    private String code = "0000";
+    private String responseCode = "0000";
 
     public static void open(Context context,String startType) {
         if (startType.equals(Constants.START_ACTIVITY_REGISTER)) {
@@ -87,32 +88,11 @@ public class RegisterActivity extends BaseActivity implements IBaseView.IRegiste
                 }
                 break;
             case R.id.submit_btn:
-                if (!StringUtil.isMobile(etUserNum.getText().toString())) {
-                    ToastUtil.show("请输入正确的手机号码");
-                    return;
-                }
-                if (etVerifyCode.getText().toString() == null || etVerifyCode.getText().toString().length() < 4) {
-                    ToastUtil.show("验证码长度大于等于4");
-                    return;
-                }
-                if ( !etVerifyCode.getText().toString().equals(code)) {
-                    ToastUtil.show("验证码错误");
-                    return;
-                }
-
-                if (etNewPwd.getText().toString().length()< 6 || etConfirmPwd.getText().toString().length()< 6 ) {
-                    ToastUtil.show("密码长度必须大于等于 6");
-                    return;
-                }
-                if (!etNewPwd.getText().toString().equals(etConfirmPwd.getText().toString())) {
-                    ToastUtil.show("2 次输入密码不一致");
-                    return;
-                }
-                if (ACTION_TYPE == Constants.START_ACTIVITY_REGISTER) {
-                    mRegisterPresenterImpl.doRegister(this,lifecycleSubject);
-                } else {
-                    mRegisterPresenterImpl.doForgetPwd(this, lifecycleSubject);
-                }
+               gotoRegister(
+                       etUserNum.getText().toString(),
+                       etVerifyCode.getText().toString(),
+                       etNewPwd.getText().toString(),
+                       etConfirmPwd.getText().toString());
                 break;
             case R.id.return_btn:
                 finish();
@@ -122,8 +102,37 @@ public class RegisterActivity extends BaseActivity implements IBaseView.IRegiste
         }
     }
 
+    private void gotoRegister(String username, String code, String pwd, String confirmPwd) {
+        if (!StringUtil.isMobile(username)) {
+            ToastUtil.show("请输入正确的手机号码");
+            return;
+        }
+        if (code == null || code.length() < 4) {
+            ToastUtil.show("验证码长度大于等于4");
+            return;
+        }
+        if ( !code.equals(responseCode)) {
+            ToastUtil.show("验证码错误");
+            return;
+        }
+
+        if (pwd.length()< 6 || confirmPwd.length()< 6 ) {
+            ToastUtil.show("密码长度必须大于等于 6");
+            return;
+        }
+        if (!pwd.equals(confirmPwd)) {
+            ToastUtil.show("2 次输入密码不一致");
+            return;
+        }
+        if (ACTION_TYPE == Constants.START_ACTIVITY_REGISTER) {
+            mRegisterPresenterImpl.doRegister(new LoginInfo(username,pwd),this,lifecycleSubject);
+        } else {
+            mRegisterPresenterImpl.doForgetPwd(new LoginInfo(username,pwd),this,lifecycleSubject);
+        }
+    }
+
     @Override
-    public void doForgetPwd(int retCode) {
+    public void doForgetResult(int retCode) {
         if (retCode == 200 || Constants.isDebug == true) {
             ToastUtil.showToast("密码修改成功");
             finish();
@@ -132,7 +141,7 @@ public class RegisterActivity extends BaseActivity implements IBaseView.IRegiste
     }
 
     @Override
-    public void getCheckCode(int retCode) {
+    public void getCheckCodeResult(int retCode) {
         if (retCode == 200 || Constants.isDebug == true) {
             new CountDownTimerUtils(tvVerifyCode,30 * 1000, 1000).start();
             etNewPwd.requestFocus();
@@ -140,7 +149,7 @@ public class RegisterActivity extends BaseActivity implements IBaseView.IRegiste
     }
 
     @Override
-    public void doRegister(int retCode) {
+    public void doRegisterResult(int retCode) {
 
     }
 

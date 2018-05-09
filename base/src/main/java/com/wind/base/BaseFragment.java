@@ -10,10 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 
+
 import com.wind.base.event.ActivityLifeCycleEvent;
 
 import butterknife.ButterKnife;
-import io.reactivex.subjects.PublishSubject;
+import rx.subjects.PublishSubject;
 
 /**
  * Created by Wind on 2017/11/17.

@@ -2,7 +2,7 @@ package com.by.wind.presenter;
 
 import android.content.Context;
 
-import com.by.wind.entity.UserModel;
+import com.by.wind.entity.LoginInfo;
 import com.wind.base.event.ActivityLifeCycleEvent;
 
 import rx.subjects.PublishSubject;
@@ -13,21 +13,23 @@ import rx.subjects.PublishSubject;
 
 public interface IBasePresenter {
 
-    interface IHomePresenter {
-        void getHomeInfo();
-    }
-
     interface ILoginPresenter {
-        void login(UserModel userModel, Context context, PublishSubject<ActivityLifeCycleEvent> publishSubject);
+        void login(LoginInfo loginInfo, Context context, PublishSubject<ActivityLifeCycleEvent> publishSubject);
     }
 
     interface IRegisterPresenter {
-        void doForgetPwd(Context context, PublishSubject<ActivityLifeCycleEvent> lifecycleSubject);
+        void doForgetPwd(LoginInfo loginInfo,Context context, PublishSubject<ActivityLifeCycleEvent> lifecycleSubject);
 
         void getCheckCode(String phone, Context context, PublishSubject<ActivityLifeCycleEvent> lifecycleSubject);
 
-        void doRegister(Context context, PublishSubject<ActivityLifeCycleEvent> lifecycleSubject);
+        void doRegister(LoginInfo loginInfo, Context context, PublishSubject<ActivityLifeCycleEvent> lifecycleSubject);
 
     }
+
+    interface IUserInfoPresenter {
+        void getUserInfo(String phone, Context context, PublishSubject<ActivityLifeCycleEvent> publishSubject);
+    }
+
+
 
 }

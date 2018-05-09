@@ -5,16 +5,25 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.by.wind.Constants;
 import com.by.wind.R;
+import com.by.wind.entity.UserInfo;
+import com.by.wind.presenter.IBasePresenter;
+import com.by.wind.presenter.UserInfoPresenter;
 import com.by.wind.util.PreferenceHelper;
 import com.by.wind.ui.activity.LoginActivity;
 import com.by.wind.ui.activity.RegisterActivity;
 import com.by.wind.ui.activity.WebViewActivity;
+import com.by.wind.util.img.ImageLoader;
+import com.by.wind.view.IBaseView;
 import com.by.wind.widget.PersonalItem;
 
+import com.squareup.picasso.Picasso;
 import com.wind.base.BaseFragment;
 
 import butterknife.BindView;
@@ -24,8 +33,14 @@ import butterknife.Unbinder;
 /**
  *
  */
-public class MyFragment extends BaseFragment {
+public class MyFragment extends BaseFragment implements IBaseView.IUserInfoView{
 
+    @BindView(R.id.user_avatar_iv)
+    ImageView mUserAvatar;
+    @BindView(R.id.user_name_tv)
+    TextView mUserName;
+    @BindView(R.id.user_phone_tv)
+    TextView mUserPhone;
     @BindView(R.id.ll_user_info)
     LinearLayout mLlUserInfo;
     @BindView(R.id.pl_chnage_pwd)
@@ -39,6 +54,8 @@ public class MyFragment extends BaseFragment {
     @BindView(R.id.login_out_btn)
     LinearLayout mLoginOutLl;
     Unbinder unbinder;
+
+    IBasePresenter.IUserInfoPresenter mUserInfoPresenter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,6 +82,7 @@ public class MyFragment extends BaseFragment {
 
     @Override
     protected void initAllView(Bundle savedInstanceState) {
+        setUserInfo();
         mLlUserInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,11 +123,45 @@ public class MyFragment extends BaseFragment {
                 PreferenceHelper.clearCache();
             }
         });
+        mUserInfoPresenter = new UserInfoPresenter(this,getActivity());
+        mUserInfoPresenter.getUserInfo("15102115465",getContext(),lifecycleSubject);
+    }
+    private void setUserInfo() {
+
+        UserInfo userInfo = PreferenceHelper.getUserInfo();
+        if (userInfo != null) {
+            Glide.with(getActivity())
+                    .load(userInfo.getAvatar())
+                    .into(mUserAvatar);
+            mUserName.setText(userInfo.getUserName());
+            mUserPhone.setText(userInfo.getUserPhone());
+        }
+
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void showResult(int result) {
+        setUserInfo();
+    }
+
+    @Override
+    public void showLoading(String msg) {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void showError(String err) {
+
     }
 }

@@ -1,8 +1,6 @@
 package com.by.wind.ui.fragment;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,36 +8,17 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.SimpleAdapter;
 
 import com.by.wind.R;
 import com.by.wind.component.net.event.MessageEvent;
-import com.by.wind.presenter.HomeInfoPresenterImpl;
-import com.by.wind.presenter.IBasePresenter;
 import com.by.wind.util.BussinessUtil;
-import com.by.wind.util.ToastUtil;
-import com.by.wind.util.img.GlideImageLoader;
-import com.by.wind.util.img.PicDisplayActivity;
-import com.by.wind.view.IBaseView;
 import com.wind.base.BaseFragment;
 import com.wind.base.loading.LoadingDialog;
-import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
-import com.youth.banner.Transformer;
-import com.youth.banner.listener.OnBannerListener;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

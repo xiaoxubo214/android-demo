@@ -1,6 +1,6 @@
 package com.by.wind.entity;
 
-public class User {
+public class UserInfo {
     private String userPhone;
     private String userName;
     private String avatar;

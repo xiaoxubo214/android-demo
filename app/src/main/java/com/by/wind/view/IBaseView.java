@@ -4,14 +4,6 @@ import com.wind.base.mvp.BaseMvpView;
 
 public interface IBaseView {
 
-    public interface IHomeView extends BaseMvpView {
-
-        public void setBannerResult();
-
-        public void setFunctionResult();
-
-    }
-
     public interface ILoginView extends BaseMvpView {
 
         void showResult(int result);
@@ -19,11 +11,17 @@ public interface IBaseView {
 
 
     interface IRegisterView extends BaseMvpView {
-        void doForgetPwd(int retCode);
+        void doForgetResult(int retCode);
 
-        void getCheckCode(int retCode);
+        void getCheckCodeResult(int retCode);
 
-        void doRegister(int retCode);
+        void doRegisterResult(int retCode);
+    }
+
+
+    public interface IUserInfoView extends BaseMvpView {
+
+        void showResult(int result);
     }
 
 

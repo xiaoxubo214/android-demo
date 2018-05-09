@@ -5,18 +5,18 @@ package com.by.wind.entity;
  * Created by wind on 2018/3/27.
  */
 
-public class UserModel {
+public class LoginInfo {
 
     //private String id;
     private String userName;
     private String password;
     //private String tel;
 
-    public UserModel() {
+    public LoginInfo() {
 
     }
 
-    public UserModel(String userName, String password){
+    public LoginInfo(String userName, String password){
         this.userName = userName;
         this.password = password;
     }

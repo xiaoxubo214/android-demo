@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.by.wind.BaseApplication;
-import com.by.wind.entity.User;
+import com.by.wind.entity.UserInfo;
 import com.by.wind.entity.UserToken;
 import com.google.gson.reflect.TypeToken;
 
@@ -146,31 +146,31 @@ public class PreferenceHelper {
     /**
      * 获取老师信息
      */
-    public static User getUserInfo() {
-        User user = null;
+    public static UserInfo getUserInfo() {
+        UserInfo userInfo = null;
         try {
             SharedPreferences preferences = getSharedPreferences(LOGININFO_PREFERENCES);
             String teacherInfoJson = preferences.getString(LAST_USER_INFO, "");
             if (teacherInfoJson != null && !"".equals(teacherInfoJson)) {
-                Type memberInfoType = new TypeToken<User>() {
+                Type memberInfoType = new TypeToken<UserInfo>() {
                 }.getType();
-                user = (User) JsonUtil.toObject(teacherInfoJson, memberInfoType);
+                userInfo = (UserInfo) JsonUtil.toObject(teacherInfoJson, memberInfoType);
             }
         } catch (Exception e) {
         }
 
-        return user;
+        return userInfo;
     }
 
     /**
      * 保存用户信息
      *
-     * @param user
+     * @param userInfo
      */
-    public static void saveUserInfo(User user) {
+    public static void saveUserInfo(UserInfo userInfo) {
         SharedPreferences.Editor editor = getEditor(LOGININFO_PREFERENCES);
-        if (user != null) {
-            editor.putString(LAST_USER_INFO, JsonUtil.toJson(user));
+        if (userInfo != null) {
+            editor.putString(LAST_USER_INFO, JsonUtil.toJson(userInfo));
         } else {
             editor.putString(LAST_USER_INFO, "");
         }
