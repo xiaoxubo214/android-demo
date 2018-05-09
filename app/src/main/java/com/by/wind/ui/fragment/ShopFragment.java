@@ -36,6 +36,16 @@ public class ShopFragment extends BaseFragment implements LoadingDialog.Progress
     Unbinder unbinder;
     //private LoadingDialog mLoadingDialog;
 
+    public static ShopFragment newInstance(String content){
+        ShopFragment f = new ShopFragment();
+        if (content != null) {
+            final Bundle args = new Bundle();
+            args.putString("content", content);
+            f.setArguments(args);
+        }
+        return f;
+    }
+
     @Override
     protected void lazyLoad() {
 
@@ -59,7 +69,7 @@ public class ShopFragment extends BaseFragment implements LoadingDialog.Progress
         settings.setSupportZoom(true);
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         //mWebView.loadUrl(getIntent().getStringExtra("url"));
-        mWebView.loadUrl("http://www.tmall.com");
+        mWebView.loadUrl("http://wap.baidu.com/");
         mWebView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onReceivedTitle(WebView view, String title) {

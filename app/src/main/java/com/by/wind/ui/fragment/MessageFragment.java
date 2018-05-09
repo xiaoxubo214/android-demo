@@ -29,12 +29,28 @@ import butterknife.Unbinder;
  */
 public class MessageFragment extends BaseFragment implements LoadingDialog.ProgressCancelListener {
 
+
+
     @BindView(R.id.webView)
     WebView mWebView;
     @BindView(R.id.not_network_iv)
     ImageView mIvNotNetwork;
     Unbinder unbinder;
     //private LoadingDialog mLoadingDialog;
+
+    public WebView getmWebView() {
+        return mWebView;
+    }
+
+    public static MessageFragment newInstance(String content){
+        MessageFragment f = new MessageFragment();
+        if (content != null) {
+            final Bundle args = new Bundle();
+            args.putString("content", content);
+            f.setArguments(args);
+        }
+        return f;
+    }
 
     @Override
     protected void lazyLoad() {
@@ -49,6 +65,7 @@ public class MessageFragment extends BaseFragment implements LoadingDialog.Progr
     @Override
     protected void initAllView(Bundle savedInstanceState) {
         //mLoadingDialog = new LoadingDialog(context, this, true);
+
         WebSettings settings = mWebView.getSettings();
         settings.setAppCacheEnabled(true);
         settings.setDatabaseEnabled(true);
@@ -59,7 +76,7 @@ public class MessageFragment extends BaseFragment implements LoadingDialog.Progr
         settings.setSupportZoom(true);
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         //mWebView.loadUrl(getIntent().getStringExtra("url"));
-        mWebView.loadUrl("http://www.tmall.com");
+        mWebView.loadUrl("http://wap.baidu.com/");
         mWebView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onReceivedTitle(WebView view, String title) {

@@ -57,6 +57,16 @@ public class MyFragment extends BaseFragment implements IBaseView.IUserInfoView{
 
     IBasePresenter.IUserInfoPresenter mUserInfoPresenter;
 
+    public static MyFragment newInstance(String content){
+        MyFragment f = new MyFragment();
+        if (content != null) {
+            final Bundle args = new Bundle();
+            args.putString("content", content);
+            f.setArguments(args);
+        }
+        return f;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
