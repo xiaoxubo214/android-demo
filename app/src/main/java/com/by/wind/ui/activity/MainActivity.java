@@ -18,7 +18,7 @@ import android.widget.RelativeLayout;
 
 
 import com.by.wind.R;
-import com.by.wind.component.net.event.MessageEvent;
+import com.by.wind.component.event.MessageEvent;
 import com.by.wind.ui.fragment.MessageFragment;
 import com.by.wind.ui.fragment.MyFragment;
 import com.by.wind.ui.fragment.SaleFragment;
@@ -30,6 +30,7 @@ import com.by.wind.widget.FragmentPagerAdapter;
 import com.by.wind.widget.NoScrollViewPager;
 import com.by.wind.widget.tab.Tab;
 import com.by.wind.widget.tab.TabIndicator;
+import com.umeng.message.PushAgent;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.wind.base.BaseFragment;
@@ -85,6 +86,7 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_main);
+        PushAgent.getInstance(this).onAppStart();
     }
 
     @Override

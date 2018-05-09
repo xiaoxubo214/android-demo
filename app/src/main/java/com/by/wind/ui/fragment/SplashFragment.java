@@ -3,19 +3,22 @@ package com.by.wind.ui.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.SeekBar;
 
 import com.by.wind.R;
 import com.by.wind.util.PreferenceHelper;
-import com.by.wind.component.net.event.MessageEvent;
+import com.by.wind.component.event.MessageEvent;
 import com.by.wind.ui.activity.LoginActivity;
 import com.wind.base.BaseFragment;
+import com.wind.base.loading.LoadingDialog;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -23,20 +26,32 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class SplashFragment extends BaseFragment {
+public class SplashFragment extends BaseFragment implements View.OnTouchListener {
 
     @BindView(R.id.root_ll)
     LinearLayout mRootLayout;
-    @BindView(R.id.SeekBar)
-    SeekBar mSeekBar;
-    private final int COUNTDOWN_TIME_MILLION = 2000;
-    private final int COUNTDOWN_INTERVAL = 19;
+    private final static int FINISHED = 100;
+    private final static int COUNT_DOWN_TIME = 2500;
     Unbinder unbinder;
+    LoadingDialog mLoadingDialog;
 
+    Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == FINISHED) {
+                if(mLoadingDialog != null && mLoadingDialog.isShowing()) {
+                    mLoadingDialog.dismiss();
+                    EventBus.getDefault().post(new MessageEvent(MessageEvent.SPLASH_FINISH));
+                }
+            }
+        }
+    };
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         unbinder = ButterKnife.bind(this, super.onCreateView(inflater, container, savedInstanceState));
+        View view = inflater.inflate(R.layout.fragment_splash, null);
+        view.setOnTouchListener(this);
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -52,14 +67,24 @@ public class SplashFragment extends BaseFragment {
 
     @Override
     protected void initAllView(Bundle savedInstanceState) {
+        mLoadingDialog = new LoadingDialog(getActivity(),false);
+        if (mLoadingDialog != null && !mLoadingDialog.isShowing() ) {
+            mLoadingDialog.show();
+        }
         if (PreferenceHelper.isLogin() == true) {
-            new CountDownTimerUtils(mSeekBar, this.getActivity(), COUNTDOWN_TIME_MILLION, COUNTDOWN_INTERVAL).start();
+            handler.sendEmptyMessageDelayed(FINISHED,COUNT_DOWN_TIME);
+            //new CountDownTimerUtils(mSeekBar, this.getActivity(), COUNTDOWN_TIME_MILLION, COUNTDOWN_INTERVAL).start();
         } else {
             LoginActivity.open(getActivity());
         }
     }
 
-    public class CountDownTimerUtils extends CountDownTimer {
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        return true;
+    }
+
+/*    public class CountDownTimerUtils extends CountDownTimer {
         private SeekBar seekBar;
         private Context context;
         private int count = 0;
@@ -82,5 +107,5 @@ public class SplashFragment extends BaseFragment {
             Log.e("SplashFragment", "send message");
             EventBus.getDefault().post(new MessageEvent(MessageEvent.SPLASH_FINISH));
         }
-    }
+    }*/
 }

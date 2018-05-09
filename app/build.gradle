@@ -67,5 +67,13 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     compile 'cn.yipianfengye.android:zxing-library:2.2'
     compile 'org.greenrobot:eventbus:3.1.1'
+    //ymeng
+    //PushSDK必须依赖基础组件库，所以需要加入对应依赖
+    compile 'com.umeng.sdk:common:1.5.0'
+    //PushSDK必须依赖utdid库，所以需要加入对应依赖
+    compile 'com.umeng.sdk:utdid:1.1.5.3'
+    //PushSDK
+    compile 'com.umeng.sdk:push:4.1.0'
+
     compile project(path: ':base')
 }

@@ -11,7 +11,7 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
 import com.by.wind.R;
-import com.by.wind.component.net.event.MessageEvent;
+import com.by.wind.component.event.MessageEvent;
 import com.by.wind.util.BussinessUtil;
 import com.wind.base.BaseFragment;
 import com.wind.base.loading.LoadingDialog;

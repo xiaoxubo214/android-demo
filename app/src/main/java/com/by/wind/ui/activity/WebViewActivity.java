@@ -17,7 +17,7 @@ import android.widget.ImageView;
 
 import com.by.wind.BaseApplication;
 import com.by.wind.Constants;
-import com.by.wind.component.net.event.MessageEvent;
+import com.by.wind.component.event.MessageEvent;
 import com.by.wind.entity.RequestInfo;
 import com.by.wind.util.BussinessUtil;
 import com.by.wind.util.DeviceUtil;
@@ -26,6 +26,7 @@ import com.by.wind.util.PreferenceHelper;
 import com.by.wind.util.SharedPreferences;
 import com.by.wind.widget.TitleActivity;
 import com.by.wind.R;
+import com.umeng.message.PushAgent;
 
 import java.io.IOException;
 
@@ -56,7 +57,7 @@ public class WebViewActivity extends TitleActivity {
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_web_view);
-
+        PushAgent.getInstance(this).onAppStart();
     }
 
     @Override

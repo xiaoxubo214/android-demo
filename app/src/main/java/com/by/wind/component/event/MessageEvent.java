@@ -1,4 +1,4 @@
-package com.by.wind.component.net.event;
+package com.by.wind.component.event;
 
 public class MessageEvent {
 

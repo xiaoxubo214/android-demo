@@ -3,10 +3,14 @@ package com.by.wind;
 import android.app.Application;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.util.Log;
 
 import com.by.wind.util.common.AppException;
 import com.orhanobut.hawk.Hawk;
 import com.squareup.leakcanary.LeakCanary;
+import com.umeng.commonsdk.UMConfigure;
+import com.umeng.message.IUmengRegisterCallback;
+import com.umeng.message.PushAgent;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 /**
@@ -20,6 +24,7 @@ public class BaseApplication extends Application {
     public BaseApplication() {
         app = this;
     }
+    PushAgent mPushAgent;
 
     public static synchronized BaseApplication getInstance() {
         return app;
@@ -33,6 +38,22 @@ public class BaseApplication extends Application {
         LeakCanary.install(this);
         ZXingLibrary.initDisplayOpinion(this);
         registerUncaughtExceptionHandler();
+        UMConfigure.init(this, "5af2b9e88f4a9d2f1c000038", "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "8983182ab0952c6fe1237435edefb680");
+        mPushAgent = PushAgent.getInstance(this);
+        //注册推送服务，每次调用register方法都会回调该接口
+        mPushAgent.register(new IUmengRegisterCallback() {
+
+            @Override
+            public void onSuccess(String deviceToken) {
+                //注册成功会返回device token
+                Log.e("BaseApplication","success");
+            }
+
+            @Override
+            public void onFailure(String s, String s1) {
+                Log.e("BaseApplication","error");
+            }
+        });
     }
 
     // 注册App异常崩溃处理器
