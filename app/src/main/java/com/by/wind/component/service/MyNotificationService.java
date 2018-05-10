@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.IBinder;
 
 import com.by.wind.R;
+import com.by.wind.ui.activity.MainActivity;
 import com.umeng.message.UTrack;
 import com.umeng.message.entity.UMessage;
 
@@ -66,7 +67,7 @@ public class MyNotificationService extends Service {
     }
 
     public PendingIntent getClickPendingIntent(Context context, UMessage msg) {
-        Intent clickIntent = new Intent();
+        Intent clickIntent = new Intent(context, MainActivity.class);
         clickIntent.setClass(context, NotificationBroadcast.class);
         clickIntent.putExtra(NotificationBroadcast.EXTRA_KEY_MSG,
                 msg.getRaw().toString());

@@ -19,6 +19,7 @@ import android.widget.RelativeLayout;
 
 import com.by.wind.R;
 import com.by.wind.component.event.MessageEvent;
+import com.by.wind.component.service.NotificationBroadcast;
 import com.by.wind.ui.fragment.MessageFragment;
 import com.by.wind.ui.fragment.MyFragment;
 import com.by.wind.ui.fragment.SaleFragment;
@@ -157,6 +158,15 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
         super.onPause();
         unregisterReceiver(mNetworkChangeReceiver);
         EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        String messageType = intent.getStringExtra(NotificationBroadcast.EXTRA_KEY_MSG);
+        if (messageType != null) {
+            mMainIndicator.setCurrentTab(0);
+        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
