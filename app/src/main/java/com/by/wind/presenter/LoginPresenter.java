@@ -45,7 +45,7 @@ public class LoginPresenter extends BaseMvpPresenter<IBaseView.ILoginView> imple
             protected void _onNext(UserData userData) {
                 Log.e(TAG, userData.toString());
                 mLoginView.hideLoading();
-                if (userData.result_code == Constants.RESULT_SUCCESS) {
+                if (userData.result_code.equals( Constants.RESULT_SUCCESS)) {
                     PreferenceHelper.saveUserToken(userData);
                     PreferenceHelper.setIsLogin(true);
                     mLoginView.showResult(Constants.SUCCESS);

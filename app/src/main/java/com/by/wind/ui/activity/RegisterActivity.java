@@ -112,10 +112,10 @@ public class RegisterActivity extends BaseActivity implements IBaseView.IRegiste
             ToastUtil.show("验证码长度大于等于4");
             return;
         }
-        if ( !code.equals(responseCode)) {
+/*        if ( !code.equals(responseCode)) {
             ToastUtil.show("验证码错误");
             return;
-        }
+        }*/
 
         if (pwd.length()< 6 || confirmPwd.length()< 6 ) {
             ToastUtil.show("密码长度必须大于等于 6");
@@ -140,6 +140,7 @@ public class RegisterActivity extends BaseActivity implements IBaseView.IRegiste
             ToastUtil.show("请输入正确的手机号码");
             return;
         }
+        //getCheckCodeResult(Constants.SUCCESS);
         mRegisterPresenter.getCheckCode(etUserNum.getText().toString(), this, lifecycleSubject);
     }
 
@@ -163,7 +164,7 @@ public class RegisterActivity extends BaseActivity implements IBaseView.IRegiste
     @Override
     public void doRegisterResult(int retCode) {
         if (retCode == Constants.SUCCESS) {
-            ToastUtil.showToast("注册成功！");
+            ToastUtil.showToast("注册成功,请登录！");
             finish();
         }
     }
@@ -206,7 +207,7 @@ public class RegisterActivity extends BaseActivity implements IBaseView.IRegiste
         public void onTick(long millisUntilFinished) {
             mTextView.setClickable(false); //设置不可点击
             mTextView.setText(millisUntilFinished / 1000 + "秒后可重新发送");  //设置倒计时时间
-            mTextView.setBackgroundResource(R.color.btn_red); //设置按钮为灰色，这时是不能点击的
+            //mTextView.setBackgroundResource(R.color.btn_red); //设置按钮为灰色，这时是不能点击的
 
             /**
              * 超链接 URLSpan

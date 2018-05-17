@@ -37,7 +37,7 @@ public class RegisterPresenter implements IBasePresenter.IRegisterPresenter{
             @Override
             protected void _onNext(UserData userData) {
                 iRegisterView.hideLoading();
-                if (userData.result_code == Constants.RESULT_SUCCESS) {
+                if (userData.result_code.equals( Constants.RESULT_SUCCESS)) {
                     //PreferenceHelper.saveUserToken(userData);
                     //PreferenceHelper.setIsLogin(true);
                     iRegisterView.doForgetResult(Constants.SUCCESS);
@@ -66,7 +66,7 @@ public class RegisterPresenter implements IBasePresenter.IRegisterPresenter{
         ObservableUtil.getInstance().toSubscribe(getCodeOb, new ProgressSubscriber<UserData>(context) {
             @Override
             protected void _onNext(UserData userData) {
-                if (userData.result_code == Constants.RESULT_SUCCESS) {
+                if (userData.result_code.equals( Constants.RESULT_SUCCESS)) {
                     ToastUtil.show("验证码已发送！");
                     iRegisterView.getCheckCodeResult(Constants.SUCCESS);
                 }else {
@@ -95,7 +95,7 @@ public class RegisterPresenter implements IBasePresenter.IRegisterPresenter{
             @Override
             protected void _onNext(UserData userData) {
                 iRegisterView.hideLoading();
-                if (userData.result_code == Constants.RESULT_SUCCESS) {
+                if (userData.result_code.equals( Constants.RESULT_SUCCESS)) {
                     //PreferenceHelper.saveUserToken(userData);
                     //PreferenceHelper.setIsLogin(true);git
                     iRegisterView.doForgetResult(Constants.SUCCESS);
