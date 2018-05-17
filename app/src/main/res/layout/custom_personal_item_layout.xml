@@ -12,9 +12,9 @@
         android:layout_marginLeft="12dp"
         android:drawablePadding="12dp"
         android:gravity="center_vertical"
-        android:text="我的相册"
-        android:textColor="@color/black"
-        android:textSize="@dimen/sp_13"/>
+        android:text=""
+        android:textColor="@color/light_gray_color"
+        android:textSize="@dimen/sp_16"/>
 
     <ImageView
         android:id="@+id/new_message_iv"

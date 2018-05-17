@@ -26,6 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:paddingLeft="10dp"
             android:gravity="center">
             <TextView
                 android:id="@+id/user_name_tv"
@@ -33,14 +34,17 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/user_avatar_iv"
                 android:gravity="center"
-                android:text="@string/please_login" />
+                android:text="@string/please_login"
+                android:textSize="@dimen/sp_14"/>
             <TextView
                 android:id="@+id/user_phone_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/user_avatar_iv"
+                android:paddingTop="@dimen/margin_ten"
                 android:gravity="center"
-                android:text="@string/please_login" />
+                android:text="@string/please_login"
+                android:textSize="@dimen/sp_14"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,7 +56,7 @@
                 android:id="@+id/arraw_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/margin_ten"
+                android:layout_margin="@dimen/margin_eight"
                 android:src="@drawable/my_arrow" />
         </LinearLayout>
 
@@ -80,6 +84,8 @@
                 cil:iv_drawable_right="@drawable/my_arrow"
                 cil:line_is="true"
                 android:layout_marginBottom="20dp"
+                cil:tv_text_color="@color/light_gray_color"
+                cil:tv_text_size="@dimen/sp_16"
                 cil:tv_text="修改密码" />
 
             <com.by.wind.widget.PersonalItem
@@ -89,6 +95,8 @@
                 android:background="@color/white"
                 cil:iv_drawable_right="@drawable/my_arrow"
                 cil:line_is="true"
+                cil:tv_text_color="@color/light_gray_color"
+                cil:tv_text_size="@dimen/sp_16"
                 cil:tv_text="通用" />
 
             <com.by.wind.widget.PersonalItem
@@ -98,7 +106,8 @@
                 android:background="@color/white"
                 cil:iv_drawable_right="@drawable/my_arrow"
                 cil:line_is="true"
-
+                cil:tv_text_color="@color/light_gray_color"
+                cil:tv_text_size="@dimen/sp_16"
                 cil:tv_text="帮助与反馈" />
 
             <com.by.wind.widget.PersonalItem
@@ -108,6 +117,8 @@
                 android:background="@color/white"
                 cil:iv_drawable_right="@drawable/my_arrow"
                 cil:line_is="true"
+                cil:tv_text_color="@color/light_gray_color"
+                cil:tv_text_size="@dimen/sp_16"
                 android:layout_marginTop="20dp"
                 cil:tv_text="关于YIHO商户通" />
         </LinearLayout>
@@ -127,7 +138,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textColor="@color/red"
+            android:textColor="@color/btn_text_red"
+            android:textSize="@dimen/sp_16"
             android:text="@string/login_out"
             android:gravity="center"/>
     </LinearLayout>
