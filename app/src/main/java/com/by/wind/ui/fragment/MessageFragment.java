@@ -1,6 +1,7 @@
 package com.by.wind.ui.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,6 +98,7 @@ public class MessageFragment extends BaseFragment implements LoadingDialog.Progr
                     requestInfo.setApp_ver(BaseApplication.getInstance().getVersionName());
                     requestInfo.setAccess_token(PreferenceHelper.getUserTokenData().access_token);
                     String jsonString = JsonUtil.toJson(requestInfo);
+                    Log.e(TAG,jsonString);
                     mWebView.postUrl(Constants.URL_PAGE,jsonString.getBytes());
                 }catch (Exception ex) {
                     ex.printStackTrace();
