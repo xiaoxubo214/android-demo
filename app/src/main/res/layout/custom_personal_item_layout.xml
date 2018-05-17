@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="12dp"
-        android:drawableLeft="@drawable/icon_setting"
         android:drawablePadding="12dp"
         android:gravity="center_vertical"
         android:text="我的相册"
@@ -33,7 +32,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="17dp"
-        android:src="@drawable/arrow_right"/>
+        android:src="@drawable/my_arrow"/>
 
     <View
         android:id="@+id/line_item_bottom"

@@ -26,12 +26,12 @@ public class RetrofitCache {
         Observable<T> fromCache = Observable.create(new Observable.OnSubscribe<T>() {
             @Override
             public void call(Subscriber<? super T> subscriber) {
-                T cache = (T) Hawk.get(cacheKey);
+              /*  T cache = (T) Hawk.get(cacheKey);
                 if (cache != null) {
                     subscriber.onNext(cache);
-                } else {
+                } else {*/
                     subscriber.onCompleted();
-                }
+                //}
 
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());

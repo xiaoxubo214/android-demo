@@ -8,11 +8,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="80dp">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/icon_avatar"/>
+            android:src="@drawable/login_logo"/>
     </LinearLayout>
 
     <ViewFlipper
@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="30dp">
+        android:paddingTop="50dp">
 
         <Button
             android:id="@+id/return_btn"
@@ -41,8 +41,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_height="50dp"
-            android:background="@drawable/shape"
-            android:textColor="@color/white"
+            android:background="@drawable/register_back"
+            android:textColor="@color/btn_text_red"
             android:text="返回登录" />
 
 

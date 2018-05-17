@@ -41,6 +41,7 @@ public class SplashFragment extends BaseFragment implements View.OnTouchListener
             if (msg.what == FINISHED) {
                 if(mLoadingDialog != null && mLoadingDialog.isShowing()) {
                     mLoadingDialog.dismiss();
+                    mLoadingDialog = null;
                     EventBus.getDefault().post(new MessageEvent(MessageEvent.SPLASH_FINISH));
                 }
             }

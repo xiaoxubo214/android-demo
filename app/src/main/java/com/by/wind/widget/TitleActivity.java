@@ -73,7 +73,7 @@ public abstract class TitleActivity extends BaseActivity implements CustomTitleB
     }
 
     public void showTitleContent(String title){//
-        showTitleContent(title,0,true,R.drawable.home_title_scan_black);
+        showTitleContent(title,0,true,R.drawable.main_scan);
     }
 
     public void showTitleContent(String title,int drawableID,boolean flag){//

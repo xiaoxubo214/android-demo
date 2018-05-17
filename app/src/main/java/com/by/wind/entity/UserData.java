@@ -7,19 +7,27 @@ import android.os.Parcelable;
  * Created by wind on 17/4/24.
  */
 
-public class UserToken implements Parcelable {
+public class UserData implements Parcelable {
 
+    public String request_type;
+    public String result_code;
+    public String result_msg;
     public String phone_h;
     public String access_token;
 
-    protected UserToken(Parcel in) {
-
+    protected UserData(Parcel in) {
+        request_type = in.readString();
+        result_code = in.readString();
+        result_msg = in.readString();
         phone_h = in.readString();
         access_token = in.readString();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(request_type);
+        dest.writeString(result_code);
+        dest.writeString(result_msg);
         dest.writeString(phone_h);
         dest.writeString(access_token);
     }
@@ -29,15 +37,15 @@ public class UserToken implements Parcelable {
         return 0;
     }
 
-    public static final Creator<UserToken> CREATOR = new Creator<UserToken>() {
+    public static final Creator<UserData> CREATOR = new Creator<UserData>() {
         @Override
-        public UserToken createFromParcel(Parcel in) {
-            return new UserToken(in);
+        public UserData createFromParcel(Parcel in) {
+            return new UserData(in);
         }
 
         @Override
-        public UserToken[] newArray(int size) {
-            return new UserToken[size];
+        public UserData[] newArray(int size) {
+            return new UserData[size];
         }
     };
 

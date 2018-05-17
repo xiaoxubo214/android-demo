@@ -46,6 +46,7 @@
     <color name="typeface_grey">#999999</color>
     <color name="typeface_grey_off">#796950</color>
     <color name="btn_red">#b81c22</color>
+    <color name="btn_text_red">#cc0000</color>
 
     <color name="inform_details_line">#F3EBD6</color>
     <color name="inform_details_title_bg">#EAEAEA</color>

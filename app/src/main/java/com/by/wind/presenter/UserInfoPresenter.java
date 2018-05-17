@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.by.wind.Constants;
 import com.by.wind.component.net.ApiManager;
+import com.by.wind.component.net.MyHashMap;
 import com.by.wind.component.net.ObservableUtil;
 import com.by.wind.component.net.ProgressSubscriber;
 import com.by.wind.entity.UserInfo;
@@ -29,13 +30,19 @@ public class UserInfoPresenter extends BaseMvpPresenter<IBaseView.IUserInfoView>
 
     @Override
     public void getUserInfo(String phone, Context context, PublishSubject<ActivityLifeCycleEvent> publishSubject) {
-        Observable observable = ApiManager.getInstance().getApiService().getUserInfo(Constants.API_GET_USER_INFO, phone);
+        MyHashMap myHashMap = MyHashMap.newInstance();
+        myHashMap.put(Constants.API_REQUEST_TYPE,Constants.API_LOGIN);
+
+        Observable observable = ApiManager.getInstance().getApiService().api(myHashMap);
 
         ObservableUtil.getInstance().toSubscribe(observable, new ProgressSubscriber <UserInfo>(context) {
 
             @Override
             protected void _onNext(UserInfo userInfo) {
                 UserInfo tempUserInfo = PreferenceHelper.getUserInfo();
+                if (tempUserInfo == null) {
+                    return;
+                }
                 if (!(tempUserInfo.getUserPhone().equals(userInfo.getUserPhone())&&
                         tempUserInfo.getAvatar().equals(userInfo.getAvatar())&&
                         tempUserInfo.getUserName().equals(userInfo.getUserName()))) {

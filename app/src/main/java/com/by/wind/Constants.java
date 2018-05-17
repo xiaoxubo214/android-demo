@@ -6,13 +6,15 @@ package com.by.wind;
 
 public class Constants {
 
-    public final static boolean isDebug = true;
+    public final static boolean isDebug = false;
 
     public final static String HOST = "https://www.yhees.com/plat_interface/app_interface/";//服务器
 
     public final static String URL_API = HOST + "AppApi.ashx";//接口地址
 
     public final static String URL_PAGE = HOST + "AppPage.aspx";//Web页面地址
+
+    public final static String API_REQUEST_TYPE = "request_type";
 
     public final static String API_GET_SMS = "get_verification_sms";//验证码
 
@@ -40,9 +42,13 @@ public class Constants {
 
     public final static String PAGE_ABOUT = "goto_url_about";//关于我们
 
-    public final static String PARAM_SPLIT = "?request_type=";
+
+    public final static String STR_PHONE = "phone_h";
+    public final static String STR_TOKEN = "access_token";
 
     public static final String KEY_PROTECT_APP = "key_protect_app";
+
+    public static final String RESULT_SUCCESS = "SUCCESS";
 
 
     public final static String RESPONSE_CACHE = "";
@@ -73,5 +79,9 @@ public class Constants {
     public static final int VALID_VERIFY_CODE_NULL = 105;//验证码为空
     public static final int VALID_VERIFY_CODE_INVALID = 106;//无效验证码
 
-    public final static String DEVICE = "android";
+    public final static String DEVICE_PLATFORM = "android";
+
+    public final static String UM_CHANNEL = "umeng";
+    public final static String UM_APP_KEY = "5af2b9e88f4a9d2f1c000038";
+    public final static String UM_MESSAGE_SECRET = "8983182ab0952c6fe1237435edefb680";
 }

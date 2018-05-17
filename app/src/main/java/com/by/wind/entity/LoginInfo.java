@@ -10,6 +10,7 @@ public class LoginInfo {
     //private String id;
     private String userName;
     private String password;
+    private String code;
     //private String tel;
 
     public LoginInfo() {
@@ -36,4 +37,11 @@ public class LoginInfo {
         password = password;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 }

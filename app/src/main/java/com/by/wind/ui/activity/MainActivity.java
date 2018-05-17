@@ -112,11 +112,6 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
         llCustomTitle.set_show_left_button(false);
         llCustomTitle.set_show_Right_button(true);
         mMessageFragment = MessageFragment.newInstance(null);
-        if (mMessageFragment.getmWebView() == null) {
-            Log.e("MainActivity","WebView is null");
-        } else  {
-            Log.e("MainActivity", "Web is not null");
-        }
         mTeamFragment = TeamFragment.newInstance(null);
         mShopFragment = ShopFragment.newInstance(null);
         mSaleFragment = SaleFragment.newInstance(null);

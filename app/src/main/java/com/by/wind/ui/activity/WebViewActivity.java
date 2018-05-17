@@ -78,7 +78,7 @@ public class WebViewActivity extends TitleActivity {
                     RequestInfo requestInfo = new RequestInfo();
                     requestInfo.setRequest_type(PAGE_URL);
                     requestInfo.setPhone_h(PreferenceHelper.getUserInfo().getUserPhone());
-                    requestInfo.setDevice_type(Constants.DEVICE);
+                    requestInfo.setDevice_type(Constants.DEVICE_PLATFORM);
                     requestInfo.setDevice_ver(BaseApplication.getInstance().getVersionCode());
                     requestInfo.setDevice_id(DeviceUtil.getIMEI(BaseApplication.getInstance().getApplicationContext()));
                     requestInfo.setApp_ver(BaseApplication.getInstance().getVersionName());

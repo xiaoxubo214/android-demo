@@ -39,7 +39,7 @@ public class PersonalItem extends CustomView {
         tv_text = typedArray.getString(R.styleable.CustomPersonalItemLayout_tv_text);
         tv_text_size = typedArray.getDimensionPixelSize(R.styleable.CustomPersonalItemLayout_tv_text_size, getResources().getDimensionPixelSize(R.dimen.sp_14));
         tv_text_color = typedArray.getColor(R.styleable.CustomPersonalItemLayout_tv_text_color, getResources().getColor(R.color.black));
-        iv_drawable_left_id = typedArray.getResourceId(R.styleable.CustomPersonalItemLayout_tv_drawable_left, R.drawable.icon_setting);
+        iv_drawable_left_id = typedArray.getResourceId(R.styleable.CustomPersonalItemLayout_tv_drawable_left,0 );
         iv_drawable_right_id = typedArray.getResourceId(R.styleable.CustomPersonalItemLayout_iv_drawable_right, 0);
         is_enabled_center = typedArray.getBoolean(R.styleable.CustomPersonalItemLayout_is_enabled_center, false);
         line_is = typedArray.getBoolean(R.styleable.CustomPersonalItemLayout_line_is, true);

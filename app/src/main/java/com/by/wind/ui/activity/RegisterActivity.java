@@ -17,7 +17,7 @@ import android.widget.ViewFlipper;
 import com.by.wind.Constants;
 import com.by.wind.R;
 import com.by.wind.entity.LoginInfo;
-import com.by.wind.presenter.RegisterPresenterImpl;
+import com.by.wind.presenter.RegisterPresenter;
 import com.by.wind.util.StringUtil;
 import com.by.wind.util.ToastUtil;
 import com.by.wind.view.IBaseView;
@@ -49,7 +49,7 @@ public class RegisterActivity extends BaseActivity implements IBaseView.IRegiste
     Button returnBtn;
     @BindView(R.id.submit_btn)
     Button submitBtn;
-    RegisterPresenterImpl mRegisterPresenterImpl;
+    RegisterPresenter mRegisterPresenter;
 
     public static String ACTION_TYPE = "";
 
@@ -69,23 +69,24 @@ public class RegisterActivity extends BaseActivity implements IBaseView.IRegiste
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forget);
+        setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
         setFullScreen(null);
         initialView();
     }
 
     private void initialView() {
-        mRegisterPresenterImpl = new RegisterPresenterImpl(this);
+        mRegisterPresenter = new RegisterPresenter(this);
+        if (ACTION_TYPE == Constants.START_ACTIVITY_FORGET) {
+            submitBtn.setText("确认修改");
+        }
     }
 
     @OnClick({R.id.tvVerifyCode, R.id.return_btn, R.id.submit_btn})
     public void OnBindClick(View view) {
         switch (view.getId()) {
             case R.id.tvVerifyCode:
-                if (StringUtil.isMobile(etUserNum.getText().toString())) {
-                    mRegisterPresenterImpl.getCheckCode(etUserNum.getText().toString(), this, lifecycleSubject);
-                }
+               gotoGetCode(etUserNum.getText().toString());
                 break;
             case R.id.submit_btn:
                gotoRegister(
@@ -125,16 +126,27 @@ public class RegisterActivity extends BaseActivity implements IBaseView.IRegiste
             return;
         }
         if (ACTION_TYPE == Constants.START_ACTIVITY_REGISTER) {
-            mRegisterPresenterImpl.doRegister(new LoginInfo(username,pwd),this,lifecycleSubject);
+            mRegisterPresenter.doRegister(new LoginInfo(username,pwd),this,lifecycleSubject);
         } else {
-            mRegisterPresenterImpl.doForgetPwd(new LoginInfo(username,pwd),this,lifecycleSubject);
+            mRegisterPresenter.doForgetPwd(new LoginInfo(username,pwd),this,lifecycleSubject);
         }
+    }
+    private void gotoGetCode(String username) {
+        if (username == null || username.isEmpty()) {
+            ToastUtil.show("请输入手机号码");
+            return;
+        }
+        if (!StringUtil.isMobile(etUserNum.getText().toString())) {
+            ToastUtil.show("请输入正确的手机号码");
+            return;
+        }
+        mRegisterPresenter.getCheckCode(etUserNum.getText().toString(), this, lifecycleSubject);
     }
 
     @Override
     public void doForgetResult(int retCode) {
-        if (retCode == 200 || Constants.isDebug == true) {
-            ToastUtil.showToast("密码修改成功");
+        if (retCode == Constants.SUCCESS) {
+            ToastUtil.showToast("密码修改成功！");
             finish();
         }
 
@@ -142,7 +154,7 @@ public class RegisterActivity extends BaseActivity implements IBaseView.IRegiste
 
     @Override
     public void getCheckCodeResult(int retCode) {
-        if (retCode == 200 || Constants.isDebug == true) {
+        if (retCode == Constants.SUCCESS) {
             new CountDownTimerUtils(tvVerifyCode,30 * 1000, 1000).start();
             etNewPwd.requestFocus();
         }
@@ -150,7 +162,10 @@ public class RegisterActivity extends BaseActivity implements IBaseView.IRegiste
 
     @Override
     public void doRegisterResult(int retCode) {
-
+        if (retCode == Constants.SUCCESS) {
+            ToastUtil.showToast("注册成功！");
+            finish();
+        }
     }
 
 

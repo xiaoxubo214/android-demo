@@ -51,7 +51,7 @@ public class OkHttpUtil {
                     .scheme(originalRequest.url().scheme())
                     .host(originalRequest.url().host())
                     //添加统一参数 如手机唯一标识符,token等
-                    .addQueryParameter("device_type", "android")
+                    .addQueryParameter("device_type", Constants.DEVICE_PLATFORM)
                     .addQueryParameter("device_ver", BaseApplication.getInstance().getVersionCode() + "")
                     .addQueryParameter("device_id", DeviceUtil.getIMEI(BaseApplication.getInstance().getApplicationContext()))
                     .addQueryParameter("app_ver", BaseApplication.getInstance().getVersionName());

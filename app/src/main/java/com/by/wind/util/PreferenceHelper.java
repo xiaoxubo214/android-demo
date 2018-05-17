@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 
 import com.by.wind.BaseApplication;
 import com.by.wind.entity.UserInfo;
-import com.by.wind.entity.UserToken;
+import com.by.wind.entity.UserData;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -81,12 +81,12 @@ public class PreferenceHelper {
     /**
      * 保存用户Token
      *
-     * @param userToken
+     * @param userData
      */
-    public static void saveUserToken(UserToken userToken) {
+    public static void saveUserToken(UserData userData) {
         SharedPreferences.Editor editor = getEditor(LOGININFO_PREFERENCES);
-        if (userToken != null) {
-            editor.putString(LAST_USER_TOKEN, JsonUtil.toJson(userToken));
+        if (userData != null) {
+            editor.putString(LAST_USER_TOKEN, JsonUtil.toJson(userData));
         } else {
             editor.putString(LAST_USER_TOKEN, "");
         }
@@ -129,18 +129,18 @@ public class PreferenceHelper {
     /**
      ＊ 获取用户Token
      */
-    public static UserToken getUserToken() {
-        UserToken userToken = null;
+    public static UserData getUserToken() {
+        UserData userData = null;
         try {
             SharedPreferences preferences = getSharedPreferences(LOGININFO_PREFERENCES);
             String userTokenJson = preferences.getString(LAST_USER_TOKEN, "");
             if (userTokenJson != null && !"".equals(userTokenJson)) {
-                Type memberInfoType = new TypeToken<UserToken>() {}.getType();
-                userToken = (UserToken) JsonUtil.toObject(userTokenJson, memberInfoType);
+                Type memberInfoType = new TypeToken<UserData>() {}.getType();
+                userData = (UserData) JsonUtil.toObject(userTokenJson, memberInfoType);
             }
         } catch (Exception e) {
         }
-        return userToken;
+        return userData;
     }
 
     /**

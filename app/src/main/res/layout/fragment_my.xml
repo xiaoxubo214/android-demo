@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.by.wind.ui.fragment.PersonalFragment"
+    tools:context="com.by.wind.ui.fragment.MyFragment"
     android:orientation="vertical">
     <LinearLayout
         android:id="@+id/ll_user_info"
@@ -21,7 +21,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_margin="@dimen/margin_ten"
-            android:src="@drawable/icon_avatar" />
+            android:src="@drawable/my_default_img" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/margin_ten"
-                android:src="@drawable/arrow_right" />
+                android:src="@drawable/my_arrow" />
         </LinearLayout>
 
 
@@ -77,9 +77,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_fifty"
                 android:background="@color/white"
-                cil:iv_drawable_right="@drawable/arrow_right"
+                cil:iv_drawable_right="@drawable/my_arrow"
                 cil:line_is="true"
-                cil:tv_drawable_left="@drawable/icon_setting"
                 android:layout_marginBottom="20dp"
                 cil:tv_text="修改密码" />
 
@@ -88,9 +87,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_fifty"
                 android:background="@color/white"
-                cil:iv_drawable_right="@drawable/arrow_right"
+                cil:iv_drawable_right="@drawable/my_arrow"
                 cil:line_is="true"
-                cil:tv_drawable_left="@drawable/icon_setting"
                 cil:tv_text="通用" />
 
             <com.by.wind.widget.PersonalItem
@@ -98,9 +96,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_fifty"
                 android:background="@color/white"
-                cil:iv_drawable_right="@drawable/arrow_right"
+                cil:iv_drawable_right="@drawable/my_arrow"
                 cil:line_is="true"
-                cil:tv_drawable_left="@drawable/icon_setting"
+
                 cil:tv_text="帮助与反馈" />
 
             <com.by.wind.widget.PersonalItem
@@ -108,9 +106,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_fifty"
                 android:background="@color/white"
-                cil:iv_drawable_right="@drawable/arrow_right"
+                cil:iv_drawable_right="@drawable/my_arrow"
                 cil:line_is="true"
-                cil:tv_drawable_left="@drawable/icon_setting"
                 android:layout_marginTop="20dp"
                 cil:tv_text="关于YIHO商户通" />
         </LinearLayout>

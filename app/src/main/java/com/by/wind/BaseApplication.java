@@ -38,7 +38,7 @@ public class BaseApplication extends Application {
         LeakCanary.install(this);
         ZXingLibrary.initDisplayOpinion(this);
         registerUncaughtExceptionHandler();
-        UMConfigure.init(this, "5af2b9e88f4a9d2f1c000038", "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "8983182ab0952c6fe1237435edefb680");
+        UMConfigure.init(this, Constants.UM_APP_KEY, Constants.UM_CHANNEL, UMConfigure.DEVICE_TYPE_PHONE, Constants.UM_MESSAGE_SECRET);
         mPushAgent = PushAgent.getInstance(this);
         //注册推送服务，每次调用register方法都会回调该接口
         mPushAgent.register(new IUmengRegisterCallback() {

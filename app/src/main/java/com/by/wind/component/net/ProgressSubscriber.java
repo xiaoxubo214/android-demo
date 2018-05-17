@@ -6,18 +6,13 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.by.wind.R;
-import com.by.wind.entity.UserToken;
 import com.by.wind.ui.activity.LoginActivity;
 import com.by.wind.util.BussinessUtil;
 import com.by.wind.util.FileUtil;
 import com.wind.base.loading.LoadingDialog;
 
 import retrofit2.HttpException;
-import rx.Observable;
 import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by wind ic_on 17/2/23.
