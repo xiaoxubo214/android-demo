@@ -82,6 +82,8 @@ public class MessageFragment extends BaseFragment implements LoadingDialog.Progr
         settings.setSupportZoom(true);
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         //mWebView.loadUrl(getIntent().getStringExtra("url"));
+        mWebView.setHorizontalScrollBarEnabled(false);
+        mWebView.setVerticalScrollBarEnabled(false);
         mWebView.post(new Runnable() {
             @Override
             public void run() {

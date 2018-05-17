@@ -10,9 +10,15 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
+import com.by.wind.BaseApplication;
+import com.by.wind.Constants;
 import com.by.wind.R;
 import com.by.wind.component.event.MessageEvent;
+import com.by.wind.entity.RequestInfo;
 import com.by.wind.util.BussinessUtil;
+import com.by.wind.util.DeviceUtil;
+import com.by.wind.util.JsonUtil;
+import com.by.wind.util.PreferenceHelper;
 import com.wind.base.BaseFragment;
 import com.wind.base.loading.LoadingDialog;
 
@@ -69,12 +75,26 @@ public class SaleFragment extends BaseFragment implements LoadingDialog.Progress
         settings.setSupportZoom(true);
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         //mWebView.loadUrl(getIntent().getStringExtra("url"));
-        mWebView.loadUrl("http://wap.baidu.com/");
-        mWebView.setWebChromeClient(new WebChromeClient() {
+        //mWebView.loadUrl(getIntent().getStringExtra("url"));
+        mWebView.setHorizontalScrollBarEnabled(false);
+        mWebView.setVerticalScrollBarEnabled(false);
+        mWebView.post(new Runnable() {
             @Override
-            public void onReceivedTitle(WebView view, String title) {
-                super.onReceivedTitle(view, title);
-                //
+            public void run() {
+                try {
+                    RequestInfo requestInfo = new RequestInfo();
+                    requestInfo.setRequest_type(Constants.PAGE_SALE);
+                    requestInfo.setPhone_h(PreferenceHelper.getUserTokenData().phone_h);
+                    requestInfo.setDevice_type(Constants.DEVICE_PLATFORM);
+                    requestInfo.setDevice_ver(BaseApplication.getInstance().getVersionCode());
+                    requestInfo.setDevice_id(DeviceUtil.getIMEI(BaseApplication.getInstance().getApplicationContext()));
+                    requestInfo.setApp_ver(BaseApplication.getInstance().getVersionName());
+                    requestInfo.setAccess_token(PreferenceHelper.getUserTokenData().access_token);
+                    String jsonString = JsonUtil.toJson(requestInfo);
+                    mWebView.postUrl(Constants.URL_PAGE,jsonString.getBytes());
+                }catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             }
         });
         mWebView.setWebViewClient(new WebViewClient() {

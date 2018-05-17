@@ -71,6 +71,8 @@ public class WebViewActivity extends TitleActivity {
         settings.setDisplayZoomControls(true);
         settings.setSupportZoom(true);
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        mWebView.setHorizontalScrollBarEnabled(false);
+        mWebView.setVerticalScrollBarEnabled(false);
         mWebView.post(new Runnable() {
             @Override
             public void run() {

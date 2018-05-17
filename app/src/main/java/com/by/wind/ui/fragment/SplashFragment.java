@@ -1,12 +1,9 @@
 package com.by.wind.ui.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -51,8 +48,6 @@ public class SplashFragment extends BaseFragment implements View.OnTouchListener
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         unbinder = ButterKnife.bind(this, super.onCreateView(inflater, container, savedInstanceState));
-        View view = inflater.inflate(R.layout.fragment_splash, null);
-        view.setOnTouchListener(this);
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
