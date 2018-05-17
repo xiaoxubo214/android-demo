@@ -12,7 +12,7 @@ import java.io.IOException;
 public class FileUtil {
 
     public static void clearCache() {
-        PreferenceHelper.saveUserToken(null);
+        PreferenceHelper.saveUserTokenData(null);
         PreferenceHelper.setIsLogin(false);
     }
 

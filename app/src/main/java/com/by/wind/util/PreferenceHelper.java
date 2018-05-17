@@ -2,6 +2,7 @@ package com.by.wind.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.by.wind.BaseApplication;
 import com.by.wind.entity.UserInfo;
@@ -27,7 +28,7 @@ public class PreferenceHelper {
 
 
     public static void clearCache() {
-        saveUserToken(null);
+        saveUserTokenData(null);
         saveUserInfo(null);
         setIsLogin(false);
     }
@@ -83,10 +84,11 @@ public class PreferenceHelper {
      *
      * @param userData
      */
-    public static void saveUserToken(UserData userData) {
+    public static void saveUserTokenData(UserData userData) {
         SharedPreferences.Editor editor = getEditor(LOGININFO_PREFERENCES);
         if (userData != null) {
             editor.putString(LAST_USER_TOKEN, JsonUtil.toJson(userData));
+            Log.e("Save user", JsonUtil.toJson(userData));
         } else {
             editor.putString(LAST_USER_TOKEN, "");
         }
@@ -129,7 +131,7 @@ public class PreferenceHelper {
     /**
      ＊ 获取用户Token
      */
-    public static UserData getUserToken() {
+    public static UserData getUserTokenData() {
         UserData userData = null;
         try {
             SharedPreferences preferences = getSharedPreferences(LOGININFO_PREFERENCES);

@@ -77,12 +77,12 @@ public class WebViewActivity extends TitleActivity {
                 try {
                     RequestInfo requestInfo = new RequestInfo();
                     requestInfo.setRequest_type(PAGE_URL);
-                    requestInfo.setPhone_h(PreferenceHelper.getUserInfo().getUserPhone());
+                    requestInfo.setPhone_h(PreferenceHelper.getUserTokenData().phone_h);
                     requestInfo.setDevice_type(Constants.DEVICE_PLATFORM);
                     requestInfo.setDevice_ver(BaseApplication.getInstance().getVersionCode());
                     requestInfo.setDevice_id(DeviceUtil.getIMEI(BaseApplication.getInstance().getApplicationContext()));
                     requestInfo.setApp_ver(BaseApplication.getInstance().getVersionName());
-                    requestInfo.setAccess_token(PreferenceHelper.getUserToken().access_token);
+                    requestInfo.setAccess_token(PreferenceHelper.getUserTokenData().access_token);
                     String jsonString = JsonUtil.toJson(requestInfo);
                     mWebView.postUrl(Constants.URL_PAGE,jsonString.getBytes());
                 }catch (Exception ex) {

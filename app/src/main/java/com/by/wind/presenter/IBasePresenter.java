@@ -27,7 +27,7 @@ public interface IBasePresenter {
     }
 
     interface IUserInfoPresenter {
-        void getUserInfo(String phone, Context context, PublishSubject<ActivityLifeCycleEvent> publishSubject);
+        void getUserInfo( Context context, PublishSubject<ActivityLifeCycleEvent> publishSubject);
     }
 
 

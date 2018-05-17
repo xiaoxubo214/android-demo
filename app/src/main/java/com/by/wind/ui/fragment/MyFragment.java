@@ -20,6 +20,7 @@ import com.by.wind.ui.activity.LoginActivity;
 import com.by.wind.ui.activity.RegisterActivity;
 import com.by.wind.ui.activity.WebViewActivity;
 import com.by.wind.util.img.ImageLoader;
+import com.by.wind.util.img.ImagePicker;
 import com.by.wind.view.IBaseView;
 import com.by.wind.widget.PersonalItem;
 
@@ -134,7 +135,7 @@ public class MyFragment extends BaseFragment implements IBaseView.IUserInfoView{
             }
         });
         mUserInfoPresenter = new UserInfoPresenter(this,getActivity());
-        mUserInfoPresenter.getUserInfo("15102115465",getContext(),lifecycleSubject);
+        mUserInfoPresenter.getUserInfo(getContext(),lifecycleSubject);
     }
     private void setUserInfo() {
 
@@ -143,6 +144,7 @@ public class MyFragment extends BaseFragment implements IBaseView.IUserInfoView{
             Glide.with(getActivity())
                     .load(userInfo.getAvatar())
                     .into(mUserAvatar);
+            ImagePicker.getInstance().getImageLoader().displayCropImage(getContext(), userInfo.getAvatar(), mUserAvatar, R.drawable.my_default_img);
             mUserName.setText(userInfo.getUserName());
             mUserPhone.setText(userInfo.getUserPhone());
         }

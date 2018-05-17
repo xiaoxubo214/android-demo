@@ -29,9 +29,9 @@ public class UserInfoPresenter extends BaseMvpPresenter<IBaseView.IUserInfoView>
     }
 
     @Override
-    public void getUserInfo(String phone, Context context, PublishSubject<ActivityLifeCycleEvent> publishSubject) {
+    public void getUserInfo( Context context, PublishSubject<ActivityLifeCycleEvent> publishSubject) {
         MyHashMap myHashMap = MyHashMap.newInstance();
-        myHashMap.put(Constants.API_REQUEST_TYPE,Constants.API_LOGIN);
+        myHashMap.put(Constants.API_REQUEST_TYPE,Constants.API_GET_USER_INFO);
 
         Observable observable = ApiManager.getInstance().getApiService().api(myHashMap);
 

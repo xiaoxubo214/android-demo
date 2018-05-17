@@ -65,7 +65,7 @@ public class OkHttpUtil {
                     .method(originalRequest.method(), originalRequest.body())
                     .url(authorizedUrlBuilder.build());
             Request request = requestBuilder.build();
-            if (PreferenceHelper.getUserToken() == null) {
+            if (PreferenceHelper.getUserTokenData() == null) {
                 request = requestBuilder.build();
             } else {
                 /*String basicToken = "Bearer " + Base64.encodeToString(PreferenceHelper.getUserToken().accessToken.getBytes(), Base64.NO_WRAP);

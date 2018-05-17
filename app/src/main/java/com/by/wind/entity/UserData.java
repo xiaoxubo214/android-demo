@@ -16,11 +16,11 @@ public class UserData implements Parcelable {
     public String access_token;
 
     protected UserData(Parcel in) {
-        request_type = in.readString();
-        result_code = in.readString();
-        result_msg = in.readString();
-        phone_h = in.readString();
-        access_token = in.readString();
+        this.request_type = in.readString();
+        this.result_code = in.readString();
+        this.result_msg = in.readString();
+        this.phone_h = in.readString();
+        this.access_token = in.readString();
     }
 
     @Override

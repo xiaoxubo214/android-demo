@@ -6,6 +6,8 @@ package com.by.wind;
 
 public class Constants {
 
+    public static final String APPLICATION_ID = "com.by.wind";
+
     public final static boolean isDebug = false;
 
     public final static String HOST = "https://www.yhees.com/plat_interface/app_interface/";//服务器
