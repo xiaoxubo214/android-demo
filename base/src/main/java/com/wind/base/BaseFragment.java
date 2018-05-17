@@ -45,7 +45,7 @@ public abstract class BaseFragment extends Fragment {
         if (viewId != -1 && mRootView == null) {
             this.context = getActivity();
             mRootView = inflater.inflate(viewId, container, false);
-            mRootView.setBackgroundColor(ContextCompat.getColor(context,R.color.half_white));
+            mRootView.setBackgroundColor(ContextCompat.getColor(context,R.color.bg));
             ButterKnife.bind(this, mRootView);//绑定framgent
             initAllView(savedInstanceState);
         } else {

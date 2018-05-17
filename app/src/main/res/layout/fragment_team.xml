@@ -9,8 +9,8 @@
         android:visibility="visible"/>
     <ImageView
         android:id="@+id/not_network_iv"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:src="@drawable/not_network"
         android:visibility="gone"/>
