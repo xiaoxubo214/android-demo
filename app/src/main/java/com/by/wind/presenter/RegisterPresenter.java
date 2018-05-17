@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import com.by.wind.Constants;
 import com.by.wind.component.net.ApiManager;
+import com.by.wind.component.net.MyHashMap;
 import com.by.wind.component.net.ObservableUtil;
 import com.by.wind.component.net.ProgressSubscriber;
 import com.by.wind.entity.LoginInfo;
@@ -27,7 +28,11 @@ public class RegisterPresenterImpl implements IBasePresenter.IRegisterPresenter{
 
     @Override
     public void doForgetPwd(LoginInfo loginInfo, Context context, PublishSubject<ActivityLifeCycleEvent> lifecycleSubject) {
-        Observable getCodeOb = ApiManager.getInstance().getApiService().doForget(Constants.API_LOGIN,loginInfo.getUserName(), loginInfo.getPassword());
+        MyHashMap myHashMap = MyHashMap.newInstance();
+        myHashMap.put(Constants.API_REQUEST_TYPE,Constants.API_LOGIN);
+        myHashMap.put(Constants.STR_PHONE, loginInfo.getUserName());
+        myHashMap.put("password", loginInfo.getPassword());
+        Observable getCodeOb = ApiManager.getInstance().getApiService().api(myHashMap);
         ObservableUtil.getInstance().toSubscribe(getCodeOb, new ProgressSubscriber<UserToken>(context) {
             @Override
             protected void _onNext(UserToken userToken) {
@@ -48,7 +53,10 @@ public class RegisterPresenterImpl implements IBasePresenter.IRegisterPresenter{
 
     @Override
     public void getCheckCode(String phone, final Context context, PublishSubject<ActivityLifeCycleEvent> lifecycleSubject) {
-        Observable getCodeOb = ApiManager.getInstance().getApiService().getCode(Constants.API_GET_SMS, phone);
+        MyHashMap myHashMap = MyHashMap.newInstance();
+        myHashMap.put(Constants.API_REQUEST_TYPE,Constants.API_LOGIN);
+        myHashMap.put(Constants.STR_PHONE, phone);
+        Observable getCodeOb = ApiManager.getInstance().getApiService().api(myHashMap);
         ObservableUtil.getInstance().toSubscribe(getCodeOb, new ProgressSubscriber<String>(context) {
             @Override
             protected void _onNext(String verifyCode) {
@@ -66,7 +74,11 @@ public class RegisterPresenterImpl implements IBasePresenter.IRegisterPresenter{
 
     @Override
     public void doRegister(LoginInfo loginInfo, Context context, PublishSubject<ActivityLifeCycleEvent> lifecycleSubject) {
-        Observable getCodeOb = ApiManager.getInstance().getApiService().doRegister(Constants.API_LOGIN,loginInfo.getUserName(), loginInfo.getPassword());
+        MyHashMap myHashMap = MyHashMap.newInstance();
+        myHashMap.put(Constants.API_REQUEST_TYPE,Constants.API_LOGIN);
+        myHashMap.put(Constants.STR_PHONE, loginInfo.getUserName());
+        myHashMap.put("password", loginInfo.getPassword());
+        Observable getCodeOb = ApiManager.getInstance().getApiService().api(myHashMap);
         ObservableUtil.getInstance().toSubscribe(getCodeOb, new ProgressSubscriber<UserToken>(context) {
             @Override
             protected void _onNext(UserToken userToken) {

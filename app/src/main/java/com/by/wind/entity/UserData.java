@@ -40,4 +40,9 @@ public class UserToken implements Parcelable {
             return new UserToken[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return phone_h + "\t" +access_token;
+    }
 }
