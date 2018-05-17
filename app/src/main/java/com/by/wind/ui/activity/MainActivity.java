@@ -48,8 +48,8 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends TitleActivity implements TabIndicator.OnTabClickListener {
 
-    @BindView(R.id.fl_splash)
-    FrameLayout flSplash;
+/*    @BindView(R.id.fl_splash)
+    FrameLayout flSplash;*/
     @BindView(R.id.rl_content)
     RelativeLayout mContent;
     @BindView(R.id.viewpager)
@@ -102,13 +102,13 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
 
     protected void initializeViews() {
 
-        FragmentManager fm = getSupportFragmentManager();
+/*        FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         SplashFragment splashFragment= new SplashFragment();
         transaction.replace(R.id.fl_splash, splashFragment);
-        transaction.commit();
+        transaction.commit();*/
 
-        llCustomTitle.setVisibility(View.GONE);
+        llCustomTitle.setVisibility(View.VISIBLE);
         llCustomTitle.set_show_left_button(false);
         llCustomTitle.set_show_Right_button(true);
         mMessageFragment = MessageFragment.newInstance(null);
@@ -166,13 +166,13 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(MessageEvent event) {
-        Log.e(TAG,"Receive message");
+       /* Log.e(TAG,"Receive message");
         if (event.getEventType().equals(MessageEvent.SPLASH_FINISH)) {
             Log.e(TAG,"operation message");
             flSplash.setVisibility(View.GONE);
             mContent.setVisibility(View.VISIBLE);
             llCustomTitle.setVisibility(View.VISIBLE);
-        }
+        }*/
     }
 
     @Override

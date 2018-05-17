@@ -24,7 +24,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/TranslucentTheme">
-        <activity android:name=".ui.activity.MainActivity">
+        <activity android:name=".ui.activity.SplashActivity">
 
             <!-- android:theme="@style/StartStyle"> -->
             <intent-filter>
@@ -37,6 +37,7 @@
         <activity android:name=".util.img.PicDisplayActivity" />
         <activity android:name=".ui.activity.RegisterActivity" />
         <activity android:name=".ui.activity.WebViewActivity"/>
+        <activity android:name=".ui.activity.MainActivity"/>
         <!-- push start -->
         <!-- 使用完全自定义消息来开启应用的服务进程的示例服务配置 -->
         <service android:name=".component.service.MyNotificationService" />

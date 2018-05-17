@@ -7,17 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.MainActivity">
 
-    <FrameLayout
+<!--    <FrameLayout
         android:id="@+id/fl_splash"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"/>
+        android:visibility="visible"/>-->
 
     <RelativeLayout
         android:id="@+id/rl_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <com.by.wind.widget.NoScrollViewPager
             android:id="@+id/viewpager"
