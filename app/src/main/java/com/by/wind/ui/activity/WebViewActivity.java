@@ -67,7 +67,7 @@ public class WebViewActivity extends TitleActivity {
     protected void initializeViews() {
 
         mLoadingDialog = new LoadingDialog(this,false);
-        if (mLoadingDialog != null && !mLoadingDialog.isShowing() ) {
+        if ( mLoadingDialog != null ) {
             mLoadingDialog.show();
         }
 
@@ -114,7 +114,9 @@ public class WebViewActivity extends TitleActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                mLoadingDialog.dismiss();
+                if(mLoadingDialog != null && mLoadingDialog.isShowing()) {
+                    mLoadingDialog.dismiss();
+                }
             }
         });
 
