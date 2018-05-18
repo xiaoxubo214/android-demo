@@ -30,20 +30,21 @@
             android:gravity="center">
             <TextView
                 android:id="@+id/user_name_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/user_avatar_iv"
-                android:gravity="center"
+                android:layout_gravity="left"
                 android:text="@string/please_login"
                 android:textSize="@dimen/sp_14"/>
             <TextView
                 android:id="@+id/user_phone_tv"
-                android:layout_width="match_parent"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/user_avatar_iv"
                 android:paddingTop="@dimen/margin_ten"
-                android:gravity="center"
-                android:text="@string/please_login"
+                android:layout_gravity="left"
+                android:text="00000000000000"
+                android:singleLine="true"
                 android:textSize="@dimen/sp_14"/>
         </LinearLayout>
         <LinearLayout
