@@ -9,7 +9,7 @@
     <string name="message">消息</string>
     <string name="team">团队</string>
     <string name="shop">商户通</string>
-    <string name="sale">销售</string>
+    <string name="sale">收银</string>
     <string name="personal">我的</string>
     <string name="home_search_hint">"  输入你想要的内容"</string>
     <string name="course_name">%1$s第%2$d次课</string>

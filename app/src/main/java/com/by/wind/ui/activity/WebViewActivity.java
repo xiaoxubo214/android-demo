@@ -27,6 +27,7 @@ import com.by.wind.util.SharedPreferences;
 import com.by.wind.widget.TitleActivity;
 import com.by.wind.R;
 import com.umeng.message.PushAgent;
+import com.wind.base.loading.LoadingDialog;
 
 import java.io.IOException;
 
@@ -43,6 +44,8 @@ public class WebViewActivity extends TitleActivity {
 
     private IntentFilter mIntentFilter;
     private NetworkChangeReceiver mNetworkChangeReceiver;
+
+    LoadingDialog mLoadingDialog;
 
     private static String PAGE_URL = "";
 
@@ -62,6 +65,12 @@ public class WebViewActivity extends TitleActivity {
 
     @Override
     protected void initializeViews() {
+
+        mLoadingDialog = new LoadingDialog(this,false);
+        if (mLoadingDialog != null && !mLoadingDialog.isShowing() ) {
+            mLoadingDialog.show();
+        }
+
         WebSettings settings = mWebView.getSettings();
         settings.setAppCacheEnabled(true);
         settings.setDatabaseEnabled(true);
@@ -105,7 +114,7 @@ public class WebViewActivity extends TitleActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                //mLoadingDialog.dismiss();
+                mLoadingDialog.dismiss();
             }
         });
 

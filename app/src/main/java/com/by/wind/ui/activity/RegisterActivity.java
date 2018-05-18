@@ -117,7 +117,7 @@ public class RegisterActivity extends BaseActivity implements IBaseView.IRegiste
             return;
         }*/
 
-        if (pwd.length()< 6 || confirmPwd.length()< 6 ) {
+        if (pwd.length()< 4 || confirmPwd.length()< 4 ) {
             ToastUtil.show("密码长度必须大于等于 6");
             return;
         }

@@ -32,7 +32,7 @@
             android:layout_alignParentBottom="true"
             android:background="@color/transparent"
             android:orientation="vertical">
-
+            <View style="@style/full_line_style"/>
             <com.by.wind.widget.tab.TabIndicator
                 android:id="@+id/mMainIndicator"
                 android:layout_width="fill_parent"
