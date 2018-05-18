@@ -47,7 +47,7 @@ public class WebViewActivity extends TitleActivity {
 
     LoadingDialog mLoadingDialog;
 
-    private static String PAGE_URL = "";
+    private static String PAGE_URL = Constants.PAGE_MESSAGE;
 
     public static void open(Context context, String pageUrl) {
         PAGE_URL = pageUrl;

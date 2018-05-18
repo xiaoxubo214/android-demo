@@ -10,4 +10,10 @@
         android:src="@drawable/splash_logo"
         android:paddingBottom="100dp"/>
 
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
 </RelativeLayout>
