@@ -1,6 +1,7 @@
 package com.by.wind.ui.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -137,8 +138,11 @@ public class TeamFragment extends BaseFragment implements LoadingDialog.Progress
                 mWebView.loadUrl(call);
             }
         } else if(event.getEventType().equals(MessageEvent.TYPE_GO_BACK)) {
-            if (event.getMessage().equals(MessageEvent.BACK_TEAM)) {
-                mWebView.goBack();
+            if (event.getIntMessage() == MessageEvent.BACK_TEAM) {
+                if(mWebView.canGoBack()) {
+                    Log.e(TAG,"canGoBack");
+                    mWebView.goBack();
+                }
             }
 
         }

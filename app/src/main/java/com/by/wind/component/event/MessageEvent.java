@@ -15,10 +15,10 @@ public class MessageEvent {
     public final static String SCAN_SHOP = "scan_shop";
     public final static String SCAN_SALE = "scan_sale";
 
-    public final static String BACK_MESSAGE = "back_message";
-    public final static String BACK_TEAM = "back_team";
-    public final static String BACK_SHOP = "back_shop";
-    public final static String BACK_SALE = "back_sale";
+    public final static int BACK_MESSAGE = 1;
+    public final static int BACK_TEAM = 2;
+    public final static int BACK_SHOP = 3;
+    public final static int BACK_SALE = 4;
 
     private String eventType;
 

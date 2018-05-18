@@ -146,8 +146,13 @@ public class MessageFragment extends BaseFragment implements LoadingDialog.Progr
                 mWebView.loadUrl(call);
             }
         } else if(event.getEventType().equals(MessageEvent.TYPE_GO_BACK)) {
-            if (event.getMessage().equals(MessageEvent.BACK_MESSAGE)) {
-                mWebView.goBack();
+            Log.e(TAG,"TYPE_GO_BACK");
+            if (event.getIntMessage() == MessageEvent.BACK_MESSAGE) {
+                Log.e(TAG,"BACK_MESSAGE");
+                if(mWebView.canGoBack()) {
+                    Log.e(TAG,"canGoBack");
+                    mWebView.goBack();
+                }
             }
 
         }
