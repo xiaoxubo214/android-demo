@@ -1,7 +1,8 @@
 package com.by.wind.component.net;
 
 import com.by.wind.Constants;
-import com.by.wind.entity.UserData;
+import com.by.wind.entity.UserInfo;
+import com.by.wind.entity.UserToken;
 
 
 import java.util.Map;
@@ -19,5 +20,8 @@ import retrofit2.http.POST;
 public interface Api {
 
     @POST(Constants.URL_API)
-    Observable<RetrofitResult<UserData>> api(@Body Map<String,Object> params);
+    Observable<RetrofitResult<UserToken>> api(@Body Map<String,Object> params);
+
+    @POST(Constants.URL_API)
+    Observable<RetrofitResult<UserInfo>> getUserInfo(@Body Map<String,Object> params);
 }

@@ -6,7 +6,7 @@ import android.util.Log;
 
 import com.by.wind.BaseApplication;
 import com.by.wind.entity.UserInfo;
-import com.by.wind.entity.UserData;
+import com.by.wind.entity.UserToken;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -84,7 +84,7 @@ public class PreferenceHelper {
      *
      * @param userData
      */
-    public static void saveUserTokenData(UserData userData) {
+    public static void saveUserTokenData(UserToken userData) {
         SharedPreferences.Editor editor = getEditor(LOGININFO_PREFERENCES);
         if (userData != null) {
             editor.putString(LAST_USER_TOKEN, JsonUtil.toJson(userData));
@@ -131,14 +131,14 @@ public class PreferenceHelper {
     /**
      ＊ 获取用户Token
      */
-    public static UserData getUserTokenData() {
-        UserData userData = null;
+    public static UserToken getUserTokenData() {
+        UserToken userData = null;
         try {
             SharedPreferences preferences = getSharedPreferences(LOGININFO_PREFERENCES);
             String userTokenJson = preferences.getString(LAST_USER_TOKEN, "");
             if (userTokenJson != null && !"".equals(userTokenJson)) {
-                Type memberInfoType = new TypeToken<UserData>() {}.getType();
-                userData = (UserData) JsonUtil.toObject(userTokenJson, memberInfoType);
+                Type memberInfoType = new TypeToken<UserToken>() {}.getType();
+                userData = (UserToken) JsonUtil.toObject(userTokenJson, memberInfoType);
             }
         } catch (Exception e) {
         }
@@ -149,30 +149,30 @@ public class PreferenceHelper {
      * 获取老师信息
      */
     public static UserInfo getUserInfo() {
-        UserInfo userInfo = null;
+        UserInfo userData = null;
         try {
             SharedPreferences preferences = getSharedPreferences(LOGININFO_PREFERENCES);
             String teacherInfoJson = preferences.getString(LAST_USER_INFO, "");
             if (teacherInfoJson != null && !"".equals(teacherInfoJson)) {
                 Type memberInfoType = new TypeToken<UserInfo>() {
                 }.getType();
-                userInfo = (UserInfo) JsonUtil.toObject(teacherInfoJson, memberInfoType);
+                userData = (UserInfo) JsonUtil.toObject(teacherInfoJson, memberInfoType);
             }
         } catch (Exception e) {
         }
 
-        return userInfo;
+        return userData;
     }
 
     /**
      * 保存用户信息
      *
-     * @param userInfo
+     * @param userData
      */
-    public static void saveUserInfo(UserInfo userInfo) {
+    public static void saveUserInfo(UserInfo userData) {
         SharedPreferences.Editor editor = getEditor(LOGININFO_PREFERENCES);
-        if (userInfo != null) {
-            editor.putString(LAST_USER_INFO, JsonUtil.toJson(userInfo));
+        if (userData != null) {
+            editor.putString(LAST_USER_INFO, JsonUtil.toJson(userData));
         } else {
             editor.putString(LAST_USER_INFO, "");
         }

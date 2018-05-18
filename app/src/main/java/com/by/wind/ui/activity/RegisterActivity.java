@@ -126,9 +126,9 @@ public class RegisterActivity extends BaseActivity implements IBaseView.IRegiste
             return;
         }
         if (ACTION_TYPE == Constants.START_ACTIVITY_REGISTER) {
-            mRegisterPresenter.doRegister(new LoginInfo(username,pwd),this,lifecycleSubject);
+            mRegisterPresenter.doRegister(new LoginInfo(username,pwd,code),this,lifecycleSubject);
         } else {
-            mRegisterPresenter.doForgetPwd(new LoginInfo(username,pwd),this,lifecycleSubject);
+            mRegisterPresenter.doForgetPwd(new LoginInfo(username,pwd,code),this,lifecycleSubject);
         }
     }
     private void gotoGetCode(String username) {

@@ -8,11 +8,11 @@ import com.by.wind.component.net.ApiManager;
 
 import com.by.wind.component.net.MyHashMap;
 import com.by.wind.component.net.ObservableUtil;
+import com.by.wind.entity.UserToken;
 import com.by.wind.util.PreferenceHelper;
 import com.by.wind.component.net.ProgressSubscriber;
 
 import com.by.wind.entity.LoginInfo;
-import com.by.wind.entity.UserData;
 import com.by.wind.util.ToastUtil;
 import com.by.wind.view.IBaseView;
 import com.wind.base.event.ActivityLifeCycleEvent;
@@ -39,10 +39,10 @@ public class LoginPresenter extends BaseMvpPresenter<IBaseView.ILoginView> imple
         myHashMap.put(Constants.STR_PHONE, loginInfo.getUserName());
         myHashMap.put("password", loginInfo.getPassword());
         Observable observable = ApiManager.getInstance().getApiService().api(myHashMap);
-        ObservableUtil.getInstance().toSubscribe(observable, new ProgressSubscriber <UserData>(context) {
+        ObservableUtil.getInstance().toSubscribe(observable, new ProgressSubscriber <UserToken>(context) {
 
             @Override
-            protected void _onNext(UserData userData) {
+            protected void _onNext(UserToken userData) {
                 Log.e(TAG, userData.toString());
                 mLoginView.hideLoading();
                 if (userData.result_code.equals( Constants.RESULT_SUCCESS)) {

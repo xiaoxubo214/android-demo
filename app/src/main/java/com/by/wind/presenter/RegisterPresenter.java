@@ -8,8 +8,7 @@ import com.by.wind.component.net.MyHashMap;
 import com.by.wind.component.net.ObservableUtil;
 import com.by.wind.component.net.ProgressSubscriber;
 import com.by.wind.entity.LoginInfo;
-import com.by.wind.entity.UserData;
-import com.by.wind.util.PreferenceHelper;
+import com.by.wind.entity.UserToken;
 import com.by.wind.util.ToastUtil;
 import com.by.wind.view.IBaseView;
 import com.wind.base.event.ActivityLifeCycleEvent;
@@ -33,9 +32,9 @@ public class RegisterPresenter implements IBasePresenter.IRegisterPresenter{
         myHashMap.put("password", loginInfo.getPassword());
         myHashMap.put("verification_code",loginInfo.getCode());
         Observable getCodeOb = ApiManager.getInstance().getApiService().api(myHashMap);
-        ObservableUtil.getInstance().toSubscribe(getCodeOb, new ProgressSubscriber<UserData>(context) {
+        ObservableUtil.getInstance().toSubscribe(getCodeOb, new ProgressSubscriber<UserToken>(context) {
             @Override
-            protected void _onNext(UserData userData) {
+            protected void _onNext(UserToken userData) {
                 iRegisterView.hideLoading();
                 if (userData.result_code.equals( Constants.RESULT_SUCCESS)) {
                     //PreferenceHelper.saveUserToken(userData);
@@ -63,9 +62,9 @@ public class RegisterPresenter implements IBasePresenter.IRegisterPresenter{
         myHashMap.put(Constants.API_REQUEST_TYPE,Constants.API_GET_SMS);
         myHashMap.put(Constants.STR_PHONE, phone);
         Observable getCodeOb = ApiManager.getInstance().getApiService().api(myHashMap);
-        ObservableUtil.getInstance().toSubscribe(getCodeOb, new ProgressSubscriber<UserData>(context) {
+        ObservableUtil.getInstance().toSubscribe(getCodeOb, new ProgressSubscriber<UserToken>(context) {
             @Override
-            protected void _onNext(UserData userData) {
+            protected void _onNext(UserToken userData) {
                 if (userData.result_code.equals( Constants.RESULT_SUCCESS)) {
                     ToastUtil.show("验证码已发送！");
                     iRegisterView.getCheckCodeResult(Constants.SUCCESS);
@@ -91,9 +90,9 @@ public class RegisterPresenter implements IBasePresenter.IRegisterPresenter{
         myHashMap.put("password", loginInfo.getPassword());
         myHashMap.put("verification_code",loginInfo.getCode());
         Observable getCodeOb = ApiManager.getInstance().getApiService().api(myHashMap);
-        ObservableUtil.getInstance().toSubscribe(getCodeOb, new ProgressSubscriber<UserData>(context) {
+        ObservableUtil.getInstance().toSubscribe(getCodeOb, new ProgressSubscriber<UserToken>(context) {
             @Override
-            protected void _onNext(UserData userData) {
+            protected void _onNext(UserToken userData) {
                 iRegisterView.hideLoading();
                 if (userData.result_code.equals( Constants.RESULT_SUCCESS)) {
                     //PreferenceHelper.saveUserToken(userData);

@@ -21,6 +21,11 @@ public class LoginInfo {
         this.userName = userName;
         this.password = password;
     }
+    public LoginInfo(String userName, String password, String code){
+        this.userName = userName;
+        this.password = password;
+        this.code = code;
+    }
     public String getUserName() {
         return userName;
     }

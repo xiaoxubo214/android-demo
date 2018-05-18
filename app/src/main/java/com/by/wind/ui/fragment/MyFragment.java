@@ -19,12 +19,10 @@ import com.by.wind.util.PreferenceHelper;
 import com.by.wind.ui.activity.LoginActivity;
 import com.by.wind.ui.activity.RegisterActivity;
 import com.by.wind.ui.activity.WebViewActivity;
-import com.by.wind.util.img.ImageLoader;
 import com.by.wind.util.img.ImagePicker;
 import com.by.wind.view.IBaseView;
 import com.by.wind.widget.PersonalItem;
 
-import com.squareup.picasso.Picasso;
 import com.wind.base.BaseFragment;
 
 import butterknife.BindView;
@@ -141,12 +139,11 @@ public class MyFragment extends BaseFragment implements IBaseView.IUserInfoView{
 
         UserInfo userInfo = PreferenceHelper.getUserInfo();
         if (userInfo != null) {
-            Glide.with(getActivity())
-                    .load(userInfo.getAvatar())
-                    .into(mUserAvatar);
-            ImagePicker.getInstance().getImageLoader().displayCropImage(getContext(), userInfo.getAvatar(), mUserAvatar, R.drawable.my_default_img);
-            mUserName.setText(userInfo.getUserName());
-            mUserPhone.setText(userInfo.getUserPhone());
+            if (userInfo.head_image != null && !userInfo.head_image.isEmpty()) {
+                ImagePicker.getInstance().getImageLoader().displayCropImage(getContext(), userInfo.head_image, mUserAvatar, R.drawable.my_default_img);
+            }
+            mUserName.setText(userInfo.member_name);
+            mUserPhone.setText(userInfo.phone_h);
         }
 
     }

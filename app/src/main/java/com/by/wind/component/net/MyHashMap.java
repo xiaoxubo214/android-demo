@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.by.wind.BaseApplication;
 import com.by.wind.Constants;
-import com.by.wind.entity.UserData;
+import com.by.wind.entity.UserToken;
 import com.by.wind.util.DeviceUtil;
 import com.by.wind.util.PreferenceHelper;
 
@@ -18,7 +18,7 @@ public class MyHashMap extends HashMap<String, Object> {
         myHashMap.put("device_ver", BaseApplication.getInstance().getVersionCode() + "");
         myHashMap.put("device_id", DeviceUtil.getIMEI(BaseApplication.getInstance().getApplicationContext()));
         myHashMap.put("app_ver", BaseApplication.getInstance().getVersionName());
-        UserData userData = PreferenceHelper.getUserTokenData();
+        UserToken userData = PreferenceHelper.getUserTokenData();
         if (userData != null) {
             Log.e(TAG, userData.phone_h);
             Log.e(TAG, userData.access_token);

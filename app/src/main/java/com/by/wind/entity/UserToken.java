@@ -7,7 +7,7 @@ import android.os.Parcelable;
  * Created by wind on 17/4/24.
  */
 
-public class UserData implements Parcelable {
+public class UserToken implements Parcelable {
 
     public String request_type;
     public String result_code;
@@ -15,7 +15,8 @@ public class UserData implements Parcelable {
     public String phone_h;
     public String access_token;
 
-    protected UserData(Parcel in) {
+
+    protected UserToken(Parcel in) {
         this.request_type = in.readString();
         this.result_code = in.readString();
         this.result_msg = in.readString();
@@ -37,15 +38,15 @@ public class UserData implements Parcelable {
         return 0;
     }
 
-    public static final Creator<UserData> CREATOR = new Creator<UserData>() {
+    public static final Creator<UserToken> CREATOR = new Creator<UserToken>() {
         @Override
-        public UserData createFromParcel(Parcel in) {
-            return new UserData(in);
+        public UserToken createFromParcel(Parcel in) {
+            return new UserToken(in);
         }
 
         @Override
-        public UserData[] newArray(int size) {
-            return new UserData[size];
+        public UserToken[] newArray(int size) {
+            return new UserToken[size];
         }
     };
 
