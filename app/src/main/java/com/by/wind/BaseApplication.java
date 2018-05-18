@@ -3,15 +3,17 @@ package com.by.wind;
 import android.app.Application;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 
+import com.by.wind.component.lib_zxing.DisplayUtil;
 import com.by.wind.util.common.AppException;
 import com.orhanobut.hawk.Hawk;
 import com.squareup.leakcanary.LeakCanary;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.PushAgent;
-import com.uuzuche.lib_zxing.activity.ZXingLibrary;
+import com.by.wind.component.lib_zxing.activity.ZXingLibrary;
 
 /**
  * Created by Wind on 2017/11/15.
@@ -54,6 +56,18 @@ public class BaseApplication extends Application {
                 Log.e("BaseApplication","error");
             }
         });
+
+        initDisplayOpinion();
+    }
+
+    private void initDisplayOpinion() {
+        DisplayMetrics dm = getResources().getDisplayMetrics();
+        DisplayUtil.density = dm.density;
+        DisplayUtil.densityDPI = dm.densityDpi;
+        DisplayUtil.screenWidthPx = dm.widthPixels;
+        DisplayUtil.screenhightPx = dm.heightPixels;
+        DisplayUtil.screenWidthDip = DisplayUtil.px2dip(getApplicationContext(), dm.widthPixels);
+        DisplayUtil.screenHightDip = DisplayUtil.px2dip(getApplicationContext(), dm.heightPixels);
     }
 
     // 注册App异常崩溃处理器

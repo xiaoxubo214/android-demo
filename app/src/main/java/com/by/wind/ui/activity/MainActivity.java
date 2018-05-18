@@ -8,12 +8,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 
@@ -24,7 +21,6 @@ import com.by.wind.ui.fragment.MessageFragment;
 import com.by.wind.ui.fragment.MyFragment;
 import com.by.wind.ui.fragment.SaleFragment;
 import com.by.wind.ui.fragment.ShopFragment;
-import com.by.wind.ui.fragment.SplashFragment;
 import com.by.wind.ui.fragment.TeamFragment;
 import com.by.wind.util.ToastUtil;
 import com.by.wind.widget.FragmentPagerAdapter;
@@ -32,8 +28,8 @@ import com.by.wind.widget.NoScrollViewPager;
 import com.by.wind.widget.tab.Tab;
 import com.by.wind.widget.tab.TabIndicator;
 import com.umeng.message.PushAgent;
-import com.uuzuche.lib_zxing.activity.CaptureActivity;
-import com.uuzuche.lib_zxing.activity.CodeUtils;
+import com.by.wind.component.lib_zxing.activity.CaptureActivity;
+import com.by.wind.component.lib_zxing.activity.CodeUtils;
 import com.wind.base.BaseFragment;
 import com.by.wind.widget.TitleActivity;
 
