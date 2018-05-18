@@ -64,6 +64,7 @@ public class MessageFragment extends BaseFragment implements LoadingDialog.Progr
 
     }
 
+
     @Override
     public int getContentViewId() {
         return R.layout.fragment_messge;
@@ -139,9 +140,16 @@ public class MessageFragment extends BaseFragment implements LoadingDialog.Progr
         } else if (event.getEventType().equals(MessageEvent.NETWORK_FAIL)) {
             mWebView.setVisibility(View.GONE);
             mIvNotNetwork.setVisibility(View.VISIBLE);
-        } else if(event.getEventType().equals(MessageEvent.SCAN_MESSAGE)){
-            String call = "javascript:AppScan(" + event.getMessage() + ")";
-            mWebView.loadUrl(call);
+        } else if(event.getEventType().equals(MessageEvent.TYPE_SCAN)){
+            if (event.getMessage().equals(MessageEvent.SCAN_MESSAGE)) {
+                String call = "javascript:AppScan(" + event.getMessage() + ")";
+                mWebView.loadUrl(call);
+            }
+        } else if(event.getEventType().equals(MessageEvent.TYPE_GO_BACK)) {
+            if (event.getMessage().equals(MessageEvent.BACK_MESSAGE)) {
+                mWebView.goBack();
+            }
+
         }
     }
 

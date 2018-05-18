@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -191,6 +192,19 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
             showTitleContent(getResources().getString(R.string.personal));
 
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        int backPage = -1;
+        if (keyCode == KeyEvent.KEYCODE_BACK ) {
+            if (mCurIndex == -1 || mCurIndex == 0){
+                backPage = 1;
+            }
+            EventBus.getDefault().post(new MessageEvent(MessageEvent.TYPE_GO_BACK, backPage));
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     private void initTitle(int position) {

@@ -7,14 +7,24 @@ public class MessageEvent {
 
     public final static String SPLASH_FINISH = "splash_finish";
 
-    public final static String SCAN_MESSAGE = "message";
-    public final static String SCAN_TEAM = "scan";
-    public final static String SCAN_SHOP = "ship";
-    public final static String SCAN_SALE = "sale";
+    public final static String TYPE_SCAN = "100";
+    public final static String TYPE_GO_BACK = "101";
+
+    public final static String SCAN_MESSAGE = "scan_message";
+    public final static String SCAN_TEAM = "scan_team";
+    public final static String SCAN_SHOP = "scan_shop";
+    public final static String SCAN_SALE = "scan_sale";
+
+    public final static String BACK_MESSAGE = "back_message";
+    public final static String BACK_TEAM = "back_team";
+    public final static String BACK_SHOP = "back_shop";
+    public final static String BACK_SALE = "back_sale";
 
     private String eventType;
 
     private String message;
+
+    private int intMessage;
 
     public String getMessage() {
         return message;
@@ -34,6 +44,11 @@ public class MessageEvent {
         this.message = message;
     }
 
+    public MessageEvent(String eventType,int message) {
+        this.eventType = eventType;
+        this.intMessage = message;
+    }
+
     public String getEventType() {
         return eventType;
     }
@@ -42,5 +57,11 @@ public class MessageEvent {
         this.eventType = eventType;
     }
 
+    public int getIntMessage() {
+        return intMessage;
+    }
 
+    public void setIntMessage(int intMessage) {
+        this.intMessage = intMessage;
+    }
 }
