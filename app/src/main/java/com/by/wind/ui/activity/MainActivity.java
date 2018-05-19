@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 
+import com.by.wind.Constants;
 import com.by.wind.R;
 import com.by.wind.component.event.MessageEvent;
 import com.by.wind.component.service.NotificationBroadcast;
@@ -196,13 +197,21 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        int backPage = -1;
-        if (keyCode == KeyEvent.KEYCODE_BACK ) {
-            if (mCurIndex == -1 || mCurIndex == 0){
-                backPage = 1;
+        String backPage = "";
+        if ( keyCode == KeyEvent.KEYCODE_BACK ) {
+            if ((mCurIndex == -1 || mCurIndex == 0) && (mMessageFragment.getWebView().canGoBack())){
+                backPage = MessageEvent.BACK_MESSAGE;
+            } else if (( mCurIndex == 1) && (mTeamFragment.getWebView().canGoBack())) {
+                backPage = MessageEvent.BACK_TEAM;
+            } else if (( mCurIndex == 2) && (mShopFragment.getWebView().canGoBack())) {
+                backPage = MessageEvent.BACK_SHOP;
+            } else if (( mCurIndex == 3) && (mSaleFragment.getWebView().canGoBack())) {
+                backPage = MessageEvent.BACK_SALE;
             }
-            EventBus.getDefault().post(new MessageEvent(MessageEvent.TYPE_GO_BACK, backPage));
+            if (!backPage.isEmpty()) {
+            EventBus.getDefault().post(new MessageEvent(backPage));
             return true;
+            }
         }
         return super.onKeyDown(keyCode, event);
     }

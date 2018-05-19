@@ -58,6 +58,10 @@ public class ShopFragment extends BaseFragment implements LoadingDialog.Progress
 
     }
 
+    public WebView getWebView() {
+        return mWebView;
+    }
+
     @Override
     public int getContentViewId() {
         return R.layout.fragment_shop;
@@ -137,14 +141,12 @@ public class ShopFragment extends BaseFragment implements LoadingDialog.Progress
                 String call = "javascript:AppScan(" + event.getMessage() + ")";
                 mWebView.loadUrl(call);
             }
-        } else if(event.getEventType().equals(MessageEvent.TYPE_GO_BACK)) {
-            if (event.getIntMessage() == MessageEvent.BACK_SHOP) {
-                if(mWebView.canGoBack()) {
-                    Log.e(TAG,"canGoBack");
-                    mWebView.goBack();
-                }
+        } else if(event.getEventType().equals(MessageEvent.BACK_SHOP)) {
+            Log.e(TAG,"BACK_SHOP");
+            if(mWebView.canGoBack()) {
+                Log.e(TAG,"canGoBack");
+                mWebView.goBack();
             }
-
         }
     }
 

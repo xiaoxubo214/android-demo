@@ -45,10 +45,6 @@ public class MessageFragment extends BaseFragment implements LoadingDialog.Progr
     Unbinder unbinder;
     //private LoadingDialog mLoadingDialog;
 
-    public WebView getmWebView() {
-        return mWebView;
-    }
-
     public static MessageFragment newInstance(String content){
         MessageFragment f = new MessageFragment();
         if (content != null) {
@@ -64,6 +60,9 @@ public class MessageFragment extends BaseFragment implements LoadingDialog.Progr
 
     }
 
+    public WebView getWebView() {
+        return mWebView;
+    }
 
     @Override
     public int getContentViewId() {
@@ -145,16 +144,12 @@ public class MessageFragment extends BaseFragment implements LoadingDialog.Progr
                 String call = "javascript:AppScan(" + event.getMessage() + ")";
                 mWebView.loadUrl(call);
             }
-        } else if(event.getEventType().equals(MessageEvent.TYPE_GO_BACK)) {
-            Log.e(TAG,"TYPE_GO_BACK");
-            if (event.getIntMessage() == MessageEvent.BACK_MESSAGE) {
-                Log.e(TAG,"BACK_MESSAGE");
-                if(mWebView.canGoBack()) {
-                    Log.e(TAG,"canGoBack");
-                    mWebView.goBack();
-                }
+        } else if(event.getEventType().equals(MessageEvent.BACK_MESSAGE)) {
+            Log.e(TAG,"BACK_MESSAGE");
+            if(mWebView.canGoBack()) {
+                Log.e(TAG,"canGoBack");
+                mWebView.goBack();
             }
-
         }
     }
 
