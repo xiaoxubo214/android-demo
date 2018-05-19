@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -28,6 +29,8 @@ import com.by.wind.widget.TitleActivity;
 import com.by.wind.R;
 import com.umeng.message.PushAgent;
 import com.wind.base.loading.LoadingDialog;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
 
@@ -125,6 +128,15 @@ public class WebViewActivity extends TitleActivity {
             mIvNotNetwork.setVisibility(View.VISIBLE);
         }
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ( keyCode == KeyEvent.KEYCODE_BACK && mWebView.canGoBack()) {
+          mWebView.goBack();
+          return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override
