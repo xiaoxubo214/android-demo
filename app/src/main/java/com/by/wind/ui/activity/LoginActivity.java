@@ -99,8 +99,9 @@ public class LoginActivity extends BaseActivity implements IBaseView.ILoginView{
         Log.e(TAG,"RESULT");
         if (Constants.SUCCESS == result) {
             MainActivity.open(this);
+            finish();
         } else {
-            MainActivity.open(this);
+            //MainActivity.open(this);
         }
     }
 

@@ -76,7 +76,9 @@ public class SplashActivity extends BaseActivity {
         ButterKnife.bind(this);
         setFullScreen(null);
         initialView();
-        initWebView();
+        if (PreferenceHelper.isLogin() == true) {
+            initWebView();
+        }
     }
 
     private void initWebView() {
