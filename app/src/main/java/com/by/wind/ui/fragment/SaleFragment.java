@@ -3,6 +3,7 @@ package com.by.wind.ui.fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
@@ -102,11 +103,36 @@ public class SaleFragment extends BaseFragment implements LoadingDialog.Progress
                 }
             }
         });
+
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 //mLoadingDialog.dismiss();
+            }
+        });
+
+        mWebView.setOnTouchListener(new View.OnTouchListener() {
+            float startX = 0;
+            float scrollSize = 120;
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        startX = (int) event.getX();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        int endX = (int) event.getX();
+                        if(endX>startX && mWebView.canGoBack() && endX-startX>scrollSize){
+                            mWebView.goBack();
+                        }else if(endX<startX &&mWebView.canGoForward() && startX-endX>scrollSize){
+                            mWebView.goForward();
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                return false;
             }
         });
 

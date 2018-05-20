@@ -9,6 +9,7 @@ import com.by.wind.component.net.ObservableUtil;
 import com.by.wind.component.net.ProgressSubscriber;
 import com.by.wind.entity.LoginInfo;
 import com.by.wind.entity.UserToken;
+import com.by.wind.util.PreferenceHelper;
 import com.by.wind.util.ToastUtil;
 import com.by.wind.view.IBaseView;
 import com.wind.base.event.ActivityLifeCycleEvent;
@@ -37,8 +38,8 @@ public class RegisterPresenter implements IBasePresenter.IRegisterPresenter{
             protected void _onNext(UserToken userData) {
                 iRegisterView.hideLoading();
                 if (userData.result_code.equals( Constants.RESULT_SUCCESS)) {
-                    //PreferenceHelper.saveUserToken(userData);
-                    //PreferenceHelper.setIsLogin(true);
+                    PreferenceHelper.saveUserTokenData(userData);
+                    PreferenceHelper.setIsLogin(true);
                     iRegisterView.doForgetResult(Constants.SUCCESS);
                 }else {
                     iRegisterView.hideLoading();
@@ -95,8 +96,8 @@ public class RegisterPresenter implements IBasePresenter.IRegisterPresenter{
             protected void _onNext(UserToken userData) {
                 iRegisterView.hideLoading();
                 if (userData.result_code.equals( Constants.RESULT_SUCCESS)) {
-                    //PreferenceHelper.saveUserToken(userData);
-                    //PreferenceHelper.setIsLogin(true);git
+                    PreferenceHelper.saveUserTokenData(userData);
+                    PreferenceHelper.setIsLogin(true);
                     iRegisterView.doForgetResult(Constants.SUCCESS);
                 }else {
                     iRegisterView.hideLoading();

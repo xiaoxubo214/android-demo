@@ -9,12 +9,14 @@ import android.net.NetworkInfo;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.by.wind.BaseApplication;
 import com.by.wind.Constants;
@@ -50,6 +52,10 @@ public class WebViewActivity extends TitleActivity {
 
     LoadingDialog mLoadingDialog;
 
+    float x1 = 0;
+    float x2 = 0;
+    float y1 = 0;
+    float y2 = 0;
     private static String PAGE_URL = Constants.PAGE_MESSAGE;
 
     public static void open(Context context, String pageUrl) {
@@ -112,6 +118,7 @@ public class WebViewActivity extends TitleActivity {
                 super.onReceivedTitle(view, title);
                 //
             }
+
         });
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
@@ -120,6 +127,29 @@ public class WebViewActivity extends TitleActivity {
                 if(mLoadingDialog != null && mLoadingDialog.isShowing()) {
                     mLoadingDialog.dismiss();
                 }
+            }
+        });
+        mWebView.setOnTouchListener(new View.OnTouchListener() {
+            float startX = 0;
+            float scrollSize = 120;
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        startX = (int) event.getX();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        int endX = (int) event.getX();
+                        if(endX>startX && mWebView.canGoBack() && endX-startX>scrollSize){
+                            mWebView.goBack();
+                        }else if(endX<startX &&mWebView.canGoForward() && startX-endX>scrollSize){
+                            mWebView.goForward();
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                return false;
             }
         });
 

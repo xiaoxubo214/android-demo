@@ -145,15 +145,6 @@ public class RegisterActivity extends BaseActivity implements IBaseView.IRegiste
     }
 
     @Override
-    public void doForgetResult(int retCode) {
-        if (retCode == Constants.SUCCESS) {
-            ToastUtil.showToast("密码修改成功！");
-            finish();
-        }
-
-    }
-
-    @Override
     public void getCheckCodeResult(int retCode) {
         if (retCode == Constants.SUCCESS) {
             new CountDownTimerUtils(tvVerifyCode,30 * 1000, 1000).start();
@@ -165,9 +156,20 @@ public class RegisterActivity extends BaseActivity implements IBaseView.IRegiste
     public void doRegisterResult(int retCode) {
         if (retCode == Constants.SUCCESS) {
             ToastUtil.showToast("注册成功,请登录！");
+            MainActivity.open(this);
             finish();
         }
     }
+
+    @Override
+    public void doForgetResult(int retCode) {
+        if (retCode == Constants.SUCCESS) {
+            MainActivity.open(this);
+            ToastUtil.showToast("密码修改成功！");
+            finish();
+        }
+    }
+
 
 
     @Override
