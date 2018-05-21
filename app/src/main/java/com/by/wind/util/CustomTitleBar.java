@@ -23,6 +23,8 @@ public class CustomTitleBar extends LinearLayout {
     ImageView ivLeftButton;
     @BindView(R.id.tvLeftButton)
     TextView tvLeftButton;
+    @BindView(R.id.tvClose)
+    TextView tvCloseText;
     @BindView(R.id.llLeftLayout)
     LinearLayout llLeftLayout;
     @BindView(R.id.tvCenterLeftButton)
@@ -169,6 +171,12 @@ public class CustomTitleBar extends LinearLayout {
                 if (titleOnClickListener != null) {
                     titleOnClickListener.onCenterClick();
                 }
+            }
+        });
+        tvCloseText.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                titleOnClickListener.onCloseClick();
             }
         });
     }
@@ -468,6 +476,16 @@ public class CustomTitleBar extends LinearLayout {
         this.titleOnClickListener = titleOnClickListener;
     }
 
+
+    /**
+     * 设置显示关闭按钮
+     *
+     * @param showCloseText
+     */
+    public void setShow_close_text(boolean showCloseText) {
+        tvCloseText.setVisibility(showCloseText ? VISIBLE : GONE);
+    }
+
     /**
      * 监听标题点击接口
      */
@@ -486,6 +504,11 @@ public class CustomTitleBar extends LinearLayout {
          * 标题栏中间点击事件
          */
         void onCenterClick();
+
+        /**
+         * 关闭按钮事件
+         */
+        void onCloseClick();
 
     }
 }

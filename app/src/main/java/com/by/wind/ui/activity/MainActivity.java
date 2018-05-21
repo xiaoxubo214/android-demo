@@ -107,7 +107,9 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
         transaction.commit();*/
 
         llCustomTitle.setVisibility(View.VISIBLE);
-        llCustomTitle.set_show_left_button(false);
+        llCustomTitle.set_show_left_button(true);
+        llCustomTitle.setShow_close_text(true);
+        llCustomTitle.setTvLeftButton("返回");
         llCustomTitle.set_show_Right_button(true);
         mMessageFragment = MessageFragment.newInstance(null);
         mTeamFragment = TeamFragment.newInstance(null);
@@ -137,12 +139,14 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
         mMainIndicator.initializeData(tabs);
         mMainIndicator.setOnTabClickListener(this);
         mMainIndicator.setCurrentTab(mCurIndex);
+
+        registerNetwork();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        registerNetwork();
+
         EventBus.getDefault().register(this);
     }
 
@@ -226,6 +230,25 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
     }
 
     @Override
+    public void onCloseClick() {
+        String backPage = "";
+
+        if ((mCurIndex == -1 || mCurIndex == 0) && (mMessageFragment.getWebView().canGoBack())){
+            backPage = MessageEvent.CLOSE_MESSAGE;
+        } else if (( mCurIndex == 1) && (mTeamFragment.getWebView().canGoBack())) {
+            backPage = MessageEvent.CLOSE_TEAM;
+        } else if (( mCurIndex == 2) && (mShopFragment.getWebView().canGoBack())) {
+            backPage = MessageEvent.CLOSE_SHOP;
+        } else if (( mCurIndex == 3) && (mSaleFragment.getWebView().canGoBack())) {
+            backPage = MessageEvent.CLOSE_SALE;
+        }
+        if (!backPage.isEmpty()) {
+            EventBus.getDefault().post(new MessageEvent(backPage));
+        }
+
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE) {
             //处理扫描结果（在界面上显示）
@@ -234,10 +257,11 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
                 if (bundle == null) {
                     return;
                 }
-                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
+               if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
                     String result = bundle.getString(CodeUtils.RESULT_STRING);
-                    ToastUtil.show( "解析结果:" + result);
+                    //ToastUtil.show( "解析结果:" + result);
                     String scanPage = "";
+                    Log.e(TAG,"mCurIndex: " + mCurIndex);
                     if (mCurIndex == -1 || mCurIndex == 0){
                         scanPage = MessageEvent.SCAN_MESSAGE;
                     } else if ( mCurIndex == 1 ) {
@@ -247,7 +271,9 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
                     } else if ( mCurIndex == 3 ) {
                         scanPage = MessageEvent.SCAN_SALE;
                     }
+                    Log.e("MainActivity","sendScan"+ scanPage +result);
                     EventBus.getDefault().post(new MessageEvent(scanPage,result));
+                    Log.e("MainActivity","send finish");
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
                     ToastUtil.show( "解析二维码失败");
                     Log.e("MainActivity","解析二维码失败");
@@ -285,14 +311,14 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
         public void onReceive(Context context, Intent intent) {
             ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-            MessageEvent messageEvent;
+            String messageType = "";
             if (networkInfo != null && networkInfo.isAvailable()) {
-                messageEvent = new MessageEvent(MessageEvent.NETWORK_OK);
+                messageType = MessageEvent.NETWORK_OK;
             } else {
-                messageEvent = new MessageEvent(MessageEvent.NETWORK_FAIL);
+                messageType = MessageEvent.NETWORK_FAIL;
             }
             Log.e(TAG,"send message");
-            EventBus.getDefault().post(messageEvent);
+            EventBus.getDefault().post(new MessageEvent(messageType));
         }
     }
 

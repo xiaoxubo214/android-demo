@@ -155,21 +155,23 @@ public class ShopFragment extends BaseFragment implements LoadingDialog.Progress
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(MessageEvent event) {
+        Log.e("ShopFragment",event.getEventType());
         if (event.getEventType().equals(MessageEvent.NETWORK_OK)) {
             mWebView.setVisibility(View.VISIBLE);
             mIvNotNetwork.setVisibility(View.GONE);
         } else if (event.getEventType().equals(MessageEvent.NETWORK_FAIL)) {
             mWebView.setVisibility(View.GONE);
             mIvNotNetwork.setVisibility(View.VISIBLE);
-        } else if(event.getEventType().equals(MessageEvent.TYPE_SCAN)){
-            if (event.getMessage().equals(MessageEvent.SCAN_SHOP)) {
-                String call = "javascript:AppScan(" + event.getMessage() + ")";
-                mWebView.loadUrl(call);
-            }
+        } else if (event.getEventType().equals(MessageEvent.SCAN_SHOP)) {
+            Log.e("Shop scan","scan");
+            String call = "javascript:AppScan(" + event.getMessage() + ")";
+            mWebView.loadUrl(call);
         } else if(event.getEventType().equals(MessageEvent.BACK_SHOP)) {
-            Log.e(TAG,"BACK_SHOP");
             if(mWebView.canGoBack()) {
-                Log.e(TAG,"canGoBack");
+                mWebView.goBack();
+            }
+        } else if (event.getEventType().equals(MessageEvent.CLOSE_SHOP)) {
+            while (mWebView.canGoBack()) {
                 mWebView.goBack();
             }
         }

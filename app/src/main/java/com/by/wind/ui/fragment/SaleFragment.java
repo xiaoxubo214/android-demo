@@ -162,15 +162,17 @@ public class SaleFragment extends BaseFragment implements LoadingDialog.Progress
         } else if (event.getEventType().equals(MessageEvent.NETWORK_FAIL)) {
             mWebView.setVisibility(View.GONE);
             mIvNotNetwork.setVisibility(View.VISIBLE);
-        }  else if(event.getEventType().equals(MessageEvent.TYPE_SCAN)){
-            if (event.getMessage().equals(MessageEvent.SCAN_SALE)) {
-                String call = "javascript:AppScan(" + event.getMessage() + ")";
-                mWebView.loadUrl(call);
-            }
+        }  else if (event.getEventType().equals(MessageEvent.SCAN_SALE)) {
+            String call = "javascript:AppScan(" + event.getMessage() + ")";
+            mWebView.loadUrl(call);
         } else if(event.getEventType().equals(MessageEvent.BACK_SALE)) {
             Log.e(TAG,"BACK_SALE");
             if(mWebView.canGoBack()) {
                 Log.e(TAG,"canGoBack");
+                mWebView.goBack();
+            }
+        } else if (event.getEventType().equals(MessageEvent.CLOSE_SALE)) {
+            while (mWebView.canGoBack()) {
                 mWebView.goBack();
             }
         }

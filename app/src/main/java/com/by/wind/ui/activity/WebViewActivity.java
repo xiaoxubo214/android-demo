@@ -26,15 +26,11 @@ import com.by.wind.util.BussinessUtil;
 import com.by.wind.util.DeviceUtil;
 import com.by.wind.util.JsonUtil;
 import com.by.wind.util.PreferenceHelper;
-import com.by.wind.util.SharedPreferences;
 import com.by.wind.widget.TitleActivity;
 import com.by.wind.R;
 import com.umeng.message.PushAgent;
 import com.wind.base.loading.LoadingDialog;
 
-import org.greenrobot.eventbus.EventBus;
-
-import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -69,6 +65,8 @@ public class WebViewActivity extends TitleActivity {
     @Override
     protected void setContentView() {
         setContentView(R.layout.activity_web_view);
+        llCustomTitle.set_show_left_button(true);
+        llCustomTitle.setTvLeftButton("返回");
         PushAgent.getInstance(this).onAppStart();
     }
 
@@ -197,7 +195,6 @@ public class WebViewActivity extends TitleActivity {
         mNetworkChangeReceiver = new NetworkChangeReceiver();
         registerReceiver(mNetworkChangeReceiver, mIntentFilter);
     }
-
 
     class NetworkChangeReceiver extends BroadcastReceiver {
         @Override

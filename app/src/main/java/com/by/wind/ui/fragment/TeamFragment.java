@@ -160,15 +160,17 @@ public class TeamFragment extends BaseFragment implements LoadingDialog.Progress
         } else if (event.getEventType().equals(MessageEvent.NETWORK_FAIL)) {
             mWebView.setVisibility(View.GONE);
             mIvNotNetwork.setVisibility(View.VISIBLE);
-        }else if(event.getEventType().equals(MessageEvent.TYPE_SCAN)){
-            if (event.getMessage().equals(MessageEvent.SCAN_TEAM)) {
-                String call = "javascript:AppScan(" + event.getMessage() + ")";
-                mWebView.loadUrl(call);
-            }
+        } else if (event.getEventType().equals(MessageEvent.SCAN_TEAM)) {
+            String call = "javascript:AppScan(" + event.getMessage() + ")";
+            mWebView.loadUrl(call);
         } else if(event.getEventType().equals(MessageEvent.BACK_TEAM)) {
             Log.e(TAG,"BACK_TEAM");
             if(mWebView.canGoBack()) {
                 Log.e(TAG,"canGoBack");
+                mWebView.goBack();
+            }
+        } else if (event.getEventType().equals(MessageEvent.CLOSE_TEAM)) {
+            while (mWebView.canGoBack()) {
                 mWebView.goBack();
             }
         }

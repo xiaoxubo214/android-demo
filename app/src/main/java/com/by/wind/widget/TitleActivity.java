@@ -138,6 +138,11 @@ public abstract class TitleActivity extends BaseActivity implements CustomTitleB
 
     }
 
+    @Override
+    public void onCloseClick() {
+
+    }
+
     protected void protectApp() {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
