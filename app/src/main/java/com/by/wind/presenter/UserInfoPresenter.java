@@ -41,7 +41,6 @@ public class UserInfoPresenter extends BaseMvpPresenter<IBaseView.IUserInfoView>
 
             @Override
             protected void _onNext(UserInfo userData) {
-                Log.e(TAG,"next");
                 if (userData.result_code.equals( Constants.RESULT_SUCCESS)) {
                     Log.e(TAG,"success");
                     UserInfo tempUserInfo = PreferenceHelper.getUserInfo();

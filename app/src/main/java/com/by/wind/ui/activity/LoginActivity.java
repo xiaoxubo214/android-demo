@@ -63,7 +63,7 @@ public class LoginActivity extends BaseActivity implements IBaseView.ILoginView{
         loginPresenter = new LoginPresenter(this,this);
     }
 
-    @OnClick({R.id.submit_btn,R.id.register_tv,R.id.forget_tv})
+    @OnClick({R.id.submit_btn, R.id.register_tv, R.id.try_tv, R.id.forget_tv})
     public void onViewClicked(View view)  {
         if (view.getId() == R.id.submit_btn) {
             login(mUsernameEt.getText().toString(),mPasswordEt.getText().toString());
@@ -71,6 +71,8 @@ public class LoginActivity extends BaseActivity implements IBaseView.ILoginView{
             RegisterActivity.open(this,Constants.START_ACTIVITY_REGISTER);
         } else if (view.getId() == R.id.forget_tv) {
             RegisterActivity.open(this,Constants.START_ACTIVITY_FORGET);
+        } else if (view.getId() == R.id.try_tv) {
+            login(Constants.TRY_USER,Constants.TRY_PASSWORD);
         } else {
           Log.e(TAG,"Error");
         }

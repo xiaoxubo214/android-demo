@@ -9,8 +9,8 @@
     <RelativeLayout
         android:id="@+id/rlTitleLayout"
         android:layout_width="match_parent"
-        android:paddingLeft="@dimen/margin_fifteen"
-        android:paddingRight="@dimen/margin_fifteen"
+        android:paddingLeft="@dimen/margin_ten"
+        android:paddingRight="@dimen/margin_ten"
         android:layout_height="?attr/actionBarSize">
 
         <LinearLayout

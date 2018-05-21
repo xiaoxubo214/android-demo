@@ -86,4 +86,7 @@ public class Constants {
     public final static String UM_CHANNEL = "umeng";
     public final static String UM_APP_KEY = "5af2b9e88f4a9d2f1c000038";
     public final static String UM_MESSAGE_SECRET = "8983182ab0952c6fe1237435edefb680";
+
+    public final static String TRY_USER = "15102115465";
+    public final static String TRY_PASSWORD = "123456";
 }
