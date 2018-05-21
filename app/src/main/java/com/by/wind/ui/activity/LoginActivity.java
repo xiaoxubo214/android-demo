@@ -98,6 +98,7 @@ public class LoginActivity extends BaseActivity implements IBaseView.ILoginView{
     public void showResult(int result) {
         Log.e(TAG,"RESULT");
         if (Constants.SUCCESS == result) {
+            ToastUtil.show("登录成功");
             MainActivity.open(this);
             finish();
         } else {

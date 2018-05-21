@@ -19,6 +19,7 @@ import com.by.wind.util.PreferenceHelper;
 import com.by.wind.ui.activity.LoginActivity;
 import com.by.wind.ui.activity.RegisterActivity;
 import com.by.wind.ui.activity.WebViewActivity;
+import com.by.wind.util.ToastUtil;
 import com.by.wind.util.img.ImagePicker;
 import com.by.wind.view.IBaseView;
 import com.by.wind.widget.PersonalItem;
@@ -130,6 +131,7 @@ public class MyFragment extends BaseFragment implements IBaseView.IUserInfoView{
             public void onClick(View view) {
                 LoginActivity.open(getActivity());
                 PreferenceHelper.clearCache();
+                ToastUtil.show("退出成功");
             }
         });
         mUserInfoPresenter = new UserInfoPresenter(this,getActivity());
