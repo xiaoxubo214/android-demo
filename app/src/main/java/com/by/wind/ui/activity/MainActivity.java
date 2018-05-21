@@ -140,13 +140,13 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
         mMainIndicator.setOnTabClickListener(this);
         mMainIndicator.setCurrentTab(mCurIndex);
 
-        registerNetwork();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
+        registerNetwork();
         EventBus.getDefault().register(this);
     }
 
@@ -263,17 +263,21 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
                     String scanPage = "";
                     Log.e(TAG,"mCurIndex: " + mCurIndex);
                     if (mCurIndex == -1 || mCurIndex == 0){
-                        scanPage = MessageEvent.SCAN_MESSAGE;
+                        //scanPage = MessageEvent.SCAN_MESSAGE;
+                        mMessageFragment.callJsScan(result);
                     } else if ( mCurIndex == 1 ) {
-                        scanPage = MessageEvent.SCAN_TEAM;
+                        //scanPage = MessageEvent.SCAN_TEAM;
+                        mTeamFragment.callJsScan(result);
                     } else if ( mCurIndex == 2 ) {
-                        scanPage = MessageEvent.SCAN_SHOP;
+                        //scanPage = MessageEvent.SCAN_SHOP;
+                        mShopFragment.callJsScan(result);
                     } else if ( mCurIndex == 3 ) {
-                        scanPage = MessageEvent.SCAN_SALE;
+                        //scanPage = MessageEvent.SCAN_SALE;
+                        mSaleFragment.callJsScan(result);
                     }
-                    Log.e("MainActivity","sendScan"+ scanPage +result);
+              /*      Log.e("MainActivity","sendScan"+ scanPage +result);
                     EventBus.getDefault().post(new MessageEvent(scanPage,result));
-                    Log.e("MainActivity","send finish");
+                    Log.e("MainActivity","send finish");*/
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
                     ToastUtil.show( "解析二维码失败");
                     Log.e("MainActivity","解析二维码失败");

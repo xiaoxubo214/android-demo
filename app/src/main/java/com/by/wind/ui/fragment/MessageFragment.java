@@ -165,8 +165,8 @@ public class MessageFragment extends BaseFragment implements LoadingDialog.Progr
             mWebView.setVisibility(View.GONE);
             mIvNotNetwork.setVisibility(View.VISIBLE);
         } else if (event.getEventType().equals(MessageEvent.SCAN_MESSAGE)) {
-            String call = "javascript:AppScan(" + event.getMessage() + ")";
-            mWebView.loadUrl(call);
+          /*  String call = "javascript:AppScan(" + event.getMessage() + ")";
+            mWebView.loadUrl(call);*/
         } else if(event.getEventType().equals(MessageEvent.BACK_MESSAGE)) {
             if(mWebView.canGoBack()) {
                 mWebView.goBack();
@@ -178,6 +178,11 @@ public class MessageFragment extends BaseFragment implements LoadingDialog.Progr
         }
     }
 
+    public void callJsScan(String msg){
+        Log.e("MessageFragment","call Js scan");
+        String call = "javascript:AppScan(" + msg + ")";
+        mWebView.loadUrl(call);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);

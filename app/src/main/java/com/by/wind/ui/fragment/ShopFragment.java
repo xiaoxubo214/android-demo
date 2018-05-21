@@ -163,9 +163,9 @@ public class ShopFragment extends BaseFragment implements LoadingDialog.Progress
             mWebView.setVisibility(View.GONE);
             mIvNotNetwork.setVisibility(View.VISIBLE);
         } else if (event.getEventType().equals(MessageEvent.SCAN_SHOP)) {
-            Log.e("Shop scan","scan");
+           /* Log.e("Shop scan","scan");
             String call = "javascript:AppScan(" + event.getMessage() + ")";
-            mWebView.loadUrl(call);
+            mWebView.loadUrl(call);*/
         } else if(event.getEventType().equals(MessageEvent.BACK_SHOP)) {
             if(mWebView.canGoBack()) {
                 mWebView.goBack();
@@ -175,6 +175,10 @@ public class ShopFragment extends BaseFragment implements LoadingDialog.Progress
                 mWebView.goBack();
             }
         }
+    }
+    public void callJsScan(String msg){
+        String call = "javascript:AppScan(" + msg + ")";
+        mWebView.loadUrl(call);
     }
 
     @Override

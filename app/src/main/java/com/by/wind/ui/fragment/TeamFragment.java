@@ -161,8 +161,8 @@ public class TeamFragment extends BaseFragment implements LoadingDialog.Progress
             mWebView.setVisibility(View.GONE);
             mIvNotNetwork.setVisibility(View.VISIBLE);
         } else if (event.getEventType().equals(MessageEvent.SCAN_TEAM)) {
-            String call = "javascript:AppScan(" + event.getMessage() + ")";
-            mWebView.loadUrl(call);
+        /*    String call = "javascript:AppScan(" + event.getMessage() + ")";
+            mWebView.loadUrl(call);*/
         } else if(event.getEventType().equals(MessageEvent.BACK_TEAM)) {
             Log.e(TAG,"BACK_TEAM");
             if(mWebView.canGoBack()) {
@@ -174,6 +174,11 @@ public class TeamFragment extends BaseFragment implements LoadingDialog.Progress
                 mWebView.goBack();
             }
         }
+    }
+
+    public void callJsScan(String msg){
+        String call = "javascript:AppScan(" + msg + ")";
+        mWebView.loadUrl(call);
     }
 
     @Override
