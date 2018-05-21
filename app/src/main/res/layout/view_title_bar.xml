@@ -79,8 +79,8 @@
                 android:paddingBottom="@dimen/margin_five"
                 android:gravity="center"
                 android:visibility="gone"
-                android:text="
-"
+                android:textStyle="bold"
+                android:text=""
                 android:singleLine="true"/>
 
             <TextView
@@ -94,6 +94,7 @@
                 android:paddingBottom="@dimen/margin_five"
                 android:textSize="@dimen/sp_18"
                 android:gravity="center"
+                android:textStyle="bold"
                 android:text=""
                 android:visibility="gone"/>
 

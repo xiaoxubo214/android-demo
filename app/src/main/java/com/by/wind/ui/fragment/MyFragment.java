@@ -96,7 +96,7 @@ public class MyFragment extends BaseFragment implements IBaseView.IUserInfoView{
         mLlUserInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                WebViewActivity.open(getActivity(),Constants.PAGE_USER);
+                WebViewActivity.open(getActivity(),Constants.PAGE_USER,"用户信息");
             }
         });
         mChangePwd.setOnClickListener(new View.OnClickListener() {
@@ -108,20 +108,20 @@ public class MyFragment extends BaseFragment implements IBaseView.IUserInfoView{
         mCommon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                WebViewActivity.open(getActivity(), Constants.PAGE_COMMON);
+                WebViewActivity.open(getActivity(), Constants.PAGE_COMMON, "通用");
             }
         });
         mHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                WebViewActivity.open(getActivity(),Constants.PAGE_HELP);
+                WebViewActivity.open(getActivity(),Constants.PAGE_HELP, "帮助与反馈");
             }
         });
 
         mAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                WebViewActivity.open(getActivity(),Constants.PAGE_ABOUT);
+                WebViewActivity.open(getActivity(),Constants.PAGE_ABOUT, "关于YIHI商户通");
             }
         });
 

@@ -385,7 +385,7 @@ public class CustomTitleBar extends LinearLayout {
      * @param title_text
      */
     public void setTvCenterLeftButton(String title_text) {
-        tvCenterLeftButton.setWidth(200);
+        tvCenterLeftButton.setWidth(380);
         tvCenterLeftButton.setText(title_text);
     }
 

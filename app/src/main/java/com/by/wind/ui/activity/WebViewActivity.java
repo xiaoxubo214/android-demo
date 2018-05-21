@@ -48,14 +48,12 @@ public class WebViewActivity extends TitleActivity {
 
     LoadingDialog mLoadingDialog;
 
-    float x1 = 0;
-    float x2 = 0;
-    float y1 = 0;
-    float y2 = 0;
     private static String PAGE_URL = Constants.PAGE_MESSAGE;
+    private static String contentTitle = "";
 
-    public static void open(Context context, String pageUrl) {
+    public static void open(Context context, String pageUrl,String title) {
         PAGE_URL = pageUrl;
+        contentTitle = title;
         Intent intent = new Intent();
         intent.setClass(context, WebViewActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -67,6 +65,7 @@ public class WebViewActivity extends TitleActivity {
         setContentView(R.layout.activity_web_view);
         llCustomTitle.set_show_left_button(true);
         llCustomTitle.setTvLeftButton("返回");
+        showTitleContent(contentTitle);
         PushAgent.getInstance(this).onAppStart();
     }
 
