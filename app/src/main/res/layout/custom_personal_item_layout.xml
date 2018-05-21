@@ -34,12 +34,12 @@
         android:layout_marginRight="17dp"
         android:src="@drawable/my_arrow"/>
 
-    <View
+<!--    <View
         android:id="@+id/line_item_bottom"
         style="@style/full_line_style"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="12dp"
-        android:background="@color/dialog_style_color"/>
+        android:background="@color/dialog_style_color"/>-->
 
 
 </RelativeLayout>

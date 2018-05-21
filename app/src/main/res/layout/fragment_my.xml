@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:padding="10dp"
+        android:padding="20dp"
         android:background="@color/white"
         android:orientation="horizontal">
         <ImageView
@@ -20,7 +20,7 @@
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_margin="@dimen/margin_ten"
+
             android:src="@drawable/my_default_img" />
         <LinearLayout
             android:layout_width="wrap_content"
@@ -82,6 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_fifty"
                 android:background="@color/white"
+                android:padding="10dp"
                 cil:iv_drawable_right="@drawable/my_arrow"
                 cil:line_is="true"
                 android:layout_marginBottom="20dp"
@@ -94,17 +95,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_fifty"
                 android:background="@color/white"
+                android:padding="10dp"
                 cil:iv_drawable_right="@drawable/my_arrow"
                 cil:line_is="true"
                 cil:tv_text_color="@color/light_gray_color"
                 cil:tv_text_size="@dimen/sp_16"
                 cil:tv_text="通用" />
 
+            <View style="@style/full_line_style"
+                android:paddingLeft="20dp"/>
+
             <com.by.wind.widget.PersonalItem
                 android:id="@+id/pl_help"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_fifty"
                 android:background="@color/white"
+                android:padding="10dp"
                 cil:iv_drawable_right="@drawable/my_arrow"
                 cil:line_is="true"
                 cil:tv_text_color="@color/light_gray_color"
@@ -116,6 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/margin_fifty"
                 android:background="@color/white"
+                android:padding="10dp"
                 cil:iv_drawable_right="@drawable/my_arrow"
                 cil:line_is="true"
                 cil:tv_text_color="@color/light_gray_color"
@@ -141,6 +148,7 @@
             android:layout_centerInParent="true"
             android:textColor="@color/btn_text_red"
             android:textSize="@dimen/sp_16"
+            android:padding="10dp"
             android:text="@string/login_out"
             android:gravity="center"/>
     </LinearLayout>

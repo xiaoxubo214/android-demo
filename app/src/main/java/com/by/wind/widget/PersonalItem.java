@@ -51,7 +51,7 @@ public class PersonalItem extends CustomView {
         mContentTv = (TextView) view.findViewById(R.id.content_tv);
         //mContentTv.setCompoundDrawables(ContextCompat.getDrawable(context,iv_drawable_left_id),null,null,null);
         mRightIconIv = (ImageView) view.findViewById(R.id.right_icon_iv);
-        mBottomLine = view.findViewById(R.id.line_item_bottom);
+        //mBottomLine = view.findViewById(R.id.line_item_bottom);
         mContentTv.setText(tv_text);
         mContentTv.setTextColor(tv_text_color);
         if (is_enabled_center) mContentTv.setGravity(Gravity.CENTER);
