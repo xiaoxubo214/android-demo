@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.os.Parcel;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
@@ -14,8 +15,10 @@ import android.widget.EditText;
 import com.by.wind.Constants;
 import com.by.wind.R;
 import com.by.wind.entity.LoginInfo;
+import com.by.wind.entity.UserToken;
 import com.by.wind.presenter.IBasePresenter;
 import com.by.wind.presenter.LoginPresenter;
+import com.by.wind.util.PreferenceHelper;
 import com.by.wind.util.StringUtil;
 import com.by.wind.util.ToastUtil;
 import com.by.wind.view.IBaseView;
@@ -72,10 +75,20 @@ public class LoginActivity extends BaseActivity implements IBaseView.ILoginView{
         } else if (view.getId() == R.id.forget_tv) {
             RegisterActivity.open(this,Constants.START_ACTIVITY_FORGET);
         } else if (view.getId() == R.id.try_tv) {
-            login(Constants.TRY_USER,Constants.TRY_PASSWORD);
+          tryUsed();
         } else {
           Log.e(TAG,"Error");
         }
+    }
+
+    private void tryUsed() {
+        UserToken userToken = UserToken.CREATOR.createFromParcel(Parcel.obtain());
+        userToken.phone_h = Constants.TRY_USER;
+        userToken.access_token = Constants.TRY_TOKEN;
+        PreferenceHelper.saveUserTokenData(userToken);
+        PreferenceHelper.setIsLogin(true);
+        MainActivity.open(this);
+        finish();
     }
 
     private void login(String username, String password) {

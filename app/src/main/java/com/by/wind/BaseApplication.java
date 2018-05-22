@@ -53,6 +53,7 @@ public class BaseApplication extends Application {
 
             @Override
             public void onFailure(String s, String s1) {
+                //注册失败
                 Log.e("BaseApplication","error");
             }
         });

@@ -84,9 +84,9 @@ public class Constants {
     public final static String DEVICE_PLATFORM = "android";
 
     public final static String UM_CHANNEL = "umeng";
-    public final static String UM_APP_KEY = "5af2b9e88f4a9d2f1c000038";
-    public final static String UM_MESSAGE_SECRET = "8983182ab0952c6fe1237435edefb680";
+    public final static String UM_APP_KEY = "5aea866bb27b0a04d00000f0";
+    public final static String UM_MESSAGE_SECRET = "4b21d8593842ee628be7ce6f86eba6ef";
 
-    public final static String TRY_USER = "15102115465";
-    public final static String TRY_PASSWORD = "123456";
+    public final static String TRY_USER = "88888888888";
+    public final static String TRY_TOKEN = "4E38BC3B222AFF7271A051BAD1FDBF98";
 }
