@@ -21,3 +21,6 @@
 #-renamesourcefileattribute SourceFile
 -keep class com.wang.avi.** { *; }
 -keep class com.wang.avi.indicators.** { *; }
+-keep public class com.by.wind.R$*{
+        public static final int *;
+    }

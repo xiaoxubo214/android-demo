@@ -137,6 +137,7 @@ public class SplashActivity extends BaseActivity {
             //new CountDownTimerUtils(mSeekBar, this.getActivity(), COUNTDOWN_TIME_MILLION, COUNTDOWN_INTERVAL).start();
         } else {
             LoginActivity.open(this);
+            finish();
         }
     }
 
