@@ -15,6 +15,10 @@ import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.PushAgent;
 import com.by.wind.component.lib_zxing.activity.ZXingLibrary;
 
+import org.android.agoo.huawei.HuaWeiRegister;
+import org.android.agoo.mezu.MeizuRegister;
+import org.android.agoo.xiaomi.MiPushRegistar;
+
 /**
  * Created by Wind on 2017/11/15.
  */
@@ -57,7 +61,9 @@ public class BaseApplication extends Application {
                 Log.e("BaseApplication","error");
             }
         });
-
+        MiPushRegistar.register( this, "2882303761517796915", "5831779650915");
+        HuaWeiRegister.register(this);
+        //MeizuRegister.register(this, "", "");
         initDisplayOpinion();
     }
 
