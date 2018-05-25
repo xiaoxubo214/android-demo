@@ -67,15 +67,19 @@ public class WebViewActivity extends TitleActivity {
         llCustomTitle.setTvLeftButton("返回");
         showTitleContent(contentTitle);
         PushAgent.getInstance(this).onAppStart();
+        mLoadingDialog = new LoadingDialog(this,false);
+/*        if (mLoadingDialog != null && !mLoadingDialog.isShowing() ) {
+            mLoadingDialog.show();
+        }*/
     }
 
     @Override
     protected void initializeViews() {
 
-        mLoadingDialog = new LoadingDialog(this,false);
+ /*       mLoadingDialog = new LoadingDialog(this,false);
         if ( mLoadingDialog != null ) {
             mLoadingDialog.show();
-        }
+        }*/
 
         WebSettings settings = mWebView.getSettings();
         settings.setAppCacheEnabled(true);
@@ -113,6 +117,9 @@ public class WebViewActivity extends TitleActivity {
             @Override
             public void onReceivedTitle(WebView view, String title) {
                 super.onReceivedTitle(view, title);
+                /*if(mLoadingDialog != null && mLoadingDialog.isShowing()) {
+                    mLoadingDialog.dismiss();
+                }*/
                 //
             }
 
@@ -121,9 +128,7 @@ public class WebViewActivity extends TitleActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                if(mLoadingDialog != null && mLoadingDialog.isShowing()) {
-                    mLoadingDialog.dismiss();
-                }
+
             }
         });
         mWebView.setOnTouchListener(new View.OnTouchListener() {

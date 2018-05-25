@@ -105,12 +105,18 @@ public class LoginActivity extends BaseActivity implements IBaseView.ILoginView{
             ToastUtil.show("密码不能为空");
             return;
         }
-
+        mLoadingDialog = new LoadingDialog(this,false);
+        if ( mLoadingDialog != null ) {
+            mLoadingDialog.show();
+        }
         loginPresenter.login(new LoginInfo(username,password),this,lifecycleSubject);
     }
 
     @Override
     public void showResult(int result) {
+         if(mLoadingDialog != null && mLoadingDialog.isShowing()) {
+             mLoadingDialog.dismiss();
+         }
         Log.e(TAG,"RESULT");
         if (Constants.SUCCESS == result) {
             ToastUtil.show("登录成功");
