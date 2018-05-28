@@ -13,9 +13,33 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+            proguardFiles 'proguard-rules.pro'
+        }
     }
+
+    signingConfigs {
+        debug {
+            storeFile file('android.keystore')
+            storePassword "android"
+            keyAlias "android.keystore"
+            keyPassword "android"
+        }
+        release {
+            storeFile file('android.keystore')
+            storePassword "android"
+            keyAlias "android.keystore"
+            keyPassword "android"
+        }
+    }
+
     compileOptions {
         targetCompatibility 1.8
         sourceCompatibility 1.8

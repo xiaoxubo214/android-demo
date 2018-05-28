@@ -131,6 +131,7 @@ public class MyFragment extends BaseFragment implements IBaseView.IUserInfoView{
             public void onClick(View view) {
                 LoginActivity.open(getActivity());
                 PreferenceHelper.clearCache();
+                getActivity().finish();
                 ToastUtil.show("退出成功");
             }
         });

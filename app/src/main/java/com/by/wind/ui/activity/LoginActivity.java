@@ -87,7 +87,7 @@ public class LoginActivity extends BaseActivity implements IBaseView.ILoginView{
         userToken.access_token = Constants.TRY_TOKEN;
         PreferenceHelper.saveUserTokenData(userToken);
         PreferenceHelper.setIsLogin(true);
-        MainActivity.open(this);
+        SplashActivity.open(this);
         finish();
     }
 
@@ -120,7 +120,7 @@ public class LoginActivity extends BaseActivity implements IBaseView.ILoginView{
         Log.e(TAG,"RESULT");
         if (Constants.SUCCESS == result) {
             ToastUtil.show("登录成功");
-            MainActivity.open(this);
+            SplashActivity.open(this);
             finish();
         } else {
             //MainActivity.open(this);
