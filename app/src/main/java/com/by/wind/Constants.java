@@ -87,6 +87,13 @@ public class Constants {
     public final static String UM_APP_KEY = "5aea866bb27b0a04d00000f0";
     public final static String UM_MESSAGE_SECRET = "4b21d8593842ee628be7ce6f86eba6ef";
 
+    public final static String MI_PUSH_APP_ID = "2882303761517796915";
+    public final static String MI_PUSH_APP_KEY = "5831779650915";
+
+    public final static String MEIZU_PUSH_APP_ID = "113615";
+    public final static String MEIZU_PUSH_APP_KEY = "0cfa445724a6482f9daa6fb1a5f6892b";
+
+
     public final static String TRY_USER = "88888888888";
     public final static String TRY_TOKEN = "4E38BC3B222AFF7271A051BAD1FDBF98";
 }

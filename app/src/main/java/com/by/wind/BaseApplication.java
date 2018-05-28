@@ -61,9 +61,9 @@ public class BaseApplication extends Application {
                 Log.e("BaseApplication","error");
             }
         });
-        MiPushRegistar.register( this, "2882303761517796915", "5831779650915");
+        MiPushRegistar.register( this, Constants.MI_PUSH_APP_ID, Constants.MI_PUSH_APP_KEY);
         HuaWeiRegister.register(this);
-        //MeizuRegister.register(this, "", "");
+        MeizuRegister.register(this, Constants.MEIZU_PUSH_APP_ID, Constants.MEIZU_PUSH_APP_KEY);
         initDisplayOpinion();
     }
 
