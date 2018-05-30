@@ -43,10 +43,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         lifecycleSubject.onNext(ActivityLifeCycleEvent.CREATE);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        Window window = getWindow();
+       /* Window window = getWindow();
         WindowManager.LayoutParams params = window.getAttributes();
         params.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|View.SYSTEM_UI_FLAG_IMMERSIVE;
-        window.setAttributes(params);
+        window.setAttributes(params);*/
         super.onCreate(savedInstanceState);
     }
 

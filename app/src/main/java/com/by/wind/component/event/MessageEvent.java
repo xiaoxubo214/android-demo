@@ -22,6 +22,16 @@ public class MessageEvent {
     public final static String CLOSE_SHOP = "close_shop";
     public final static String CLOSE_SALE = "close_sale";
 
+    public final static String SET_TITLE_MESSAGE = "set_title_message";
+    public final static String SET_TITLE_TEAM = "set_title_team";
+    public final static String SET_TITLE_SHOP = "set_title_shop";
+    public final static String SET_TITLE_SALE = "set_title_sale";
+
+    public final static String SET_BACK_BUTTON_MESSAGE = "set_back_button_message";
+    public final static String SET_BACK_BUTTON_TEAM = "set_back_button_team";
+    public final static String SET_BACK_BUTTON_SHOP = "set_back_button_shop";
+    public final static String SET_BACK_BUTTON_SALE = "set_back_button_sale";
+
     private String eventType;
 
     private String message;

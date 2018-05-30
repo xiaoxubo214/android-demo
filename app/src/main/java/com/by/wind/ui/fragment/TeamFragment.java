@@ -1,5 +1,6 @@
 package com.by.wind.ui.fragment;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -105,10 +106,26 @@ public class TeamFragment extends BaseFragment implements LoadingDialog.Progress
         });
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                //Log.e(MessageFragment.class.getCanonicalName(),"on page change");
+            }
+
+            @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 //mLoadingDialog.dismiss();
+                EventBus.getDefault().post(new MessageEvent(MessageEvent.SET_BACK_BUTTON_TEAM));
             }
+        });
+        mWebView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onReceivedTitle(WebView view, String title) {
+                super.onReceivedTitle(view, title);
+                EventBus.getDefault().post(new MessageEvent(MessageEvent.SET_TITLE_TEAM,title));
+
+            }
+
         });
         mWebView.setOnTouchListener(new View.OnTouchListener() {
             float startX = 0;
@@ -164,9 +181,9 @@ public class TeamFragment extends BaseFragment implements LoadingDialog.Progress
         /*    String call = "javascript:AppScan(" + event.getMessage() + ")";
             mWebView.loadUrl(call);*/
         } else if(event.getEventType().equals(MessageEvent.BACK_TEAM)) {
-            Log.e(TAG,"BACK_TEAM");
+            //Log.e(TAG,"BACK_TEAM");
             if(mWebView.canGoBack()) {
-                Log.e(TAG,"canGoBack");
+                //Log.e(TAG,"canGoBack");
                 mWebView.goBack();
             }
         } else if (event.getEventType().equals(MessageEvent.CLOSE_TEAM)) {

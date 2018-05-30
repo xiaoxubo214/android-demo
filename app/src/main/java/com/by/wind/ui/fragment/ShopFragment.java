@@ -1,5 +1,6 @@
 package com.by.wind.ui.fragment;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -105,10 +106,27 @@ public class ShopFragment extends BaseFragment implements LoadingDialog.Progress
         });
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                //Log.e(MessageFragment.class.getCanonicalName(),"on page change");
+            }
+
+            @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 //mLoadingDialog.dismiss();
+                EventBus.getDefault().post(new MessageEvent(MessageEvent.SET_BACK_BUTTON_SHOP));
             }
+        });
+
+        mWebView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onReceivedTitle(WebView view, String title) {
+                super.onReceivedTitle(view, title);
+                EventBus.getDefault().post(new MessageEvent(MessageEvent.SET_TITLE_SHOP,title));
+
+            }
+
         });
 
         mWebView.setOnTouchListener(new View.OnTouchListener() {
@@ -155,7 +173,7 @@ public class ShopFragment extends BaseFragment implements LoadingDialog.Progress
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(MessageEvent event) {
-        Log.e("ShopFragment",event.getEventType());
+        //Log.e("ShopFragment",event.getEventType());
         if (event.getEventType().equals(MessageEvent.NETWORK_OK)) {
             mWebView.setVisibility(View.VISIBLE);
             mIvNotNetwork.setVisibility(View.GONE);

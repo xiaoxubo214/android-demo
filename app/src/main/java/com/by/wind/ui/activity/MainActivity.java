@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 
+import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -24,6 +25,7 @@ import com.by.wind.ui.fragment.MyFragment;
 import com.by.wind.ui.fragment.SaleFragment;
 import com.by.wind.ui.fragment.ShopFragment;
 import com.by.wind.ui.fragment.TeamFragment;
+import com.by.wind.util.CustomTitleBar;
 import com.by.wind.util.ToastUtil;
 import com.by.wind.widget.FragmentPagerAdapter;
 import com.by.wind.widget.NoScrollViewPager;
@@ -44,7 +46,9 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends TitleActivity implements TabIndicator.OnTabClickListener {
+public class MainActivity extends TitleActivity implements TabIndicator.OnTabClickListener  {
+
+    private final static String TAG = "MainActivity";
 
 /*    @BindView(R.id.fl_splash)
     FrameLayout flSplash;*/
@@ -73,6 +77,11 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
     private final static int SHOP_TYPE_TAB = 2;
     private final static int SALE_TYPE_TAB = 3;
     private final static int MY_TYPE_TAB = 4;
+
+    private String mWebTitleMessage = "";
+    private String mWebTitleTeam = "";
+    private String mWebTitleShop = "";
+    private String mWebTitleSale = "";
 
     public final static int REQUEST_CODE = 1;
 
@@ -106,9 +115,9 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
         transaction.replace(R.id.fl_splash, splashFragment);
         transaction.commit();*/
 
+        setBackButton(false);
         llCustomTitle.setVisibility(View.VISIBLE);
-        llCustomTitle.set_show_left_button(true);
-        llCustomTitle.setShow_close_text(true);
+        llCustomTitle.setIvLeftButtonVisible(false);
         llCustomTitle.setTvLeftButton("返回");
         llCustomTitle.set_show_Right_button(true);
         mMessageFragment = MessageFragment.newInstance(null);
@@ -140,6 +149,8 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
         mMainIndicator.setOnTabClickListener(this);
         mMainIndicator.setCurrentTab(mCurIndex);
 
+        llCustomTitle.setOnTitleClickListener(this);
+
     }
 
     @Override
@@ -168,13 +179,67 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(MessageEvent event) {
-       /* Log.e(TAG,"Receive message");
-        if (event.getEventType().equals(MessageEvent.SPLASH_FINISH)) {
-            Log.e(TAG,"operation message");
-            flSplash.setVisibility(View.GONE);
-            mContent.setVisibility(View.VISIBLE);
-            llCustomTitle.setVisibility(View.VISIBLE);
-        }*/
+
+        //控制标题
+       if (MessageEvent.SET_TITLE_MESSAGE.equals(event.getEventType())) {
+          mWebTitleMessage = event.getMessage();
+           showTitleContent(event.getMessage());
+       } else if (MessageEvent.SET_TITLE_TEAM.equals(event.getEventType())) {
+           mWebTitleTeam = event.getMessage();
+           showTitleContent(event.getMessage());
+       } else if (MessageEvent.SET_TITLE_SHOP.equals(event.getEventType())) {
+           mWebTitleShop = event.getMessage();
+           showTitleContent(event.getMessage());
+       } else if (MessageEvent.SET_TITLE_SALE.equals(event.getEventType())) {
+           mWebTitleSale = event.getMessage();
+           showTitleContent(event.getMessage());
+       }
+
+        //控制返回菜单和 关闭按钮
+        //Log.e("MainActivity",event.getEventType());
+        if (MessageEvent.SET_BACK_BUTTON_MESSAGE.equals(event.getEventType()) && (mCurIndex == 0 || mCurIndex == -1)) {
+            //Log.e("MainActivity","1111111");
+            if(mMessageFragment.getWebView().canGoBack()) {
+                //Log.e("MainActivity","can go back");
+            }else {
+                //Log.e("main","can't go back");
+            }
+            if (mMessageFragment.getWebView() != null &&mMessageFragment.getWebView().canGoBack()){
+                //Log.e("MainActivity","change button display");
+                setBackButton(true);
+            } else  {
+                //Log.e("MainActivity","change button no display");
+                setBackButton(false);
+            }
+        } else if (MessageEvent.SET_BACK_BUTTON_TEAM.equals(event.getEventType()) && mCurIndex == 1) {
+            if (mTeamFragment.getWebView() != null && mTeamFragment.getWebView().canGoBack()) {
+                setBackButton(true);
+            } else  {
+                setBackButton(false);
+            }
+        } else if (MessageEvent.SET_BACK_BUTTON_SHOP.equals(event.getEventType()) && mCurIndex == 2) {
+            if (mShopFragment.getWebView() != null && mShopFragment.getWebView().canGoBack()) {
+                setBackButton(true);
+            } else  {
+                setBackButton(false);
+            }
+        } else if (MessageEvent.SET_BACK_BUTTON_SALE.equals(event.getEventType()) && mCurIndex == 3) {
+            if (mSaleFragment.getWebView() != null && mSaleFragment.getWebView().canGoBack()) {
+                setBackButton(true);
+            } else  {
+                setBackButton(false);
+            }
+        }else if (mCurIndex == 4) {
+            setBackButton(false);
+        }
+
+    }
+
+
+    private void setBackButton(boolean display) {
+        llCustomTitle.setIvLeftButtonVisible(display);
+        llCustomTitle.set_show_left_button(display);
+        llCustomTitle.setShow_close_text(display);
     }
 
     @Override
@@ -182,16 +247,41 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
         //Log.e(TAG,index + "");
         if (index == 0) {
             viewpager.setCurrentItem(MESSAGE_TYPE_TAB, false);
-            showTitleContent(getResources().getString(R.string.message));
+            if (mMessageFragment.getWebView() != null &&mMessageFragment.getWebView().canGoBack()){
+
+                showTitleContent(mWebTitleMessage);
+                setBackButton(true);
+            } else  {
+                showTitleContent(getResources().getString(R.string.message));
+                setBackButton(false);
+            }
         } else if (index == 1) {
             viewpager.setCurrentItem(TEAM_TYPE_TAB,false);
-            showTitleContent(getResources().getString(R.string.team));
+            if (mTeamFragment.getWebView() != null && mTeamFragment.getWebView().canGoBack()) {
+                showTitleContent(mWebTitleTeam);
+                setBackButton(true);
+            } else  {
+                showTitleContent(getResources().getString(R.string.team));
+                setBackButton(false);
+            }
         } else if (index == 2) {
             viewpager.setCurrentItem(SHOP_TYPE_TAB, false);
-            showTitleContent(getResources().getString(R.string.shop));
+            if (mShopFragment.getWebView() != null && mShopFragment.getWebView().canGoBack()) {
+                showTitleContent(mWebTitleShop);
+                setBackButton(true);
+            } else  {
+                showTitleContent(getResources().getString(R.string.shop));
+                setBackButton(false);
+            }
         } else if (index == 3) {
             viewpager.setCurrentItem(SALE_TYPE_TAB, false);
-            showTitleContent(getResources().getString(R.string.sale));
+            if (mSaleFragment.getWebView() != null && mSaleFragment.getWebView().canGoBack()) {
+                showTitleContent(mWebTitleSale);
+                setBackButton(true);
+            } else  {
+                showTitleContent(getResources().getString(R.string.sale));
+                setBackButton(false);
+            }
         }else if (index == 4) {
             viewpager.setCurrentItem(MY_TYPE_TAB, false);
             showTitleContent(getResources().getString(R.string.personal));
@@ -222,15 +312,40 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
 
     private void initTitle(int position) {
     }
+
+    @Override
+    public void onLeftClick() {
+        String backPage = "";
+        if ((mCurIndex == -1 || mCurIndex == 0) && (mMessageFragment.getWebView().canGoBack())){
+            backPage = MessageEvent.BACK_MESSAGE;
+        } else if (( mCurIndex == 1) && (mTeamFragment.getWebView().canGoBack())) {
+            backPage = MessageEvent.BACK_TEAM;
+        } else if (( mCurIndex == 2) && (mShopFragment.getWebView().canGoBack())) {
+            backPage = MessageEvent.BACK_SHOP;
+        } else if (( mCurIndex == 3) && (mSaleFragment.getWebView().canGoBack())) {
+            backPage = MessageEvent.BACK_SALE;
+        }
+        if (backPage.isEmpty()) {
+            onBackPressed();
+        } else {
+            EventBus.getDefault().post(new MessageEvent(backPage));
+        }
+    }
+
     @Override
     public void onRightClick() {
-        super.onRightClick();
         Intent intent = new Intent(MainActivity.this, CaptureActivity.class);
         startActivityForResult(intent, REQUEST_CODE);
     }
 
     @Override
+    public void onCenterClick() {
+
+    }
+
+    @Override
     public void onCloseClick() {
+        Log.e(TAG,"On close");
         String backPage = "";
 
         if ((mCurIndex == -1 || mCurIndex == 0) && (mMessageFragment.getWebView().canGoBack())){
@@ -245,6 +360,12 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
         if (!backPage.isEmpty()) {
             EventBus.getDefault().post(new MessageEvent(backPage));
         }
+        Log.e(TAG,"onc close click");
+        new Handler().postDelayed(new Runnable(){
+            public void run() {
+                setBackButton(false);
+            }
+        }, 200);
 
     }
 
@@ -261,7 +382,7 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
                     String result = bundle.getString(CodeUtils.RESULT_STRING);
                     //ToastUtil.show( "解析结果:" + result);
                     String scanPage = "";
-                    Log.e(TAG,"mCurIndex: " + mCurIndex);
+                    //Log.e(TAG,"mCurIndex: " + mCurIndex);
                     if (mCurIndex == -1 || mCurIndex == 0){
                         //scanPage = MessageEvent.SCAN_MESSAGE;
                         mMessageFragment.callJsScan(result);
@@ -280,7 +401,7 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
                     Log.e("MainActivity","send finish");*/
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
                     ToastUtil.show( "解析二维码失败");
-                    Log.e("MainActivity","解析二维码失败");
+                    //Log.e("MainActivity","解析二维码失败");
                 }
             }
         }
@@ -321,7 +442,7 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
             } else {
                 messageType = MessageEvent.NETWORK_FAIL;
             }
-            Log.e(TAG,"send message");
+            //Log.e(TAG,"send message");
             EventBus.getDefault().post(new MessageEvent(messageType));
         }
     }

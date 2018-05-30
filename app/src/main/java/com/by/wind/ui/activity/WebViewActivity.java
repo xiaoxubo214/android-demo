@@ -117,10 +117,7 @@ public class WebViewActivity extends TitleActivity {
             @Override
             public void onReceivedTitle(WebView view, String title) {
                 super.onReceivedTitle(view, title);
-                /*if(mLoadingDialog != null && mLoadingDialog.isShowing()) {
-                    mLoadingDialog.dismiss();
-                }*/
-                //
+                showTitleContent(title);
             }
 
         });

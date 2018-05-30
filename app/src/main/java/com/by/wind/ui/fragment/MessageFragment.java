@@ -1,5 +1,6 @@
 package com.by.wind.ui.fragment;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -99,18 +100,32 @@ public class MessageFragment extends BaseFragment implements LoadingDialog.Progr
                     requestInfo.setApp_ver(BaseApplication.getInstance().getVersionName());
                     requestInfo.setAccess_token(PreferenceHelper.getUserTokenData().access_token);
                     String jsonString = JsonUtil.toJson(requestInfo);
-                    Log.e(TAG,jsonString);
+                    //Log.e(TAG,jsonString);
                     mWebView.postUrl(Constants.URL_PAGE,jsonString.getBytes());
                 }catch (Exception ex) {
                     ex.printStackTrace();
                 }
             }
         });
+        mWebView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onReceivedTitle(WebView view, String title) {
+                super.onReceivedTitle(view, title);
+                EventBus.getDefault().post(new MessageEvent(MessageEvent.SET_TITLE_MESSAGE,title));
+
+            }
+        });
         mWebView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+
+            }
+
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                //mLoadingDialog.dismiss();
+                EventBus.getDefault().post(new MessageEvent(MessageEvent.SET_BACK_BUTTON_MESSAGE));
             }
         });
         mWebView.setOnTouchListener(new View.OnTouchListener() {
@@ -157,7 +172,7 @@ public class MessageFragment extends BaseFragment implements LoadingDialog.Progr
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(MessageEvent event) {
-        Log.e("MessageFragment",event.getEventType());
+        //Log.e("MessageFragment",event.getEventType());
         if (event.getEventType().equals(MessageEvent.NETWORK_OK)) {
             mWebView.setVisibility(View.VISIBLE);
             mIvNotNetwork.setVisibility(View.GONE);

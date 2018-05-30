@@ -86,7 +86,7 @@ public abstract class TitleActivity extends BaseActivity implements CustomTitleB
     public void showTitleContent(String title, int leftDrawableID, boolean flag , int rightDrawableID){
         llCustomTitle.setTvCenterLeftButton(title);
         //llCustomTitle.setVisibility(View.VISIBLE);
-        llCustomTitle.setIvLeftButtonVisible(!TextUtils.isEmpty(title) ? true : false);
+        //llCustomTitle.setIvLeftButtonVisible(!TextUtils.isEmpty(title) ? true : false);
         llCustomTitle.setIvLeftButton(leftDrawableID != 0 ? leftDrawableID : R.drawable.icon_return_back);
         llCustomTitle.setIvRightButtonVisible(flag);
         llCustomTitle.setIvRightButton(rightDrawableID);
