@@ -144,7 +144,9 @@ public class MyFragment extends BaseFragment implements IBaseView.IUserInfoView{
         if (userInfo != null) {
             if (userInfo.head_image != null && !userInfo.head_image.isEmpty()) {
                 if (userInfo.head_image != null && mUserAvatar != null) {
-                    ImagePicker.getInstance().getImageLoader().displayCropImage(getContext(), userInfo.head_image, mUserAvatar, R.drawable.my_default_img);
+                    if(userInfo.head_image.endsWith("png") || userInfo.head_image.endsWith("jpg")) {
+                        ImagePicker.getInstance().getImageLoader().displayCropImage(getContext(), userInfo.head_image, mUserAvatar, R.drawable.my_default_img);
+                    }
                 }
             }
             mUserName.setText(userInfo.member_name);
