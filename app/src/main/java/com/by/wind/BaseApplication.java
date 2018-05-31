@@ -43,7 +43,7 @@ public class BaseApplication extends Application {
         Hawk.init(this);
         LeakCanary.install(this);
         ZXingLibrary.initDisplayOpinion(this);
-        registerUncaughtExceptionHandler();
+        //registerUncaughtExceptionHandler();
         UMConfigure.init(this, Constants.UM_APP_KEY, Constants.UM_CHANNEL, UMConfigure.DEVICE_TYPE_PHONE, Constants.UM_MESSAGE_SECRET);
         mPushAgent = PushAgent.getInstance(this);
         //注册推送服务，每次调用register方法都会回调该接口

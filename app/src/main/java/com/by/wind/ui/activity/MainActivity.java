@@ -181,16 +181,16 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
     public void onMessageEvent(MessageEvent event) {
 
         //控制标题
-       if (MessageEvent.SET_TITLE_MESSAGE.equals(event.getEventType())) {
+       if (MessageEvent.SET_TITLE_MESSAGE.equals(event.getEventType()) && mMessageFragment.getWebView() != null &&mMessageFragment.getWebView().canGoBack()) {
           mWebTitleMessage = event.getMessage();
            showTitleContent(event.getMessage());
-       } else if (MessageEvent.SET_TITLE_TEAM.equals(event.getEventType())) {
+       } else if (MessageEvent.SET_TITLE_TEAM.equals(event.getEventType()) && mTeamFragment.getWebView() != null && mTeamFragment.getWebView().canGoBack()) {
            mWebTitleTeam = event.getMessage();
            showTitleContent(event.getMessage());
-       } else if (MessageEvent.SET_TITLE_SHOP.equals(event.getEventType())) {
+       } else if (MessageEvent.SET_TITLE_SHOP.equals(event.getEventType()) && mShopFragment.getWebView() != null && mShopFragment.getWebView().canGoBack()) {
            mWebTitleShop = event.getMessage();
            showTitleContent(event.getMessage());
-       } else if (MessageEvent.SET_TITLE_SALE.equals(event.getEventType())) {
+       } else if (MessageEvent.SET_TITLE_SALE.equals(event.getEventType()) && mShopFragment.getWebView() != null && mShopFragment.getWebView().canGoBack()) {
            mWebTitleSale = event.getMessage();
            showTitleContent(event.getMessage());
        }
@@ -364,6 +364,7 @@ public class MainActivity extends TitleActivity implements TabIndicator.OnTabCli
         new Handler().postDelayed(new Runnable(){
             public void run() {
                 setBackButton(false);
+                onTabClick(mCurIndex);
             }
         }, 200);
 

@@ -11,7 +11,7 @@
 
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
+<!--    <uses-permission android:name="android.permission.READ_CONTACTS" />-->
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -67,6 +67,13 @@
                 <category android:name="com.by.wind"></category>
             </intent-filter>
         </receiver>
+
+
+        <activity
+            android:name="com.wind.base.permission.PermissionActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomTheme_Dialog"/>
 
     </application>
 
