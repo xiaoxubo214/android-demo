@@ -9,7 +9,7 @@ import android.util.Log;
 import com.by.wind.component.lib_zxing.DisplayUtil;
 import com.by.wind.util.common.AppException;
 import com.orhanobut.hawk.Hawk;
-import com.squareup.leakcanary.LeakCanary;
+//import com.squareup.leakcanary.LeakCanary;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.PushAgent;
@@ -41,7 +41,7 @@ public class BaseApplication extends Application {
         super.onCreate();
         app = this;
         Hawk.init(this);
-        LeakCanary.install(this);
+        //LeakCanary.install(this);
         ZXingLibrary.initDisplayOpinion(this);
         //registerUncaughtExceptionHandler();
         UMConfigure.init(this, Constants.UM_APP_KEY, Constants.UM_CHANNEL, UMConfigure.DEVICE_TYPE_PHONE, Constants.UM_MESSAGE_SECRET);
