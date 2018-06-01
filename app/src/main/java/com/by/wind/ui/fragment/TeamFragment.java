@@ -127,6 +127,7 @@ public class TeamFragment extends BaseFragment implements LoadingDialog.Progress
             }
 
         });
+        /*
         mWebView.setOnTouchListener(new View.OnTouchListener() {
             float startX = 0;
             float scrollSize = 120;
@@ -149,7 +150,7 @@ public class TeamFragment extends BaseFragment implements LoadingDialog.Progress
                 }
                 return false;
             }
-        });
+        });*/
 
         if(!BussinessUtil.isNetWorkConnected(this.getActivity())) {
             mWebView.setVisibility(View.GONE);

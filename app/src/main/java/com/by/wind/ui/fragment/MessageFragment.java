@@ -128,7 +128,7 @@ public class MessageFragment extends BaseFragment implements LoadingDialog.Progr
                 EventBus.getDefault().post(new MessageEvent(MessageEvent.SET_BACK_BUTTON_MESSAGE));
             }
         });
-        mWebView.setOnTouchListener(new View.OnTouchListener() {
+        /*mWebView.setOnTouchListener(new View.OnTouchListener() {
             float startX = 0;
             float scrollSize = 120;
             @Override
@@ -150,7 +150,7 @@ public class MessageFragment extends BaseFragment implements LoadingDialog.Progr
                 }
                 return false;
             }
-        });
+        });*/
 
         if(!BussinessUtil.isNetWorkConnected(this.getActivity())) {
             mWebView.setVisibility(View.GONE);

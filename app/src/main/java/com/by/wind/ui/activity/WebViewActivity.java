@@ -128,6 +128,7 @@ public class WebViewActivity extends TitleActivity {
 
             }
         });
+        /*
         mWebView.setOnTouchListener(new View.OnTouchListener() {
             float startX = 0;
             float scrollSize = 120;
@@ -150,7 +151,7 @@ public class WebViewActivity extends TitleActivity {
                 }
                 return false;
             }
-        });
+        });*/
 
         if(!BussinessUtil.isNetWorkConnected(this)) {
             mWebView.setVisibility(View.GONE);
