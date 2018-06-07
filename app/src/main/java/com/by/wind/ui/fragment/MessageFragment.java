@@ -29,6 +29,8 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.lang.reflect.Parameter;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -194,8 +196,8 @@ public class MessageFragment extends BaseFragment implements LoadingDialog.Progr
     }
 
     public void callJsScan(String msg){
-        Log.e("MessageFragment","call Js scan");
-        String call = "javascript:AppScan(" + msg + ")";
+        Log.e("MessageFragment","call Js scan" + msg);
+        String call = "javascript:AppScan('" + msg + "')";
         mWebView.loadUrl(call);
     }
     @Override

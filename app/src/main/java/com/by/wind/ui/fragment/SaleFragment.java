@@ -197,7 +197,7 @@ public class SaleFragment extends BaseFragment implements LoadingDialog.Progress
     }
 
     public void callJsScan(String msg){
-        String call = "javascript:AppScan(" + msg + ")";
+        String call = "javascript:AppScan('" + msg + "')";
         mWebView.loadUrl(call);
     }
 
