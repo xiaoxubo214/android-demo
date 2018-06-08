@@ -200,6 +200,7 @@ public class MessageFragment extends BaseFragment implements LoadingDialog.Progr
         String call = "javascript:AppScan('" + msg + "')";
         mWebView.loadUrl(call);
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);

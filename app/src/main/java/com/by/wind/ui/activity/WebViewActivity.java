@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -21,11 +22,14 @@ import android.widget.Toast;
 import com.by.wind.BaseApplication;
 import com.by.wind.Constants;
 import com.by.wind.component.event.MessageEvent;
+import com.by.wind.component.lib_zxing.activity.CaptureActivity;
+import com.by.wind.component.lib_zxing.activity.CodeUtils;
 import com.by.wind.entity.RequestInfo;
 import com.by.wind.util.BussinessUtil;
 import com.by.wind.util.DeviceUtil;
 import com.by.wind.util.JsonUtil;
 import com.by.wind.util.PreferenceHelper;
+import com.by.wind.util.ToastUtil;
 import com.by.wind.widget.TitleActivity;
 import com.by.wind.R;
 import com.umeng.message.PushAgent;
@@ -50,6 +54,7 @@ public class WebViewActivity extends TitleActivity {
 
     private static String PAGE_URL = Constants.PAGE_MESSAGE;
     private static String contentTitle = "";
+    public final static int REQUEST_CODE = 1;
 
     public static void open(Context context, String pageUrl,String title) {
         PAGE_URL = pageUrl;
@@ -189,6 +194,41 @@ public class WebViewActivity extends TitleActivity {
     protected void onPause() {
         super.onPause();
         unregisterReceiver(mNetworkChangeReceiver);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE) {
+            //处理扫描结果（在界面上显示）
+            if (null != data) {
+                Bundle bundle = data.getExtras();
+                if (bundle == null) {
+                    return;
+                }
+                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
+                    String result = bundle.getString(CodeUtils.RESULT_STRING);
+                    //ToastUtil.show( "解析结果:" + result);
+                    String scanPage = "";
+                    //Log.e(TAG,"mCurIndex: " + mCurIndex);
+                    Log.e("MessageFragment","call Js scan" + result);
+                    String call = "javascript:AppScan('" + result + "')";
+                    mWebView.loadUrl(call);
+              /*      Log.e("MainActivity","sendScan"+ scanPage +result);
+                    EventBus.getDefault().post(new MessageEvent(scanPage,result));
+                    Log.e("MainActivity","send finish");*/
+                } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
+                    ToastUtil.show( "解析二维码失败");
+                    //Log.e("MainActivity","解析二维码失败");
+                }
+            }
+        }
+    }
+
+
+    @Override
+    public void onRightClick() {
+        Intent intent = new Intent(WebViewActivity.this, CaptureActivity.class);
+        startActivityForResult(intent, REQUEST_CODE);
     }
 
     private void registerNetwork() {
