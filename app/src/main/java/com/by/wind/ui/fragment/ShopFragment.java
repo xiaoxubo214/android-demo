@@ -162,7 +162,9 @@ public class ShopFragment extends BaseFragment implements LoadingDialog.Progress
     @Override
     public void onResume() {
         super.onResume();
-        EventBus.getDefault().register(this);
+        if(!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
     }
 
     @Override

@@ -163,7 +163,9 @@ public class MessageFragment extends BaseFragment implements LoadingDialog.Progr
     @Override
     public void onResume() {
         super.onResume();
-        EventBus.getDefault().register(this);
+        if(!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
     }
 
     @Override
